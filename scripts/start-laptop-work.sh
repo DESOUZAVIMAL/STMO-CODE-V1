@@ -45,7 +45,10 @@ echo "Recent changes available from main:"
 git log --date=short --pretty=format:"- %cd %h %s" HEAD.."$REMOTE/main" | head -n 12
 echo
 
-read -r -p "Merge these main changes into $TARGET_BRANCH now? [y/N] " answer
+if ! read -r -p "Merge these main changes into $TARGET_BRANCH now? [y/N] " answer; then
+  answer=""
+  echo
+fi
 case "$answer" in
   y|Y|yes|YES)
     git merge --no-edit "$REMOTE/main"
@@ -57,4 +60,3 @@ case "$answer" in
     echo "Skipped update. Be careful: this branch is behind main."
     ;;
 esac
-

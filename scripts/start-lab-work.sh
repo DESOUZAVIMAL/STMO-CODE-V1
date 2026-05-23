@@ -55,7 +55,10 @@ if [[ "$behind_count" == "0" ]]; then
 fi
 
 echo
-read -r -p "Merge these main changes into $TARGET_BRANCH before experiments? [y/N] " answer
+if ! read -r -p "Merge these main changes into $TARGET_BRANCH before experiments? [y/N] " answer; then
+  answer=""
+  echo
+fi
 case "$answer" in
   y|Y|yes|YES)
     git merge --no-edit "$REMOTE/main"
@@ -67,4 +70,3 @@ case "$answer" in
     echo "Skipped update. Do not run experiments unless you intentionally want old code."
     ;;
 esac
-

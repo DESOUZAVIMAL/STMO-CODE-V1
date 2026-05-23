@@ -36,7 +36,10 @@ else
   echo "Before committing, update the relevant log file if this change matters:"
   echo "- $log_hint"
   echo
-  read -r -p "Stage all current changes and continue? [y/N] " stage_answer
+  if ! read -r -p "Stage all current changes and continue? [y/N] " stage_answer; then
+    stage_answer=""
+    echo
+  fi
   case "$stage_answer" in
     y|Y|yes|YES)
       git add -A
@@ -47,7 +50,10 @@ else
       ;;
   esac
 
-  read -r -p "Commit title after '$prefix: ' " title
+  if ! read -r -p "Commit title after '$prefix: ' " title; then
+    title=""
+    echo
+  fi
   if [[ -z "$title" ]]; then
     echo "Stop: commit title cannot be empty."
     exit 1
@@ -61,7 +67,10 @@ echo "Pushing $current_branch to GitHub..."
 git push -u "$REMOTE" "$current_branch"
 
 echo
-read -r -p "Merge $current_branch into main now? [y/N] " merge_answer
+if ! read -r -p "Merge $current_branch into main now? [y/N] " merge_answer; then
+  merge_answer=""
+  echo
+fi
 case "$merge_answer" in
   y|Y|yes|YES)
     git fetch "$REMOTE"
@@ -78,4 +87,3 @@ case "$merge_answer" in
     echo "Skipped main update. Your work is pushed on $current_branch only."
     ;;
 esac
-
