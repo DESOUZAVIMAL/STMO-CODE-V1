@@ -229,57 +229,59 @@ void labelAllPairs(PairMemory& pm) {
 // ============================================================
 void runODTP(const PairMemory& pm,
              TripletMemory& tm,
-             Population pop) {
+             const Population& pop) {
 
-    // Collect all STRONG pairs
+    // Collect STRONG pairs and build a successor index:
+    //   strongNext[jb] = list of jc where (jb, jc) is STRONG
+    // This replaces the O(S²) double-loop with O(S × avg_degree).
     std::vector<std::pair<int,int>> strongPairs;
+    std::map<int, std::vector<int>> strongNext;
+
     for (const auto& entry : pm) {
         if (entry.second.label == LABEL_STRONG) {
             strongPairs.push_back(entry.first);
+            strongNext[entry.first.first].push_back(entry.first.second);
         }
     }
 
-    // For each STRONG pair (Ja, Jb), check if (Jb, Jc) also STRONG
+    // For each STRONG (Ja, Jb), look up successors Jc in O(1)
     for (const auto& ab : strongPairs) {
         int ja = ab.first;
         int jb = ab.second;
 
-        // Find all Jc where (Jb, Jc) is STRONG
-        for (const auto& bc : strongPairs) {
-            if (bc.first != jb) continue; // must share middle job Jb
-            int jc = bc.second;
-            if (jc == ja) continue;       // no self-loops
+        auto it = strongNext.find(jb);
+        if (it == strongNext.end()) continue; // no STRONG pair starting from Jb
+
+        // Look up pair scores ONCE per (ja,jb,jc) — not inside the population loop
+        float s1 = lookupPairScore(pm, ja, jb);
+
+        for (int jc : it->second) {
+            if (jc == ja) continue; // no self-loops
+
+            float s2 = lookupPairScore(pm, jb, jc);
+            float tripScore = (s1 + s2) * 0.5f;
+            if (tripScore <= 0.0f) continue; // only promote positive triplets
 
             // Verify Ja→Jb→Jc appears consecutively on same machine
-            // by checking across the population
             int coCount = 0;
-            float tripScore = 0.0f;
-
             for (int p = 0; p < P; p++) {
                 const Turtle& t = pop[p];
                 if (!t.cacheValid) continue;
-
                 for (int m = 0; m < M_Machine; m++) {
                     for (int k = 0; k < t.machineCount[m] - 2; k++) {
                         if (t.machineSeq[m][k]   == ja &&
                             t.machineSeq[m][k+1] == jb &&
                             t.machineSeq[m][k+2] == jc) {
                             coCount++;
-                            // Triplet score = score(Ja,Jb) + score(Jb,Jc) / 2
-                            float s1 = lookupPairScore(pm, ja, jb);
-                            float s2 = lookupPairScore(pm, jb, jc);
-                            tripScore = (s1 + s2) * 0.5f;
                         }
                     }
                 }
             }
 
-            if (coCount >= TRIPLET_MIN_COUNT && tripScore > 0.0f) {
-                // Check if triplet already exists in TripletMemory
+            if (coCount >= TRIPLET_MIN_COUNT) {
                 bool found = false;
                 for (auto& tr : tm) {
                     if (tr.ja == ja && tr.jb == jb && tr.jc == jc) {
-                        // Update existing triplet
                         tr.count++;
                         tr.score = (tr.score * (tr.count-1) + tripScore)
                                  / (float)tr.count;
@@ -289,7 +291,6 @@ void runODTP(const PairMemory& pm,
                     }
                 }
                 if (!found) {
-                    // Add new triplet
                     TripletRecord tr;
                     tr.ja    = ja;
                     tr.jb    = jb;
@@ -376,7 +377,7 @@ StructuralMap buildStructuralMap(const Turtle& t, const PairMemory& pm) {
 // SE RULE: ONLY batchEvaluate calls this function.
 // SE RULE: Only turtles with cacheValid == true are considered.
 // ============================================================
-void updateEliteArchive(EliteArchive& ea, Population pop) {
+void updateEliteArchive(EliteArchive& ea, const Population& pop) {
     // Collect all candidates: current elites + new population
     std::vector<Turtle> candidates;
 
@@ -414,7 +415,7 @@ void updateEliteArchive(EliteArchive& ea, Population pop) {
 //
 // SE RULE: ONLY batchEvaluate calls this function.
 // ============================================================
-void updateM0Pool(M0Pool& m0, Population pop) {
+void updateM0Pool(M0Pool& m0, const Population& pop) {
     m0.clear();
 
     // Count rejections and estimate marginal profit per job

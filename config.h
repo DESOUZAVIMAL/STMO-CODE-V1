@@ -42,8 +42,8 @@
 // POPULATION
 // ------------------------------------------------------------
 #define P           30      // number of turtles in population
-#define MAX_ITER    500     // maximum iterations (backup stopping condition)
-#define END_TIME    120.0   // time budget in seconds (primary stopping condition)
+#define MAX_ITER    2500    // maximum iterations (backup stopping condition)
+#define END_TIME    300.0   // time budget in seconds (primary stopping condition)
 // Note: algorithm stops when EITHER condition is met first.
 // END_TIME matches professor's WFA setting for fair comparison.
 

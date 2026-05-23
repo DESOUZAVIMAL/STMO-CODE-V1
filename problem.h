@@ -405,9 +405,10 @@ Turtle moveOrderInsert(const Turtle& t, int k1 = -1, int k2 = -1) {
 
     // Random positions if not specified
     if (k1 < 0) k1 = (int)RandomRge(0.0f, (float)N_Order - 0.00001f);
-    do {
-        if (k2 < 0) k2 = (int)RandomRge(0.0f, (float)(N_Order + 1) - 0.00001f);
-    } while (k1 == k2 || k1 == (k2 - 1));
+    if (k2 < 0) {
+        do { k2 = (int)RandomRge(0.0f, (float)(N_Order + 1) - 0.00001f);
+        } while (k1 == k2 || k1 == (k2 - 1));
+    }
 
     // Save the job being moved
     int savedOrder = result.Order_seq[k1];
@@ -454,9 +455,10 @@ Turtle moveMachineRevise(const Turtle& t, int j = -1, int k = -1) {
 
     // Try a different machine than current
     int currentMach = result.M_select[j];
-    do {
-        if (k < 0) k = (int)RandomRge(0.0f, (float)(M_Machine + 1) - 0.00001f);
-    } while (k == currentMach);
+    if (k < 0) {
+        do { k = (int)RandomRge(0.0f, (float)(M_Machine + 1) - 0.00001f);
+        } while (k == currentMach);
+    }
 
     result.M_select[j] = k;
     return result;
@@ -470,9 +472,10 @@ Turtle moveOrderSwap(const Turtle& t, int k1 = -1, int k2 = -1) {
     result.cacheValid = false;
 
     if (k1 < 0) k1 = (int)RandomRge(0.0f, (float)N_Order - 0.00001f);
-    do {
-        if (k2 < 0) k2 = (int)RandomRge(0.0f, (float)N_Order - 0.00001f);
-    } while (k1 == k2);
+    if (k2 < 0) {
+        do { k2 = (int)RandomRge(0.0f, (float)N_Order - 0.00001f);
+        } while (k1 == k2);
+    }
 
     // Swap sequence positions
     std::swap(result.Order_seq[k1],    result.Order_seq[k2]);

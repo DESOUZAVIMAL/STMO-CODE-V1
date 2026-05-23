@@ -58,7 +58,7 @@
 //
 // Returns EvalSnapshot for ACMM to consume.
 // ============================================================
-EvalSnapshot batchEvaluate(Population pop,
+EvalSnapshot batchEvaluate(Population& pop,
                             EliteArchive& ea,
                             M0Pool& m0,
                             int iteration,
@@ -127,7 +127,7 @@ EvalSnapshot batchEvaluate(Population pop,
 // SE RULE: decodeAndEval called on each candidate
 // SE RULE: cacheValid maintained correctly throughout
 // ============================================================
-void stage1_OceanCurrentDrift(Population pop) {
+void stage1_OceanCurrentDrift(Population& pop) {
     for (int p = 0; p < P; p++) {
         Turtle& t   = pop[p];
         Turtle  best = t;   // copy — best so far (starts as original)
@@ -175,7 +175,7 @@ void stage1_OceanCurrentDrift(Population pop) {
 // SE RULE: operators work on DECODED sequence via move functions
 // SE RULE: partialReeval used for cheap evaluation
 // ============================================================
-void stage2_MemoryAwareDrift(Population pop,
+void stage2_MemoryAwareDrift(Population& pop,
                               const PairMemory& pm,
                               const M0Pool& m0) {
     // Skip entirely if PairMemory is empty (Iteration 1)
@@ -311,7 +311,7 @@ void stage2_MemoryAwareDrift(Population pop,
 // SE RULE: ONLY this function writes to PairMemory and TripletMemory
 // SE RULE: StructuralMap is ephemeral — caller discards after Stage 4
 // ============================================================
-void stage3_ACMM(Population pop,
+void stage3_ACMM(const Population& pop,
                  PairMemory& pm,
                  TripletMemory& tm,
                  const EvalSnapshot& snap,
@@ -354,7 +354,7 @@ void stage3_ACMM(Population pop,
 // SE RULE: STRONG pairs in StructuralMap are never disrupted
 // SE RULE: StructuralMap consumed here — discarded after this stage
 // ============================================================
-void stage4_MFBO(Population pop,
+void stage4_MFBO(Population& pop,
                  const StructuralMap* structMaps,
                  const PairMemory& pm) {
 
@@ -501,7 +501,7 @@ void stage4_MFBO(Population pop,
 // SE RULE: acceptance is ΔZ > 0 (STRICT)
 // SE RULE: reads EliteArchive and TripletMemory — never writes them
 // ============================================================
-void stage5_CMA(Population pop,
+void stage5_CMA(Population& pop,
                 const EliteArchive& ea,
                 const PairMemory& pm,
                 const TripletMemory& tm,
@@ -552,6 +552,7 @@ void stage5_CMA(Population pop,
                     int targetPos = pos_ji + 1;
                     if (targetPos >= N_Order) targetPos = pos_ji;
                     if (targetPos == pos_jj_in_t) continue;
+                    if (pos_jj_in_t == targetPos - 1) continue; // prevents infinite loop in moveOrderInsert
 
                     Turtle candidate = moveOrderInsert(t, pos_jj_in_t, targetPos);
                     // Also match machine assignment from elite
