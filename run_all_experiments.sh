@@ -112,7 +112,7 @@ for N in "${Ns[@]}"; do
       fi
 
       # Parse out.txt with exact grep patterns
-      BEST_Z=$(grep "Best Z"                "$OUT" | awk '{print $NF}')
+      BEST_Z=$(grep -m1 "Best Z"             "$OUT" | awk '{print $NF}')
       ITERS=$(grep  "Total iters"           "$OUT" | awk '{print $4}')
       TIME_S=$(grep "Time used"             "$OUT" | awk '{print $4}')
       BEST_AT=$(grep "Best at iter"         "$OUT" | awk '{print $5}')
