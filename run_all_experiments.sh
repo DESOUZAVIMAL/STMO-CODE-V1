@@ -29,8 +29,15 @@ sed -i 's/#define END_TIME.*/#define END_TIME    120.0/' config.h
 grep "END_TIME" config.h
 
 echo "Compiling STMO ..."
-g++ -O2 -std=c++11 -o STMO.exe STMO.cpp -lm
-echo "Compile OK."
+if command -v g++ &>/dev/null; then
+    g++ -O2 -std=c++11 -o STMO.exe STMO.cpp -lm
+    echo "Compile OK (g++)."
+elif [ -f "./STMO.exe" ]; then
+    echo "g++ not found — using existing STMO.exe (pre-compiled with MSVC)."
+else
+    echo "ERROR: g++ not found and no STMO.exe present. Cannot run."
+    exit 1
+fi
 echo ""
 
 # Sanity checks
@@ -106,7 +113,7 @@ for N in "${Ns[@]}"; do
 
       # Parse out.txt with exact grep patterns
       BEST_Z=$(grep "Best Z"                "$OUT" | awk '{print $NF}')
-      ITERS=$(grep  "Total iters"           "$OUT" | awk '{print $3}')
+      ITERS=$(grep  "Total iters"           "$OUT" | awk '{print $4}')
       TIME_S=$(grep "Time used"             "$OUT" | awk '{print $4}')
       BEST_AT=$(grep "Best at iter"         "$OUT" | awk '{print $5}')
       S2REP=$(grep  "Stage 2 total repairs" "$OUT" | awk '{print $NF}')
