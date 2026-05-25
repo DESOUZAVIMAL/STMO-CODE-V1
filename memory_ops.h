@@ -19,7 +19,7 @@
 //   buildStructuralMap() → ACMM only (after labelAllPairs)
 //   updateEliteArchive() → batchEvaluate only
 //   updateM0Pool()       → batchEvaluate only
-//   stagnationReset()    → main loop only (when K_STAG triggered)
+//   stagnationReset()    → main loop only (when g_kStag triggered)
 //   lookupPairLabel()    → Stage 2 and Stage 4 (read only)
 //   lookupPairScore()    → Stage 2 and Stage 4 (read only)
 // ============================================================
@@ -41,13 +41,13 @@
 // ============================================================
 
 // Returns the label of pair (ji, jj) from PairMemory.
-// Returns LABEL_NONE (' ') if pair not found or count < MIN_COUNT.
+// Returns LABEL_NONE (' ') if pair not found or count < g_minCount.
 // ji and jj are 1-indexed job IDs.
 char lookupPairLabel(const PairMemory& pm, int ji, int jj) {
     auto key = std::make_pair(ji, jj);
     auto it = pm.find(key);
     if (it == pm.end()) return LABEL_NONE;
-    if (it->second.count < MIN_COUNT) return LABEL_NONE;
+    if (it->second.count < g_minCount) return LABEL_NONE;
     return it->second.label;
 }
 
@@ -163,7 +163,7 @@ void updatePairMemory(PairMemory& pm, const EvalSnapshot& snap) {
 //
 // SE RULE: mu and sigma computed BEFORE any labels assigned.
 //          Never label before computing population statistics.
-// SE RULE: Only pairs with count >= MIN_COUNT get labelled.
+// SE RULE: Only pairs with count >= g_minCount get labelled.
 //          Others remain LABEL_NONE (not enough evidence).
 // ============================================================
 void labelAllPairs(PairMemory& pm) {
@@ -173,7 +173,7 @@ void labelAllPairs(PairMemory& pm) {
     std::vector<float> scores;
     scores.reserve(pm.size());
     for (const auto& entry : pm) {
-        if (entry.second.count >= MIN_COUNT) {
+        if (entry.second.count >= g_minCount) {
             scores.push_back(entry.second.avgScore);
         }
     }
@@ -197,7 +197,7 @@ void labelAllPairs(PairMemory& pm) {
     for (auto& entry : pm) {
         PairRecord& rec = entry.second;
 
-        if (rec.count < MIN_COUNT) {
+        if (rec.count < g_minCount) {
             rec.label = LABEL_NONE; // insufficient evidence
             continue;
         }
@@ -229,59 +229,57 @@ void labelAllPairs(PairMemory& pm) {
 // ============================================================
 void runODTP(const PairMemory& pm,
              TripletMemory& tm,
-             const Population& pop) {
+             Population pop) {
 
-    // Collect STRONG pairs and build a successor index:
-    //   strongNext[jb] = list of jc where (jb, jc) is STRONG
-    // This replaces the O(S²) double-loop with O(S × avg_degree).
+    // Collect all STRONG pairs
     std::vector<std::pair<int,int>> strongPairs;
-    std::map<int, std::vector<int>> strongNext;
-
     for (const auto& entry : pm) {
         if (entry.second.label == LABEL_STRONG) {
             strongPairs.push_back(entry.first);
-            strongNext[entry.first.first].push_back(entry.first.second);
         }
     }
 
-    // For each STRONG (Ja, Jb), look up successors Jc in O(1)
+    // For each STRONG pair (Ja, Jb), check if (Jb, Jc) also STRONG
     for (const auto& ab : strongPairs) {
         int ja = ab.first;
         int jb = ab.second;
 
-        auto it = strongNext.find(jb);
-        if (it == strongNext.end()) continue; // no STRONG pair starting from Jb
-
-        // Look up pair scores ONCE per (ja,jb,jc) — not inside the population loop
-        float s1 = lookupPairScore(pm, ja, jb);
-
-        for (int jc : it->second) {
-            if (jc == ja) continue; // no self-loops
-
-            float s2 = lookupPairScore(pm, jb, jc);
-            float tripScore = (s1 + s2) * 0.5f;
-            if (tripScore <= 0.0f) continue; // only promote positive triplets
+        // Find all Jc where (Jb, Jc) is STRONG
+        for (const auto& bc : strongPairs) {
+            if (bc.first != jb) continue; // must share middle job Jb
+            int jc = bc.second;
+            if (jc == ja) continue;       // no self-loops
 
             // Verify Ja→Jb→Jc appears consecutively on same machine
+            // by checking across the population
             int coCount = 0;
+            float tripScore = 0.0f;
+
             for (int p = 0; p < P; p++) {
                 const Turtle& t = pop[p];
                 if (!t.cacheValid) continue;
+
                 for (int m = 0; m < M_Machine; m++) {
                     for (int k = 0; k < t.machineCount[m] - 2; k++) {
                         if (t.machineSeq[m][k]   == ja &&
                             t.machineSeq[m][k+1] == jb &&
                             t.machineSeq[m][k+2] == jc) {
                             coCount++;
+                            // Triplet score = score(Ja,Jb) + score(Jb,Jc) / 2
+                            float s1 = lookupPairScore(pm, ja, jb);
+                            float s2 = lookupPairScore(pm, jb, jc);
+                            tripScore = (s1 + s2) * 0.5f;
                         }
                     }
                 }
             }
 
-            if (coCount >= TRIPLET_MIN_COUNT) {
+            if (coCount >= TRIPLET_MIN_COUNT && tripScore > 0.0f) {
+                // Check if triplet already exists in TripletMemory
                 bool found = false;
                 for (auto& tr : tm) {
                     if (tr.ja == ja && tr.jb == jb && tr.jc == jc) {
+                        // Update existing triplet
                         tr.count++;
                         tr.score = (tr.score * (tr.count-1) + tripScore)
                                  / (float)tr.count;
@@ -291,6 +289,7 @@ void runODTP(const PairMemory& pm,
                     }
                 }
                 if (!found) {
+                    // Add new triplet
                     TripletRecord tr;
                     tr.ja    = ja;
                     tr.jb    = jb;
@@ -309,9 +308,9 @@ void runODTP(const PairMemory& pm,
         if (tr.age > 0) tr.age++; // already aged — not seen this iter
     }
 
-    // Remove very old triplets (age > 2 * K_STAG)
+    // Remove very old triplets (age > 2 * g_kStag)
     tm.erase(std::remove_if(tm.begin(), tm.end(),
-        [](const TripletRecord& tr){ return tr.age > 2 * K_STAG; }),
+        [](const TripletRecord& tr){ return tr.age > 2 * g_kStag; }),
         tm.end());
 }
 
@@ -332,13 +331,17 @@ void runODTP(const PairMemory& pm,
 StructuralMap buildStructuralMap(const Turtle& t, const PairMemory& pm) {
     StructuralMap sm;
 
-    float worstScore = 1e9f;   // track minimum score found
-    bool  foundWeak  = false;
+    // Collect ALL weak/critical pairs on this turtle's decoded schedule
+    struct CandidateTarget {
+        int   ji, jj;
+        float score;
+    };
+    std::vector<CandidateTarget> weakTargets;
 
     for (int m = 0; m < M_Machine; m++) {
         for (int k = 0; k < t.machineCount[m] - 1; k++) {
-            int ji = t.machineSeq[m][k];       // 1-indexed
-            int jj = t.machineSeq[m][k+1];     // 1-indexed
+            int ji = t.machineSeq[m][k];
+            int jj = t.machineSeq[m][k+1];
 
             auto key = std::make_pair(ji, jj);
             auto it  = pm.find(key);
@@ -351,19 +354,35 @@ StructuralMap buildStructuralMap(const Turtle& t, const PairMemory& pm) {
                 sm.strongPairs.push_back(key);
             }
 
-            // Track worst WEAK or CRITICAL pair as the target
-            if ((rec.label == LABEL_WEAK || rec.label == LABEL_CRITICAL) &&
-                rec.avgScore < worstScore) {
-                worstScore       = rec.avgScore;
-                sm.worstPair_ji  = ji;
-                sm.worstPair_jj  = jj;
-                sm.worstPairScore = rec.avgScore;
-                sm.hasTarget     = true;
-                foundWeak        = true;
+            // Collect WEAK and CRITICAL pairs as repair targets
+            if (rec.label == LABEL_WEAK || rec.label == LABEL_CRITICAL) {
+                CandidateTarget ct;
+                ct.ji    = ji;
+                ct.jj    = jj;
+                ct.score = rec.avgScore;
+                weakTargets.push_back(ct);
             }
         }
     }
 
+    // Sort by score ascending (worst pair = lowest score = first)
+    std::sort(weakTargets.begin(), weakTargets.end(),
+        [](const CandidateTarget& a, const CandidateTarget& b){
+            return a.score < b.score;
+        });
+
+    // Store top-3 worst pairs as targets for Stage 4
+    // Run 002 D2: Stage 4 will try each in order, stop at first improvement
+    int maxTargets = std::min((int)weakTargets.size(), 3);
+    for (int i = 0; i < maxTargets; i++) {
+        StructuralMap::WeakTarget wt;
+        wt.ji    = weakTargets[i].ji;
+        wt.jj    = weakTargets[i].jj;
+        wt.score = weakTargets[i].score;
+        sm.targets.push_back(wt);
+    }
+
+    sm.hasTarget = !sm.targets.empty();
     return sm;
 }
 
@@ -377,7 +396,7 @@ StructuralMap buildStructuralMap(const Turtle& t, const PairMemory& pm) {
 // SE RULE: ONLY batchEvaluate calls this function.
 // SE RULE: Only turtles with cacheValid == true are considered.
 // ============================================================
-void updateEliteArchive(EliteArchive& ea, const Population& pop) {
+void updateEliteArchive(EliteArchive& ea, Population pop) {
     // Collect all candidates: current elites + new population
     std::vector<Turtle> candidates;
 
@@ -415,7 +434,7 @@ void updateEliteArchive(EliteArchive& ea, const Population& pop) {
 //
 // SE RULE: ONLY batchEvaluate calls this function.
 // ============================================================
-void updateM0Pool(M0Pool& m0, const Population& pop) {
+void updateM0Pool(M0Pool& m0, Population pop) {
     m0.clear();
 
     // Count rejections and estimate marginal profit per job
@@ -459,7 +478,7 @@ void updateM0Pool(M0Pool& m0, const Population& pop) {
 
 // ============================================================
 // STAGNATION RESET — Surgical memory cleanup
-// Called by main loop when best objective unchanged for K_STAG iters.
+// Called by main loop when best objective unchanged for g_kStag iters.
 //
 // Removes oldest 25% of WEAK-labelled records from PairMemory.
 // Does NOT clear STRONG, NEUTRAL, or CRITICAL records.

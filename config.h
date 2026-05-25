@@ -42,10 +42,25 @@
 // POPULATION
 // ------------------------------------------------------------
 #define P           30      // number of turtles in population
-#define MAX_ITER    2500    // maximum iterations (backup stopping condition)
-#define END_TIME    300.0   // time budget in seconds (primary stopping condition)
-// Note: algorithm stops when EITHER condition is met first.
-// END_TIME matches professor's WFA setting for fair comparison.
+
+// Run 002: Adaptive config by N.
+// STMO.cpp sets g_maxIter, g_endTime, g_kStag, g_minCount after reading N.
+// Small N (<=50): needs more iterations (wastes 90% of 120s budget otherwise)
+// Large N (>=150): needs more time + faster PairMemory labelling (MIN_COUNT=1)
+#define MAX_ITER         2500    // default (N >= 100)
+#define MAX_ITER_SMALL  10000   // N <= 50
+#define END_TIME        120.0   // default (N <= 100)
+#define END_TIME_LARGE  180.0   // N >= 150: still improving at 94-97% of run
+#define K_STAG_SMALL    100     // N <= 50: prevent PairMemory from resetting too fast
+#define K_STAG_LARGE     50     // N >= 100: current value
+#define MIN_COUNT_SMALL   3     // N <= 100: current value
+#define MIN_COUNT_LARGE   1     // N >= 150: Stage 4 silent for 510 iters otherwise
+
+// Global runtime values set adaptively in STMO.cpp after genData():
+extern int   g_maxIter;   // replaces MAX_ITER in main loop
+extern float g_endTime;   // replaces END_TIME in main loop
+extern int   g_kStag;     // replaces K_STAG in stagnation check
+extern int   g_minCount;  // replaces MIN_COUNT in labelAllPairs()
 
 // ------------------------------------------------------------
 // STAGE 1 — OceanCurrentDrift

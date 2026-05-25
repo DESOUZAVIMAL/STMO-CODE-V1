@@ -137,19 +137,28 @@ typedef std::vector<M0Entry> M0Pool;
 // SE RULE: never pass StructuralMap to any stage other than Stage 4.
 
 struct StructuralMap {
-    // Target: the worst-scoring consecutive pair → Stage 4 attacks this
-    int   worstPair_ji;      // first job of worst pair
-    int   worstPair_jj;      // second job of worst pair (Jj = repair target)
-    float worstPairScore;    // its score (for reference/logging)
+    // Run 002 Design Change D2: store top-3 worst pairs instead of just 1.
+    // Stage 4 tries each target in order (worst first).
+    // If the worst pair has no matching STRONG/NEUTRAL candidate in PairMemory,
+    // Stage 4 falls through to the 2nd worst, then 3rd worst.
+    // This triples Stage 4's chance of finding an improvement per iteration.
+
+    struct WeakTarget {
+        int   ji;     // first job of the weak pair
+        int   jj;     // second job — the repair target
+        float score;  // pair score (lower = worse = higher priority)
+    };
+
+    // Up to 3 worst WEAK/CRITICAL pairs, sorted worst-first (lowest score first)
+    std::vector<WeakTarget> targets;
 
     // Protected: STRONG pairs → Stage 4 must never disrupt these
-    std::vector<std::pair<int,int>> strongPairs;  // list of (ji, jj) STRONG pairs
+    std::vector<std::pair<int,int>> strongPairs;
 
-    // Valid flag: false if turtle has no weak pairs (Stage 4 can skip this turtle)
-    bool  hasTarget;
+    // Valid flag: false if turtle has no weak pairs (Stage 4 can skip)
+    bool hasTarget;
 
-    StructuralMap() : worstPair_ji(-1), worstPair_jj(-1),
-                      worstPairScore(0.0f), hasTarget(false) {}
+    StructuralMap() : hasTarget(false) {}
 };
 
 // One StructuralMap per turtle per iteration
