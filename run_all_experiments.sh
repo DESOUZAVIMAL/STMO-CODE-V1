@@ -165,6 +165,7 @@ for N in "${Ns[@]}"; do
       echo -n "[$DONE/$TOTAL] N=$N M=$M Seed=$Seed ... "
 
       cp "$PARAM_FILE" ./param.txt
+      rm -f ./out.txt  # remove any leftover out.txt from previous runs
 
       START=$(date +%s)
       "$EXEC" > "$LOG_DIR/stdout_N${N}_M${M}_S${Seed}.txt" 2>&1
@@ -179,21 +180,23 @@ for N in "${Ns[@]}"; do
           continue
       fi
 
-      if [ -f "./out.txt" ]; then
-          cp ./out.txt "$LOG_DIR/out_N${N}_M${M}_S${Seed}.txt"
-          OUT="$LOG_DIR/out_N${N}_M${M}_S${Seed}.txt"
-      else
-          echo "WARN: out.txt not found after run"
-          OUT="$LOG_DIR/stdout_N${N}_M${M}_S${Seed}.txt"
-      fi
+      OUT="$LOG_DIR/stdout_N${N}_M${M}_S${Seed}.txt"
 
-      BEST_Z=$(grep -m1 "Best Z"              "$OUT" | awk '{print $NF}')
-      ITERS=$(  grep -m1 "Total iters"        "$OUT" | awk '{print $4}')
-      TIME_S=$( grep -m1 "Time used"          "$OUT" | awk '{print $4}')
-      BEST_AT=$(grep -m1 "Best at iter"       "$OUT" | awk '{print $5}')
-      S2REP=$(  grep -m1 "Stage 2 total"      "$OUT" | awk '{print $NF}')
-      S4HIT=$(  grep -m1 "Stage 4 Phase1 hits" "$OUT" | awk '{print $NF}')
-      STAG=$(   grep -m1 "Stagnation resets"  "$OUT" | awk '{print $NF}')
+      # Parse from STMO.cpp's FINAL RESULT section and diagnostic report
+      # "  Best Z = 8650.6221"
+      BEST_Z=$(grep -m1 "^  Best Z ="           "$OUT" | awk '{print $4}')
+      # "  Total iterations = 1447"
+      ITERS=$(  grep -m1 "^  Total iterations =" "$OUT" | awk '{print $4}')
+      # "  Time = 120.04 seconds"
+      TIME_S=$( grep -m1 "^  Time ="             "$OUT" | awk '{print $3}')
+      # "║ Best improved at iter: 1395"
+      BEST_AT=$(grep -m1 "Best improved at iter" "$OUT" | grep -oP '\d+\s*║' | grep -oP '\d+')
+      # "║ Stage 2 total repairs:  NNN"
+      S2REP=$(  grep -m1 "Stage 2 total repairs" "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
+      # "║ Stage 4 Phase1 hits  :  NNN"
+      S4HIT=$(  grep -m1 "Stage 4 Phase1 hits"   "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
+      # "║ Stagnation resets    :  NNN"
+      STAG=$(   grep -m1 "Stagnation resets"     "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
 
       BEST_Z=${BEST_Z:-"PARSE_ERR"}
       ITERS=${ITERS:-"?"}
