@@ -49,8 +49,8 @@
 // Large N (>=150): needs more time + faster PairMemory labelling (MIN_COUNT=1)
 #define MAX_ITER         2500    // default (N >= 100)
 #define MAX_ITER_SMALL  10000   // N <= 50
-#define END_TIME        120.0   // default (N <= 100)
-#define END_TIME_LARGE  180.0   // N >= 150: still improving at 94-97% of run
+#define END_TIME        120.0
+#define END_TIME_LARGE  180.0
 #define K_STAG_SMALL    100     // N <= 50: prevent PairMemory from resetting too fast
 #define K_STAG_LARGE     50     // N >= 100: current value
 #define MIN_COUNT_SMALL   3     // N <= 100: current value

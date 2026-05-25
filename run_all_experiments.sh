@@ -42,15 +42,24 @@ RUN_NOTE="${1:-baseline}"
 # STEP 0: Set END_TIME to 120s and recompile
 # ------------------------------------------------------------
 echo "Setting END_TIME=120.0 in config.h ..."
-sed -i 's/#define END_TIME.*/#define END_TIME    120.0/' config.h
+sed -i 's/#define END_TIME  *[0-9][0-9]*\.[0-9]*$/#define END_TIME        120.0/' config.h
 grep "END_TIME" config.h
 
 echo "Compiling STMO ..."
-if command -v g++ &>/dev/null; then
-    g++ -O2 -std=c++11 -o STMO.exe STMO.cpp -lm
-    echo "Compile OK (g++)."
+# On Windows/MSYS2 the system g++ may not be in PATH; fall back to full path.
+GXX="g++"
+if ! command -v g++ &>/dev/null; then
+    if [ -f "/c/msys64/mingw64/bin/g++.exe" ]; then
+        GXX="/c/msys64/mingw64/bin/g++.exe"
+    fi
+fi
+if command -v "$GXX" &>/dev/null || [ -f "$GXX" ]; then
+    # --stack flag sets 8 MB stack on Windows (needed: Population+EliteArchive ~2.4 MB)
+    "$GXX" -O2 -std=c++11 -static -static-libgcc -static-libstdc++ \
+           -Wl,--stack,8388608 -o STMO.exe STMO.cpp -lm
+    echo "Compile OK."
 elif [ -f "./STMO.exe" ]; then
-    echo "g++ not found — using existing STMO.exe (pre-compiled with MSVC)."
+    echo "g++ not found — using existing STMO.exe."
 else
     echo "ERROR: g++ not found and no STMO.exe present. Cannot run."
     exit 1
