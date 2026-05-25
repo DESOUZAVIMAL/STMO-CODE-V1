@@ -58,7 +58,7 @@
 //
 // Returns EvalSnapshot for ACMM to consume.
 // ============================================================
-EvalSnapshot batchEvaluate(Population& pop,
+EvalSnapshot batchEvaluate(Population pop,
                             EliteArchive& ea,
                             M0Pool& m0,
                             int iteration,
@@ -127,7 +127,7 @@ EvalSnapshot batchEvaluate(Population& pop,
 // SE RULE: decodeAndEval called on each candidate
 // SE RULE: cacheValid maintained correctly throughout
 // ============================================================
-void stage1_OceanCurrentDrift(Population& pop) {
+void stage1_OceanCurrentDrift(Population pop) {
     for (int p = 0; p < P; p++) {
         Turtle& t   = pop[p];
         Turtle  best = t;   // copy — best so far (starts as original)
@@ -175,7 +175,7 @@ void stage1_OceanCurrentDrift(Population& pop) {
 // SE RULE: operators work on DECODED sequence via move functions
 // SE RULE: partialReeval used for cheap evaluation
 // ============================================================
-void stage2_MemoryAwareDrift(Population& pop,
+void stage2_MemoryAwareDrift(Population pop,
                               const PairMemory& pm,
                               const M0Pool& m0) {
     // Skip entirely if PairMemory is empty (Iteration 1)
@@ -311,7 +311,7 @@ void stage2_MemoryAwareDrift(Population& pop,
 // SE RULE: ONLY this function writes to PairMemory and TripletMemory
 // SE RULE: StructuralMap is ephemeral — caller discards after Stage 4
 // ============================================================
-void stage3_ACMM(const Population& pop,
+void stage3_ACMM(Population pop,
                  PairMemory& pm,
                  TripletMemory& tm,
                  const EvalSnapshot& snap,
@@ -354,7 +354,7 @@ void stage3_ACMM(const Population& pop,
 // SE RULE: STRONG pairs in StructuralMap are never disrupted
 // SE RULE: StructuralMap consumed here — discarded after this stage
 // ============================================================
-void stage4_MFBO(Population& pop,
+void stage4_MFBO(Population pop,
                  const StructuralMap* structMaps,
                  const PairMemory& pm) {
 
@@ -367,113 +367,100 @@ void stage4_MFBO(Population& pop,
 
         t.stage4_phase1 = 0; // reset diagnostic counter
 
-        int jj = sm.worstPair_jj; // the problem job (second job of worst pair)
+        // Run 002 Design Change D2:
+        // Loop through top-3 worst pairs (sm.targets) instead of just 1.
+        // Try to fix the worst pair first. If PairMemory has no matching
+        // STRONG/NEUTRAL candidate for it, fall through to 2nd worst, then 3rd.
+        // Stop as soon as any target produces a strict improvement (ΔZ > 0).
 
-        // Build Weak Pool: collect all OTHER weak second jobs
-        // from this turtle's decoded schedule
-        std::vector<int> weakPool;
-        for (int m = 0; m < M_Machine; m++) {
-            for (int k = 0; k < t.machineCount[m] - 1; k++) {
-                int ji_k = t.machineSeq[m][k];
-                int jk   = t.machineSeq[m][k+1];
-                if (jk == jj) continue; // skip the target job itself
+        bool anyImproved = false;
 
-                char lbl = lookupPairLabel(pm, ji_k, jk);
-                if (lbl == LABEL_WEAK || lbl == LABEL_CRITICAL) {
-                    weakPool.push_back(jk);
-                }
-            }
-        }
+        for (int ti = 0; ti < (int)sm.targets.size() && !anyImproved; ti++) {
 
-        if (weakPool.empty()) {
-            // No weak pool available — Phase 2 would handle this
-            // Phase 2 VNS: DEFERRED per professor instruction
-            continue;
-        }
+            int jj = sm.targets[ti].jj; // the repair target for this attempt
 
-        // Remove duplicates from weak pool
-        std::sort(weakPool.begin(), weakPool.end());
-        weakPool.erase(std::unique(weakPool.begin(), weakPool.end()),
-                       weakPool.end());
+            // Build Weak Pool: all OTHER weak second jobs in this turtle's schedule
+            std::vector<int> weakPool;
+            for (int m = 0; m < M_Machine; m++) {
+                for (int k = 0; k < t.machineCount[m] - 1; k++) {
+                    int ji_k = t.machineSeq[m][k];
+                    int jk   = t.machineSeq[m][k+1];
+                    if (jk == jj) continue; // skip the target job itself
 
-        // Helper lambda: try candidates of a given label
-        // Returns true if a successful swap was found
-        auto tryCandidates = [&](char targetLabel) -> bool {
-            // Collect candidates: (Jj, Jk) pairs with targetLabel
-            struct Candidate {
-                int   jk;
-                float score;
-            };
-            std::vector<Candidate> candidates;
-
-            for (int jk : weakPool) {
-                auto key = std::make_pair(jj, jk);
-                auto it  = pm.find(key);
-                if (it == pm.end()) continue;
-                if (it->second.label != targetLabel) continue;
-                if (it->second.count < MIN_COUNT) continue;
-
-                // Check jk is not part of a STRONG pair (protect strong structure)
-                bool isProtected = false;
-                for (const auto& sp : sm.strongPairs) {
-                    if (sp.first == jk || sp.second == jk) {
-                        isProtected = true;
-                        break;
+                    char lbl = lookupPairLabel(pm, ji_k, jk);
+                    if (lbl == LABEL_WEAK || lbl == LABEL_CRITICAL) {
+                        weakPool.push_back(jk);
                     }
                 }
-                if (isProtected) continue;
-
-                Candidate c;
-                c.jk    = jk;
-                c.score = it->second.avgScore;
-                candidates.push_back(c);
             }
 
-            // Sort by score descending (try best candidate first)
-            std::sort(candidates.begin(), candidates.end(),
-                [](const Candidate& a, const Candidate& b){
-                    return a.score > b.score;
-                });
+            if (weakPool.empty()) continue; // try next target pair
 
-            // Try each candidate swap: Jj ↔ Jk
-            for (const auto& cand : candidates) {
-                int jk = cand.jk;
+            // Remove duplicates
+            std::sort(weakPool.begin(), weakPool.end());
+            weakPool.erase(std::unique(weakPool.begin(), weakPool.end()),
+                           weakPool.end());
 
-                // Find positions of jj and jk in encoding
-                int pos_jj = -1, pos_jk = -1;
-                for (int pos = 0; pos < N_Order; pos++) {
-                    if (t.Order_seq[pos] == jj) pos_jj = pos;
-                    if (t.Order_seq[pos] == jk) pos_jk = pos;
+            // Helper lambda: try PairMemory candidates of a given label
+            auto tryCandidates = [&](char targetLabel) -> bool {
+                struct Candidate { int jk; float score; };
+                std::vector<Candidate> candidates;
+
+                for (int jk : weakPool) {
+                    auto key = std::make_pair(jj, jk);
+                    auto it  = pm.find(key);
+                    if (it == pm.end()) continue;
+                    if (it->second.label != targetLabel) continue;
+                    if (it->second.count < g_minCount) continue;
+
+                    // Protect jobs that are part of STRONG pairs
+                    bool isProtected = false;
+                    for (const auto& sp : sm.strongPairs) {
+                        if (sp.first == jk || sp.second == jk) {
+                            isProtected = true; break;
+                        }
+                    }
+                    if (isProtected) continue;
+
+                    Candidate c; c.jk = jk; c.score = it->second.avgScore;
+                    candidates.push_back(c);
                 }
-                if (pos_jj < 0 || pos_jk < 0) continue;
 
-                // Swap the two jobs in the sequence (Order Swap)
-                // Note: this swaps sequence positions, keeping machine assignments
-                Turtle candidate = moveOrderSwap(t, pos_jj, pos_jk);
-                decodeAndEval(candidate);
+                // Best candidate first (highest score)
+                std::sort(candidates.begin(), candidates.end(),
+                    [](const Candidate& a, const Candidate& b){
+                        return a.score > b.score;
+                    });
 
-                // Accept if STRICT improvement (Stage 4 criterion)
-                if (candidate.obj > t.obj) {
-                    t = candidate;
-                    t.stage4_phase1++;
-                    return true; // found improvement — stop
+                for (const auto& cand : candidates) {
+                    int jk = cand.jk;
+                    int pos_jj = -1, pos_jk = -1;
+                    for (int pos = 0; pos < N_Order; pos++) {
+                        if (t.Order_seq[pos] == jj) pos_jj = pos;
+                        if (t.Order_seq[pos] == jk) pos_jk = pos;
+                    }
+                    if (pos_jj < 0 || pos_jk < 0) continue;
+
+                    Turtle candidate = moveOrderSwap(t, pos_jj, pos_jk);
+                    decodeAndEval(candidate);
+
+                    if (candidate.obj > t.obj) { // strict improvement
+                        t = candidate;
+                        t.stage4_phase1++;
+                        return true;
+                    }
                 }
-            }
-            return false; // no improvement found
-        }; // end lambda
+                return false;
+            }; // end lambda
 
-        // Phase 1a: Try STRONG candidates first
-        bool improved = tryCandidates(LABEL_STRONG);
+            // Phase 1a: STRONG candidates first, then NEUTRAL
+            bool improved = tryCandidates(LABEL_STRONG);
+            if (!improved) improved = tryCandidates(LABEL_NEUTRAL);
+            if (improved) anyImproved = true;
 
-        // Phase 1b: If no STRONG helped → try NEUTRAL
-        if (!improved) {
-            tryCandidates(LABEL_NEUTRAL);
-        }
+        } // end target loop (top-3 pairs)
 
-        // Phase 2: Full VNS on target region
-        // DEFERRED per professor instruction.
-        // Will be implemented here when professor approves.
-        // Placeholder:
+        // Phase 2: Full VNS — DEFERRED per professor instruction.
         // stage4_phase2_VNS(t, sm, pm);
     }
 }
@@ -501,7 +488,7 @@ void stage4_MFBO(Population& pop,
 // SE RULE: acceptance is ΔZ > 0 (STRICT)
 // SE RULE: reads EliteArchive and TripletMemory — never writes them
 // ============================================================
-void stage5_CMA(Population& pop,
+void stage5_CMA(Population pop,
                 const EliteArchive& ea,
                 const PairMemory& pm,
                 const TripletMemory& tm,
@@ -552,7 +539,6 @@ void stage5_CMA(Population& pop,
                     int targetPos = pos_ji + 1;
                     if (targetPos >= N_Order) targetPos = pos_ji;
                     if (targetPos == pos_jj_in_t) continue;
-                    if (pos_jj_in_t == targetPos - 1) continue; // prevents infinite loop in moveOrderInsert
 
                     Turtle candidate = moveOrderInsert(t, pos_jj_in_t, targetPos);
                     // Also match machine assignment from elite
