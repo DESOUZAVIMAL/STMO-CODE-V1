@@ -1,0 +1,997 @@
+==================================================
+  Sea Turtle Migration Optimization (STMO)
+  OAS-SDST Problem - Wu et al. (2018)
+==================================================
+
+[genData] N=200 M=6 Seed=10
+[Adaptive] N=200 -> MaxIter=50000 EndTime=240s KStag=50 MinCount=1
+[Adaptive] NC=5 MachineBudget=5 ESize=10
+[Config]   P=30 DF=0.95
+
+[Init] Initializing 30 turtles randomly...
+[Init] Done.
+
+[BatchEval 1] Evaluating initial population...
+[BatchEval 1] Initial best Z = -172897.91 | PM entries = 394
+
+[Loop] Starting main loop...
+[Loop] Stopping when time >= 240s OR iter >= 50000
+
+[Iter   10 | Time    0.1s] Best Z = -148434.53 | PM=736 S2=374 S4p1=1
+[Iter   20 | Time    0.2s] Best Z = -134847.59 | PM=876 S2=499 S4p1=3
+[Iter   30 | Time    0.4s] Best Z = -124700.06 | PM=1010 S2=584 S4p1=3
+[Iter   40 | Time    0.5s] Best Z = -110848.99 | PM=1135 S2=674 S4p1=3
+[Iter   50 | Time    0.7s] Best Z = -96954.11 | PM=1239 S2=752 S4p1=3
+[Iter   60 | Time    0.9s] Best Z = -89759.25 | PM=1322 S2=800 S4p1=3
+[Iter   70 | Time    1.1s] Best Z = -82894.03 | PM=1395 S2=844 S4p1=3
+[Iter   80 | Time    1.3s] Best Z = -77671.05 | PM=1467 S2=868 S4p1=3
+[Iter   90 | Time    1.5s] Best Z = -75231.96 | PM=1522 S2=896 S4p1=3
+[Iter  100 | Time    1.8s] Best Z = -67275.34 | PM=1569 S2=909 S4p1=3
+[Iter  110 | Time    2.0s] Best Z = -62029.65 | PM=1575 S2=909 S4p1=3
+[Iter  120 | Time    2.2s] Best Z = -56778.60 | PM=1570 S2=913 S4p1=3
+[Iter  130 | Time    2.4s] Best Z = -53935.68 | PM=1513 S2=929 S4p1=3
+[Iter  140 | Time    2.6s] Best Z = -49603.67 | PM=1462 S2=947 S4p1=3
+[Iter  150 | Time    2.9s] Best Z = -45981.85 | PM=1475 S2=992 S4p1=3
+[Iter  160 | Time    3.1s] Best Z = -42159.23 | PM=1429 S2=1042 S4p1=3
+[Iter  170 | Time    3.3s] Best Z = -37254.14 | PM=1430 S2=1090 S4p1=3
+[Iter  180 | Time    3.6s] Best Z = -31320.77 | PM=1469 S2=1125 S4p1=3
+[Iter  190 | Time    3.8s] Best Z = -28729.77 | PM=1465 S2=1158 S4p1=3
+[Iter  200 | Time    4.1s] Best Z = -25858.33 | PM=1492 S2=1221 S4p1=3
+[Iter  210 | Time    4.3s] Best Z = -22811.17 | PM=1528 S2=1275 S4p1=3
+[Iter  220 | Time    4.5s] Best Z = -20525.80 | PM=1579 S2=1322 S4p1=3
+[Iter  230 | Time    4.7s] Best Z = -19347.01 | PM=1632 S2=1363 S4p1=3
+[Iter  240 | Time    5.0s] Best Z = -16088.22 | PM=1671 S2=1406 S4p1=3
+[Iter  250 | Time    5.2s] Best Z = -14168.56 | PM=1732 S2=1455 S4p1=3
+[Iter  260 | Time    5.5s] Best Z = -10264.75 | PM=1807 S2=1517 S4p1=3
+[Iter  270 | Time    5.7s] Best Z = -9329.43 | PM=1860 S2=1566 S4p1=3
+[Iter  280 | Time    6.0s] Best Z = -7386.29 | PM=1884 S2=1613 S4p1=3
+[Iter  290 | Time    6.3s] Best Z = -5410.42 | PM=1919 S2=1661 S4p1=3
+[Iter  300 | Time    6.5s] Best Z = -4234.63 | PM=1946 S2=1716 S4p1=3
+[Iter  310 | Time    6.8s] Best Z = -3139.76 | PM=1968 S2=1755 S4p1=3
+[Iter  320 | Time    7.1s] Best Z = -1767.06 | PM=1985 S2=1798 S4p1=3
+[Iter  330 | Time    7.3s] Best Z =  -559.84 | PM=2016 S2=1849 S4p1=3
+[Iter  340 | Time    7.6s] Best Z =   167.53 | PM=2036 S2=1899 S4p1=3
+[Iter  350 | Time    7.9s] Best Z =   293.20 | PM=2026 S2=1928 S4p1=3
+[Iter  360 | Time    8.2s] Best Z =   767.91 | PM=2055 S2=1997 S4p1=3
+[Iter  370 | Time    8.4s] Best Z =  1085.87 | PM=2043 S2=2051 S4p1=3
+[Iter  380 | Time    8.7s] Best Z =  1651.08 | PM=2072 S2=2114 S4p1=3
+[Iter  390 | Time    9.0s] Best Z =  2636.96 | PM=2086 S2=2163 S4p1=3
+[Iter  400 | Time    9.3s] Best Z =  2636.96 | PM=2124 S2=2230 S4p1=3
+[Iter  410 | Time    9.5s] Best Z =  2821.90 | PM=2124 S2=2278 S4p1=3
+[Iter  420 | Time    9.8s] Best Z =  2851.67 | PM=2129 S2=2329 S4p1=3
+[Iter  430 | Time   10.1s] Best Z =  3161.84 | PM=2188 S2=2414 S4p1=3
+[Iter  440 | Time   10.3s] Best Z =  3616.23 | PM=2218 S2=2515 S4p1=3
+[Iter  450 | Time   10.6s] Best Z =  4034.76 | PM=2238 S2=2606 S4p1=3
+[Iter  460 | Time   10.9s] Best Z =  4385.05 | PM=2241 S2=2675 S4p1=3
+[Iter  470 | Time   11.2s] Best Z =  4604.17 | PM=2211 S2=2744 S4p1=3
+[Iter  480 | Time   11.5s] Best Z =  4742.63 | PM=2184 S2=2791 S4p1=3
+[Iter  490 | Time   11.8s] Best Z =  4751.90 | PM=2173 S2=2843 S4p1=3
+[Iter  500 | Time   12.1s] Best Z =  4765.95 | PM=2136 S2=2898 S4p1=3
+[Iter  510 | Time   12.4s] Best Z =  4812.95 | PM=2091 S2=2956 S4p1=3
+[Iter  520 | Time   12.7s] Best Z =  4812.95 | PM=2024 S2=3018 S4p1=4
+[Iter  530 | Time   12.9s] Best Z =  4954.24 | PM=2025 S2=3128 S4p1=4
+[Iter  540 | Time   13.2s] Best Z =  4975.52 | PM=1991 S2=3261 S4p1=4
+[Iter  550 | Time   13.5s] Best Z =  5102.51 | PM=1969 S2=3393 S4p1=5
+[Iter  560 | Time   13.8s] Best Z =  5383.64 | PM=1983 S2=3523 S4p1=6
+[Iter  570 | Time   14.1s] Best Z =  5433.63 | PM=1943 S2=3670 S4p1=7
+[Iter  580 | Time   14.4s] Best Z =  5574.86 | PM=1910 S2=3797 S4p1=7
+[Iter  590 | Time   14.7s] Best Z =  5635.94 | PM=1856 S2=3943 S4p1=7
+[Iter  600 | Time   15.0s] Best Z =  5635.94 | PM=1782 S2=4053 S4p1=8
+[Iter  610 | Time   15.3s] Best Z =  5635.94 | PM=1702 S2=4188 S4p1=9
+[Iter  620 | Time   15.7s] Best Z =  5669.18 | PM=1658 S2=4337 S4p1=10
+[Iter  630 | Time   16.0s] Best Z =  5811.85 | PM=1646 S2=4537 S4p1=10
+[Iter  640 | Time   16.3s] Best Z =  5872.18 | PM=1615 S2=4765 S4p1=10
+[Iter  650 | Time   16.6s] Best Z =  5872.18 | PM=1570 S2=4986 S4p1=10
+[Iter  660 | Time   16.9s] Best Z =  5872.18 | PM=1552 S2=5192 S4p1=12
+[Iter  670 | Time   17.2s] Best Z =  5872.18 | PM=1507 S2=5425 S4p1=12
+[Iter  680 | Time   17.6s] Best Z =  5876.76 | PM=1456 S2=5690 S4p1=15
+[Iter  690 | Time   17.9s] Best Z =  5876.76 | PM=1398 S2=6035 S4p1=18
+[Iter  700 | Time   18.2s] Best Z =  5911.65 | PM=1335 S2=6410 S4p1=18
+[Iter  710 | Time   18.5s] Best Z =  5911.65 | PM=1279 S2=6817 S4p1=21
+[Iter  720 | Time   18.9s] Best Z =  5957.89 | PM=1257 S2=7308 S4p1=22
+[Iter  730 | Time   19.2s] Best Z =  5957.89 | PM=1218 S2=7853 S4p1=22
+[Iter  740 | Time   19.5s] Best Z =  6068.49 | PM=1201 S2=8372 S4p1=22
+[Iter  750 | Time   19.8s] Best Z =  6068.49 | PM=1194 S2=8909 S4p1=22
+[Iter  760 | Time   20.1s] Best Z =  6068.49 | PM=1171 S2=9422 S4p1=22
+[Iter  770 | Time   20.4s] Best Z =  6068.49 | PM=1151 S2=9980 S4p1=24
+[Iter  780 | Time   20.7s] Best Z =  6068.49 | PM=1118 S2=10564 S4p1=24
+[StagnationReset] Removed 119/477 WEAK records from PairMemory
+[Iter  790 | Time   21.0s] Best Z =  6068.49 | PM=1009 S2=11297 S4p1=24
+[Iter  800 | Time   21.3s] Best Z =  6068.49 | PM=1015 S2=12027 S4p1=24
+[Iter  810 | Time   21.6s] Best Z =  6068.49 | PM=1014 S2=12793 S4p1=25
+[Iter  820 | Time   22.0s] Best Z =  6086.05 | PM=1011 S2=13544 S4p1=25
+[Iter  830 | Time   22.3s] Best Z =  6114.05 | PM=1005 S2=14281 S4p1=25
+[Iter  840 | Time   22.6s] Best Z =  6114.05 | PM=992 S2=15062 S4p1=25
+[Iter  850 | Time   22.9s] Best Z =  6115.41 | PM=981 S2=15832 S4p1=25
+[Iter  860 | Time   23.2s] Best Z =  6115.41 | PM=979 S2=16650 S4p1=25
+[Iter  870 | Time   23.5s] Best Z =  6115.41 | PM=965 S2=17512 S4p1=26
+[Iter  880 | Time   23.9s] Best Z =  6115.41 | PM=947 S2=18402 S4p1=26
+[Iter  890 | Time   24.2s] Best Z =  6115.41 | PM=930 S2=19355 S4p1=26
+[StagnationReset] Removed 89/358 WEAK records from PairMemory
+[Iter  900 | Time   24.5s] Best Z =  6115.41 | PM=838 S2=20406 S4p1=26
+[Iter  910 | Time   24.8s] Best Z =  6164.07 | PM=849 S2=21573 S4p1=26
+[Iter  920 | Time   25.1s] Best Z =  6164.07 | PM=847 S2=22780 S4p1=26
+[Iter  930 | Time   25.4s] Best Z =  6164.07 | PM=857 S2=23925 S4p1=26
+[Iter  940 | Time   25.7s] Best Z =  6164.07 | PM=857 S2=25050 S4p1=26
+[Iter  950 | Time   26.1s] Best Z =  6168.16 | PM=856 S2=26167 S4p1=27
+[Iter  960 | Time   26.4s] Best Z =  6179.36 | PM=850 S2=27298 S4p1=27
+[Iter  970 | Time   26.7s] Best Z =  6182.81 | PM=848 S2=28441 S4p1=28
+[Iter  980 | Time   27.0s] Best Z =  6182.81 | PM=829 S2=29583 S4p1=28
+[Iter  990 | Time   27.3s] Best Z =  6191.40 | PM=826 S2=30821 S4p1=28
+[Iter 1000 | Time   27.6s] Best Z =  6191.40 | PM=821 S2=32053 S4p1=28
+[Iter 1010 | Time   27.9s] Best Z =  6195.58 | PM=813 S2=33329 S4p1=28
+[Iter 1020 | Time   28.2s] Best Z =  6195.58 | PM=807 S2=34613 S4p1=28
+[Iter 1030 | Time   28.5s] Best Z =  6195.58 | PM=802 S2=35877 S4p1=28
+[Iter 1040 | Time   28.8s] Best Z =  6195.58 | PM=804 S2=37173 S4p1=28
+[Iter 1050 | Time   29.1s] Best Z =  6195.58 | PM=800 S2=38508 S4p1=28
+[StagnationReset] Removed 74/296 WEAK records from PairMemory
+[Iter 1060 | Time   29.4s] Best Z =  6195.58 | PM=738 S2=39860 S4p1=28
+[Iter 1070 | Time   29.7s] Best Z =  6211.21 | PM=756 S2=41497 S4p1=28
+[Iter 1080 | Time   30.0s] Best Z =  6211.21 | PM=757 S2=43030 S4p1=28
+[Iter 1090 | Time   30.3s] Best Z =  6211.21 | PM=762 S2=44597 S4p1=28
+[Iter 1100 | Time   30.6s] Best Z =  6305.10 | PM=794 S2=46075 S4p1=28
+[Iter 1110 | Time   30.9s] Best Z =  6305.10 | PM=796 S2=47557 S4p1=28
+[Iter 1120 | Time   31.2s] Best Z =  6305.10 | PM=800 S2=48924 S4p1=28
+[Iter 1130 | Time   31.5s] Best Z =  6305.10 | PM=803 S2=50260 S4p1=28
+[Iter 1140 | Time   31.9s] Best Z =  6305.10 | PM=801 S2=51598 S4p1=28
+[StagnationReset] Removed 72/290 WEAK records from PairMemory
+[Iter 1150 | Time   32.2s] Best Z =  6305.10 | PM=725 S2=52917 S4p1=28
+[Iter 1160 | Time   32.5s] Best Z =  6305.10 | PM=736 S2=54482 S4p1=29
+[Iter 1170 | Time   32.8s] Best Z =  6353.70 | PM=741 S2=56079 S4p1=29
+[Iter 1180 | Time   33.1s] Best Z =  6353.70 | PM=750 S2=57604 S4p1=29
+[Iter 1190 | Time   33.4s] Best Z =  6363.81 | PM=759 S2=59165 S4p1=29
+[Iter 1200 | Time   33.7s] Best Z =  6363.81 | PM=759 S2=60753 S4p1=29
+[Iter 1210 | Time   34.0s] Best Z =  6363.81 | PM=761 S2=62242 S4p1=29
+[Iter 1220 | Time   34.3s] Best Z =  6363.81 | PM=758 S2=63683 S4p1=30
+[Iter 1230 | Time   34.6s] Best Z =  6363.81 | PM=754 S2=65156 S4p1=30
+[StagnationReset] Removed 67/269 WEAK records from PairMemory
+[Iter 1240 | Time   34.9s] Best Z =  6363.81 | PM=688 S2=66698 S4p1=30
+[Iter 1250 | Time   35.2s] Best Z =  6363.81 | PM=692 S2=68461 S4p1=30
+[Iter 1260 | Time   35.5s] Best Z =  6363.81 | PM=702 S2=70208 S4p1=30
+[Iter 1270 | Time   35.8s] Best Z =  6363.81 | PM=706 S2=71933 S4p1=30
+[Iter 1280 | Time   36.1s] Best Z =  6363.81 | PM=710 S2=73623 S4p1=30
+[StagnationReset] Removed 61/246 WEAK records from PairMemory
+[Iter 1290 | Time   36.4s] Best Z =  6363.81 | PM=678 S2=75266 S4p1=30
+[Iter 1300 | Time   36.7s] Best Z =  6363.81 | PM=684 S2=77081 S4p1=30
+[Iter 1310 | Time   37.0s] Best Z =  6363.81 | PM=691 S2=78865 S4p1=30
+[Iter 1320 | Time   37.3s] Best Z =  6363.81 | PM=694 S2=80582 S4p1=30
+[Iter 1330 | Time   37.6s] Best Z =  6363.81 | PM=697 S2=82330 S4p1=31
+[StagnationReset] Removed 60/241 WEAK records from PairMemory
+[Iter 1340 | Time   37.9s] Best Z =  6363.81 | PM=673 S2=83931 S4p1=31
+[Iter 1350 | Time   38.2s] Best Z =  6363.81 | PM=675 S2=85741 S4p1=31
+[Iter 1360 | Time   38.5s] Best Z =  6363.81 | PM=684 S2=87583 S4p1=31
+[Iter 1370 | Time   38.8s] Best Z =  6363.81 | PM=693 S2=89353 S4p1=31
+[Iter 1380 | Time   39.1s] Best Z =  6363.81 | PM=696 S2=91058 S4p1=31
+[StagnationReset] Removed 60/241 WEAK records from PairMemory
+[Iter 1390 | Time   39.4s] Best Z =  6363.81 | PM=679 S2=92776 S4p1=31
+[Iter 1400 | Time   39.7s] Best Z =  6372.93 | PM=686 S2=94521 S4p1=31
+[Iter 1410 | Time   40.0s] Best Z =  6372.93 | PM=691 S2=96266 S4p1=31
+[Iter 1420 | Time   40.3s] Best Z =  6372.93 | PM=692 S2=98030 S4p1=31
+[Iter 1430 | Time   40.6s] Best Z =  6372.93 | PM=693 S2=99761 S4p1=31
+[Iter 1440 | Time   40.9s] Best Z =  6372.93 | PM=696 S2=101411 S4p1=31
+[StagnationReset] Removed 59/238 WEAK records from PairMemory
+[Iter 1450 | Time   41.3s] Best Z =  6372.93 | PM=681 S2=103173 S4p1=31
+[Iter 1460 | Time   41.6s] Best Z =  6372.93 | PM=685 S2=104941 S4p1=31
+[Iter 1470 | Time   41.8s] Best Z =  6372.93 | PM=687 S2=106748 S4p1=31
+[Iter 1480 | Time   42.1s] Best Z =  6372.93 | PM=691 S2=108508 S4p1=31
+[Iter 1490 | Time   42.4s] Best Z =  6372.93 | PM=691 S2=110233 S4p1=31
+[StagnationReset] Removed 58/233 WEAK records from PairMemory
+[Iter 1500 | Time   42.7s] Best Z =  6372.93 | PM=677 S2=111904 S4p1=31
+[Iter 1510 | Time   43.0s] Best Z =  6372.93 | PM=679 S2=113671 S4p1=31
+[Iter 1520 | Time   43.3s] Best Z =  6372.93 | PM=683 S2=115449 S4p1=31
+[Iter 1530 | Time   43.6s] Best Z =  6372.93 | PM=685 S2=117191 S4p1=31
+[Iter 1540 | Time   43.9s] Best Z =  6372.93 | PM=691 S2=118943 S4p1=31
+[StagnationReset] Removed 58/235 WEAK records from PairMemory
+[Iter 1550 | Time   44.2s] Best Z =  6372.93 | PM=685 S2=120661 S4p1=31
+[Iter 1560 | Time   44.5s] Best Z =  6372.93 | PM=685 S2=122454 S4p1=31
+[Iter 1570 | Time   44.8s] Best Z =  6372.93 | PM=686 S2=124231 S4p1=31
+[Iter 1580 | Time   45.1s] Best Z =  6372.93 | PM=686 S2=125954 S4p1=31
+[Iter 1590 | Time   45.4s] Best Z =  6372.93 | PM=687 S2=127699 S4p1=31
+[StagnationReset] Removed 57/230 WEAK records from PairMemory
+[Iter 1600 | Time   45.8s] Best Z =  6372.93 | PM=677 S2=129419 S4p1=31
+[Iter 1610 | Time   46.1s] Best Z =  6372.93 | PM=679 S2=131244 S4p1=31
+[Iter 1620 | Time   46.4s] Best Z =  6372.93 | PM=682 S2=133007 S4p1=31
+[Iter 1630 | Time   46.7s] Best Z =  6372.93 | PM=686 S2=134736 S4p1=31
+[Iter 1640 | Time   47.1s] Best Z =  6372.93 | PM=695 S2=136441 S4p1=31
+[StagnationReset] Removed 59/236 WEAK records from PairMemory
+[Iter 1650 | Time   47.4s] Best Z =  6372.93 | PM=677 S2=138203 S4p1=31
+[Iter 1660 | Time   47.7s] Best Z =  6403.16 | PM=679 S2=140033 S4p1=31
+[Iter 1670 | Time   48.0s] Best Z =  6431.48 | PM=682 S2=141830 S4p1=31
+[Iter 1680 | Time   48.3s] Best Z =  6431.48 | PM=682 S2=143595 S4p1=31
+[Iter 1690 | Time   48.6s] Best Z =  6431.48 | PM=685 S2=145355 S4p1=31
+[Iter 1700 | Time   48.9s] Best Z =  6431.48 | PM=688 S2=147076 S4p1=31
+[Iter 1710 | Time   49.3s] Best Z =  6431.48 | PM=688 S2=148863 S4p1=31
+[StagnationReset] Removed 57/231 WEAK records from PairMemory
+[Iter 1720 | Time   49.6s] Best Z =  6431.48 | PM=631 S2=150596 S4p1=31
+[Iter 1730 | Time   49.9s] Best Z =  6431.48 | PM=675 S2=152401 S4p1=31
+[Iter 1740 | Time   50.2s] Best Z =  6431.48 | PM=675 S2=154176 S4p1=31
+[Iter 1750 | Time   50.5s] Best Z =  6431.48 | PM=675 S2=155969 S4p1=31
+[Iter 1760 | Time   50.8s] Best Z =  6431.48 | PM=680 S2=157728 S4p1=31
+[Iter 1770 | Time   51.2s] Best Z =  6448.91 | PM=682 S2=159495 S4p1=31
+[Iter 1780 | Time   51.4s] Best Z =  6448.91 | PM=684 S2=161297 S4p1=31
+[Iter 1790 | Time   51.7s] Best Z =  6448.91 | PM=684 S2=163055 S4p1=31
+[Iter 1800 | Time   52.0s] Best Z =  6448.91 | PM=685 S2=164757 S4p1=31
+[Iter 1810 | Time   52.3s] Best Z =  6448.91 | PM=685 S2=166471 S4p1=31
+[StagnationReset] Removed 57/229 WEAK records from PairMemory
+[Iter 1820 | Time   52.7s] Best Z =  6448.91 | PM=669 S2=168198 S4p1=31
+[Iter 1830 | Time   53.0s] Best Z =  6448.91 | PM=673 S2=169983 S4p1=31
+[Iter 1840 | Time   53.3s] Best Z =  6448.91 | PM=673 S2=171776 S4p1=31
+[Iter 1850 | Time   53.6s] Best Z =  6448.91 | PM=673 S2=173573 S4p1=31
+[Iter 1860 | Time   53.9s] Best Z =  6448.91 | PM=673 S2=175387 S4p1=31
+[StagnationReset] Removed 56/225 WEAK records from PairMemory
+[Iter 1870 | Time   54.2s] Best Z =  6448.91 | PM=672 S2=177102 S4p1=31
+[Iter 1880 | Time   54.5s] Best Z =  6448.91 | PM=673 S2=178916 S4p1=31
+[Iter 1890 | Time   54.8s] Best Z =  6448.91 | PM=677 S2=180691 S4p1=31
+[Iter 1900 | Time   55.1s] Best Z =  6448.91 | PM=680 S2=182521 S4p1=31
+[Iter 1910 | Time   55.4s] Best Z =  6448.91 | PM=680 S2=184288 S4p1=31
+[StagnationReset] Removed 57/228 WEAK records from PairMemory
+[Iter 1920 | Time   55.7s] Best Z =  6448.91 | PM=671 S2=186023 S4p1=31
+[Iter 1930 | Time   56.0s] Best Z =  6448.91 | PM=672 S2=187780 S4p1=31
+[Iter 1940 | Time   56.3s] Best Z =  6448.91 | PM=676 S2=189587 S4p1=31
+[Iter 1950 | Time   56.7s] Best Z =  6448.91 | PM=681 S2=191332 S4p1=31
+[Iter 1960 | Time   57.0s] Best Z =  6448.91 | PM=684 S2=193087 S4p1=31
+[StagnationReset] Removed 57/230 WEAK records from PairMemory
+[Iter 1970 | Time   57.3s] Best Z =  6448.91 | PM=672 S2=194841 S4p1=31
+[Iter 1980 | Time   57.6s] Best Z =  6448.91 | PM=673 S2=196616 S4p1=31
+[Iter 1990 | Time   57.9s] Best Z =  6448.91 | PM=673 S2=198425 S4p1=31
+[Iter 2000 | Time   58.2s] Best Z =  6448.91 | PM=675 S2=200207 S4p1=31
+[Iter 2010 | Time   58.5s] Best Z =  6448.91 | PM=675 S2=201975 S4p1=31
+[StagnationReset] Removed 56/225 WEAK records from PairMemory
+[Iter 2020 | Time   58.9s] Best Z =  6448.91 | PM=668 S2=203765 S4p1=31
+[Iter 2030 | Time   59.2s] Best Z =  6448.91 | PM=668 S2=205568 S4p1=31
+[Iter 2040 | Time   59.5s] Best Z =  6448.91 | PM=670 S2=207426 S4p1=31
+[Iter 2050 | Time   59.8s] Best Z =  6448.91 | PM=672 S2=209212 S4p1=31
+[Iter 2060 | Time   60.1s] Best Z =  6448.91 | PM=675 S2=211022 S4p1=31
+[StagnationReset] Removed 56/226 WEAK records from PairMemory
+[Iter 2070 | Time   60.4s] Best Z =  6448.91 | PM=667 S2=212772 S4p1=31
+[Iter 2080 | Time   60.7s] Best Z =  6448.91 | PM=669 S2=214583 S4p1=31
+[Iter 2090 | Time   61.0s] Best Z =  6448.91 | PM=671 S2=216377 S4p1=31
+[Iter 2100 | Time   61.3s] Best Z =  6448.91 | PM=671 S2=218138 S4p1=31
+[Iter 2110 | Time   61.6s] Best Z =  6448.91 | PM=674 S2=219895 S4p1=31
+[StagnationReset] Removed 56/226 WEAK records from PairMemory
+[Iter 2120 | Time   61.9s] Best Z =  6448.91 | PM=664 S2=221654 S4p1=31
+[Iter 2130 | Time   62.2s] Best Z =  6448.91 | PM=664 S2=223512 S4p1=31
+[Iter 2140 | Time   62.6s] Best Z =  6448.91 | PM=665 S2=225297 S4p1=31
+[Iter 2150 | Time   62.9s] Best Z =  6448.91 | PM=668 S2=227087 S4p1=31
+[Iter 2160 | Time   63.2s] Best Z =  6448.91 | PM=668 S2=228858 S4p1=31
+[StagnationReset] Removed 56/226 WEAK records from PairMemory
+[Iter 2170 | Time   63.6s] Best Z =  6448.91 | PM=661 S2=230631 S4p1=31
+[Iter 2180 | Time   63.9s] Best Z =  6448.91 | PM=661 S2=232414 S4p1=31
+[Iter 2190 | Time   64.2s] Best Z =  6448.91 | PM=661 S2=234142 S4p1=31
+[Iter 2200 | Time   64.6s] Best Z =  6448.91 | PM=661 S2=235988 S4p1=31
+[Iter 2210 | Time   64.9s] Best Z =  6448.91 | PM=663 S2=237786 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 2220 | Time   65.2s] Best Z =  6448.91 | PM=661 S2=239543 S4p1=31
+[Iter 2230 | Time   65.5s] Best Z =  6448.91 | PM=661 S2=241327 S4p1=31
+[Iter 2240 | Time   65.9s] Best Z =  6448.91 | PM=661 S2=243165 S4p1=31
+[Iter 2250 | Time   66.2s] Best Z =  6448.91 | PM=661 S2=244960 S4p1=31
+[Iter 2260 | Time   66.5s] Best Z =  6448.91 | PM=661 S2=246785 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 2270 | Time   66.8s] Best Z =  6448.91 | PM=661 S2=248547 S4p1=31
+[Iter 2280 | Time   67.1s] Best Z =  6448.91 | PM=661 S2=250376 S4p1=31
+[Iter 2290 | Time   67.4s] Best Z =  6457.08 | PM=663 S2=252151 S4p1=31
+[Iter 2300 | Time   67.7s] Best Z =  6457.08 | PM=665 S2=253941 S4p1=31
+[Iter 2310 | Time   68.0s] Best Z =  6457.08 | PM=668 S2=255716 S4p1=31
+[Iter 2320 | Time   68.4s] Best Z =  6457.08 | PM=669 S2=257515 S4p1=31
+[Iter 2330 | Time   68.7s] Best Z =  6457.08 | PM=670 S2=259315 S4p1=31
+[StagnationReset] Removed 56/224 WEAK records from PairMemory
+[Iter 2340 | Time   69.0s] Best Z =  6457.08 | PM=656 S2=261062 S4p1=31
+[Iter 2350 | Time   69.3s] Best Z =  6457.08 | PM=656 S2=262893 S4p1=31
+[Iter 2360 | Time   69.6s] Best Z =  6457.08 | PM=659 S2=264664 S4p1=31
+[Iter 2370 | Time   69.9s] Best Z =  6457.08 | PM=661 S2=266453 S4p1=31
+[Iter 2380 | Time   70.2s] Best Z =  6457.08 | PM=664 S2=268272 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 2390 | Time   70.5s] Best Z =  6457.08 | PM=660 S2=270018 S4p1=31
+[Iter 2400 | Time   70.8s] Best Z =  6457.08 | PM=660 S2=271806 S4p1=31
+[Iter 2410 | Time   71.2s] Best Z =  6457.08 | PM=660 S2=273626 S4p1=31
+[Iter 2420 | Time   71.5s] Best Z =  6457.08 | PM=662 S2=275426 S4p1=31
+[Iter 2430 | Time   71.8s] Best Z =  6457.08 | PM=662 S2=277227 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 2440 | Time   72.1s] Best Z =  6457.08 | PM=658 S2=278968 S4p1=31
+[Iter 2450 | Time   72.4s] Best Z =  6457.08 | PM=661 S2=280850 S4p1=31
+[Iter 2460 | Time   72.7s] Best Z =  6457.08 | PM=665 S2=282660 S4p1=31
+[Iter 2470 | Time   73.0s] Best Z =  6457.08 | PM=665 S2=284480 S4p1=31
+[Iter 2480 | Time   73.3s] Best Z =  6457.08 | PM=665 S2=286323 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 2490 | Time   73.6s] Best Z =  6457.08 | PM=659 S2=288139 S4p1=31
+[Iter 2500 | Time   73.9s] Best Z =  6457.08 | PM=661 S2=289964 S4p1=31
+[Iter 2510 | Time   74.2s] Best Z =  6457.08 | PM=661 S2=291822 S4p1=31
+[Iter 2520 | Time   74.5s] Best Z =  6457.08 | PM=661 S2=293656 S4p1=31
+[Iter 2530 | Time   74.9s] Best Z =  6457.08 | PM=661 S2=295455 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 2540 | Time   75.2s] Best Z =  6457.08 | PM=658 S2=297205 S4p1=31
+[Iter 2550 | Time   75.5s] Best Z =  6457.08 | PM=659 S2=298986 S4p1=31
+[Iter 2560 | Time   75.8s] Best Z =  6457.08 | PM=661 S2=300813 S4p1=31
+[Iter 2570 | Time   76.1s] Best Z =  6457.08 | PM=661 S2=302606 S4p1=31
+[Iter 2580 | Time   76.4s] Best Z =  6457.08 | PM=661 S2=304414 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 2590 | Time   76.7s] Best Z =  6457.08 | PM=658 S2=306160 S4p1=31
+[Iter 2600 | Time   77.0s] Best Z =  6457.08 | PM=658 S2=308024 S4p1=31
+[Iter 2610 | Time   77.3s] Best Z =  6457.08 | PM=658 S2=309894 S4p1=31
+[Iter 2620 | Time   77.6s] Best Z =  6457.08 | PM=659 S2=311711 S4p1=31
+[Iter 2630 | Time   77.9s] Best Z =  6457.08 | PM=661 S2=313524 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 2640 | Time   78.2s] Best Z =  6457.08 | PM=658 S2=315233 S4p1=31
+[Iter 2650 | Time   78.5s] Best Z =  6457.08 | PM=658 S2=317020 S4p1=31
+[Iter 2660 | Time   78.9s] Best Z =  6457.08 | PM=658 S2=318870 S4p1=31
+[Iter 2670 | Time   79.2s] Best Z =  6457.08 | PM=660 S2=320727 S4p1=31
+[Iter 2680 | Time   79.5s] Best Z =  6457.08 | PM=660 S2=322551 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 2690 | Time   79.8s] Best Z =  6457.08 | PM=658 S2=324322 S4p1=31
+[Iter 2700 | Time   80.1s] Best Z =  6457.08 | PM=658 S2=326129 S4p1=31
+[Iter 2710 | Time   80.4s] Best Z =  6457.08 | PM=658 S2=327930 S4p1=31
+[Iter 2720 | Time   80.7s] Best Z =  6457.08 | PM=658 S2=329739 S4p1=31
+[Iter 2730 | Time   81.1s] Best Z =  6457.08 | PM=660 S2=331563 S4p1=31
+[Iter 2740 | Time   81.4s] Best Z =  6470.25 | PM=663 S2=333412 S4p1=31
+[Iter 2750 | Time   81.7s] Best Z =  6470.25 | PM=664 S2=335218 S4p1=31
+[Iter 2760 | Time   82.0s] Best Z =  6470.25 | PM=664 S2=337067 S4p1=31
+[Iter 2770 | Time   82.3s] Best Z =  6470.25 | PM=664 S2=338911 S4p1=31
+[Iter 2780 | Time   82.7s] Best Z =  6470.25 | PM=664 S2=340697 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 2790 | Time   83.0s] Best Z =  6470.25 | PM=658 S2=342493 S4p1=31
+[Iter 2800 | Time   83.3s] Best Z =  6470.25 | PM=662 S2=344346 S4p1=31
+[Iter 2810 | Time   83.6s] Best Z =  6470.25 | PM=662 S2=346163 S4p1=31
+[Iter 2820 | Time   83.9s] Best Z =  6470.25 | PM=662 S2=347986 S4p1=31
+[Iter 2830 | Time   84.3s] Best Z =  6470.25 | PM=662 S2=349773 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 2840 | Time   84.6s] Best Z =  6470.25 | PM=657 S2=351560 S4p1=31
+[Iter 2850 | Time   84.9s] Best Z =  6470.25 | PM=657 S2=353433 S4p1=31
+[Iter 2860 | Time   85.2s] Best Z =  6470.25 | PM=658 S2=355312 S4p1=31
+[Iter 2870 | Time   85.5s] Best Z =  6470.25 | PM=660 S2=357134 S4p1=31
+[Iter 2880 | Time   85.9s] Best Z =  6470.25 | PM=660 S2=358932 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 2890 | Time   86.2s] Best Z =  6470.25 | PM=657 S2=360706 S4p1=31
+[Iter 2900 | Time   86.5s] Best Z =  6470.25 | PM=659 S2=362515 S4p1=31
+[Iter 2910 | Time   86.8s] Best Z =  6470.25 | PM=659 S2=364330 S4p1=31
+[Iter 2920 | Time   87.1s] Best Z =  6470.25 | PM=659 S2=366145 S4p1=31
+[Iter 2930 | Time   87.4s] Best Z =  6470.25 | PM=659 S2=368009 S4p1=31
+[StagnationReset] Removed 54/216 WEAK records from PairMemory
+[Iter 2940 | Time   87.7s] Best Z =  6470.25 | PM=657 S2=369812 S4p1=31
+[Iter 2950 | Time   88.0s] Best Z =  6470.25 | PM=660 S2=371635 S4p1=31
+[Iter 2960 | Time   88.4s] Best Z =  6470.25 | PM=660 S2=373484 S4p1=31
+[Iter 2970 | Time   88.7s] Best Z =  6470.25 | PM=660 S2=375345 S4p1=31
+[Iter 2980 | Time   89.0s] Best Z =  6470.25 | PM=660 S2=377175 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 2990 | Time   89.3s] Best Z =  6470.25 | PM=654 S2=378984 S4p1=31
+[Iter 3000 | Time   89.6s] Best Z =  6470.25 | PM=654 S2=380762 S4p1=31
+[Iter 3010 | Time   89.9s] Best Z =  6470.25 | PM=657 S2=382627 S4p1=31
+[Iter 3020 | Time   90.2s] Best Z =  6470.25 | PM=657 S2=384474 S4p1=31
+[Iter 3030 | Time   90.5s] Best Z =  6470.25 | PM=657 S2=386281 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 3040 | Time   90.8s] Best Z =  6470.25 | PM=653 S2=388081 S4p1=31
+[Iter 3050 | Time   91.1s] Best Z =  6470.25 | PM=654 S2=389924 S4p1=31
+[Iter 3060 | Time   91.4s] Best Z =  6470.25 | PM=654 S2=391740 S4p1=31
+[Iter 3070 | Time   91.8s] Best Z =  6470.25 | PM=654 S2=393547 S4p1=31
+[Iter 3080 | Time   92.1s] Best Z =  6470.25 | PM=654 S2=395421 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 3090 | Time   92.4s] Best Z =  6470.25 | PM=652 S2=397217 S4p1=31
+[Iter 3100 | Time   92.7s] Best Z =  6470.25 | PM=654 S2=399041 S4p1=31
+[Iter 3110 | Time   93.0s] Best Z =  6470.25 | PM=657 S2=400901 S4p1=31
+[Iter 3120 | Time   93.3s] Best Z =  6470.25 | PM=658 S2=402770 S4p1=31
+[Iter 3130 | Time   93.6s] Best Z =  6470.25 | PM=658 S2=404657 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 3140 | Time   93.9s] Best Z =  6470.25 | PM=653 S2=406433 S4p1=31
+[Iter 3150 | Time   94.2s] Best Z =  6470.25 | PM=653 S2=408245 S4p1=31
+[Iter 3160 | Time   94.5s] Best Z =  6470.25 | PM=654 S2=410105 S4p1=31
+[Iter 3170 | Time   94.9s] Best Z =  6470.25 | PM=654 S2=411985 S4p1=31
+[Iter 3180 | Time   95.2s] Best Z =  6470.25 | PM=655 S2=413804 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 3190 | Time   95.5s] Best Z =  6470.25 | PM=653 S2=415567 S4p1=31
+[Iter 3200 | Time   95.8s] Best Z =  6470.25 | PM=653 S2=417406 S4p1=31
+[Iter 3210 | Time   96.1s] Best Z =  6470.25 | PM=653 S2=419248 S4p1=31
+[Iter 3220 | Time   96.4s] Best Z =  6470.25 | PM=653 S2=421088 S4p1=31
+[Iter 3230 | Time   96.8s] Best Z =  6470.25 | PM=653 S2=422921 S4p1=31
+[StagnationReset] Removed 53/213 WEAK records from PairMemory
+[Iter 3240 | Time   97.1s] Best Z =  6470.25 | PM=653 S2=424645 S4p1=31
+[Iter 3250 | Time   97.4s] Best Z =  6470.25 | PM=653 S2=426482 S4p1=31
+[Iter 3260 | Time   97.7s] Best Z =  6470.25 | PM=653 S2=428305 S4p1=31
+[Iter 3270 | Time   98.0s] Best Z =  6470.25 | PM=655 S2=430153 S4p1=31
+[Iter 3280 | Time   98.3s] Best Z =  6470.25 | PM=657 S2=432006 S4p1=31
+[StagnationReset] Removed 54/216 WEAK records from PairMemory
+[Iter 3290 | Time   98.6s] Best Z =  6470.25 | PM=653 S2=433822 S4p1=31
+[Iter 3300 | Time   98.9s] Best Z =  6470.25 | PM=653 S2=435758 S4p1=31
+[Iter 3310 | Time   99.2s] Best Z =  6470.25 | PM=653 S2=437610 S4p1=31
+[Iter 3320 | Time   99.6s] Best Z =  6470.25 | PM=653 S2=439476 S4p1=31
+[Iter 3330 | Time   99.9s] Best Z =  6470.25 | PM=653 S2=441335 S4p1=31
+[StagnationReset] Removed 53/214 WEAK records from PairMemory
+[Iter 3340 | Time  100.2s] Best Z =  6470.25 | PM=651 S2=443117 S4p1=31
+[Iter 3350 | Time  100.6s] Best Z =  6470.25 | PM=654 S2=444971 S4p1=31
+[Iter 3360 | Time  100.9s] Best Z =  6470.25 | PM=654 S2=446882 S4p1=31
+[Iter 3370 | Time  101.2s] Best Z =  6470.25 | PM=654 S2=448774 S4p1=31
+[Iter 3380 | Time  101.6s] Best Z =  6470.25 | PM=654 S2=450603 S4p1=31
+[StagnationReset] Removed 53/214 WEAK records from PairMemory
+[Iter 3390 | Time  101.9s] Best Z =  6470.25 | PM=652 S2=452440 S4p1=31
+[Iter 3400 | Time  102.2s] Best Z =  6470.25 | PM=652 S2=454327 S4p1=31
+[Iter 3410 | Time  102.5s] Best Z =  6470.25 | PM=653 S2=456222 S4p1=31
+[Iter 3420 | Time  102.8s] Best Z =  6470.25 | PM=655 S2=458141 S4p1=31
+[Iter 3430 | Time  103.2s] Best Z =  6470.25 | PM=657 S2=460008 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 3440 | Time  103.5s] Best Z =  6470.25 | PM=654 S2=461853 S4p1=31
+[Iter 3450 | Time  103.8s] Best Z =  6470.25 | PM=654 S2=463708 S4p1=31
+[Iter 3460 | Time  104.1s] Best Z =  6470.25 | PM=654 S2=465550 S4p1=31
+[Iter 3470 | Time  104.4s] Best Z =  6470.25 | PM=658 S2=467443 S4p1=31
+[Iter 3480 | Time  104.7s] Best Z =  6470.25 | PM=658 S2=469329 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 3490 | Time  105.0s] Best Z =  6470.25 | PM=655 S2=471192 S4p1=31
+[Iter 3500 | Time  105.3s] Best Z =  6470.25 | PM=655 S2=473058 S4p1=31
+[Iter 3510 | Time  105.6s] Best Z =  6470.25 | PM=656 S2=474952 S4p1=31
+[Iter 3520 | Time  105.9s] Best Z =  6470.25 | PM=656 S2=476831 S4p1=31
+[Iter 3530 | Time  106.3s] Best Z =  6470.25 | PM=656 S2=478675 S4p1=31
+[StagnationReset] Removed 53/212 WEAK records from PairMemory
+[Iter 3540 | Time  106.6s] Best Z =  6470.25 | PM=656 S2=480568 S4p1=31
+[Iter 3550 | Time  106.9s] Best Z =  6470.25 | PM=656 S2=482440 S4p1=31
+[Iter 3560 | Time  107.2s] Best Z =  6470.25 | PM=656 S2=484310 S4p1=31
+[Iter 3570 | Time  107.6s] Best Z =  6470.25 | PM=657 S2=486179 S4p1=31
+[Iter 3580 | Time  107.9s] Best Z =  6470.25 | PM=658 S2=488084 S4p1=31
+[StagnationReset] Removed 53/213 WEAK records from PairMemory
+[Iter 3590 | Time  108.2s] Best Z =  6470.25 | PM=658 S2=489881 S4p1=31
+[Iter 3600 | Time  108.5s] Best Z =  6470.25 | PM=660 S2=491735 S4p1=31
+[Iter 3610 | Time  108.8s] Best Z =  6470.25 | PM=660 S2=493585 S4p1=31
+[Iter 3620 | Time  109.1s] Best Z =  6470.25 | PM=661 S2=495423 S4p1=31
+[Iter 3630 | Time  109.4s] Best Z =  6470.25 | PM=662 S2=497306 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 3640 | Time  109.7s] Best Z =  6470.25 | PM=657 S2=499172 S4p1=31
+[Iter 3650 | Time  110.0s] Best Z =  6470.25 | PM=657 S2=501018 S4p1=31
+[Iter 3660 | Time  110.3s] Best Z =  6470.25 | PM=657 S2=502900 S4p1=31
+[Iter 3670 | Time  110.7s] Best Z =  6470.25 | PM=658 S2=504708 S4p1=31
+[Iter 3680 | Time  111.0s] Best Z =  6470.25 | PM=658 S2=506547 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 3690 | Time  111.3s] Best Z =  6470.25 | PM=655 S2=508403 S4p1=31
+[Iter 3700 | Time  111.6s] Best Z =  6470.25 | PM=655 S2=510265 S4p1=31
+[Iter 3710 | Time  111.9s] Best Z =  6470.25 | PM=656 S2=512157 S4p1=31
+[Iter 3720 | Time  112.2s] Best Z =  6470.25 | PM=656 S2=514057 S4p1=31
+[Iter 3730 | Time  112.5s] Best Z =  6470.25 | PM=656 S2=515924 S4p1=31
+[StagnationReset] Removed 53/213 WEAK records from PairMemory
+[Iter 3740 | Time  112.9s] Best Z =  6470.25 | PM=653 S2=517768 S4p1=31
+[Iter 3750 | Time  113.2s] Best Z =  6470.25 | PM=653 S2=519681 S4p1=31
+[Iter 3760 | Time  113.5s] Best Z =  6509.98 | PM=654 S2=521547 S4p1=31
+[Iter 3770 | Time  113.8s] Best Z =  6509.98 | PM=654 S2=523422 S4p1=31
+[Iter 3780 | Time  114.1s] Best Z =  6509.98 | PM=654 S2=525299 S4p1=31
+[Iter 3790 | Time  114.4s] Best Z =  6509.98 | PM=654 S2=527160 S4p1=31
+[Iter 3800 | Time  114.7s] Best Z =  6509.98 | PM=657 S2=529061 S4p1=31
+[StagnationReset] Removed 54/216 WEAK records from PairMemory
+[Iter 3810 | Time  115.1s] Best Z =  6509.98 | PM=657 S2=530872 S4p1=31
+[Iter 3820 | Time  115.4s] Best Z =  6509.98 | PM=661 S2=532783 S4p1=31
+[Iter 3830 | Time  115.7s] Best Z =  6509.98 | PM=661 S2=534679 S4p1=31
+[Iter 3840 | Time  116.0s] Best Z =  6509.98 | PM=662 S2=536564 S4p1=31
+[Iter 3850 | Time  116.3s] Best Z =  6509.98 | PM=662 S2=538388 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 3860 | Time  116.6s] Best Z =  6509.98 | PM=651 S2=540281 S4p1=31
+[Iter 3870 | Time  116.9s] Best Z =  6509.98 | PM=651 S2=542189 S4p1=31
+[Iter 3880 | Time  117.3s] Best Z =  6509.98 | PM=651 S2=544099 S4p1=31
+[Iter 3890 | Time  117.6s] Best Z =  6509.98 | PM=651 S2=546014 S4p1=31
+[Iter 3900 | Time  117.9s] Best Z =  6509.98 | PM=651 S2=547867 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 3910 | Time  118.2s] Best Z =  6509.98 | PM=653 S2=549718 S4p1=31
+[Iter 3920 | Time  118.5s] Best Z =  6509.98 | PM=653 S2=551619 S4p1=31
+[Iter 3930 | Time  118.8s] Best Z =  6509.98 | PM=653 S2=553519 S4p1=31
+[Iter 3940 | Time  119.1s] Best Z =  6509.98 | PM=653 S2=555436 S4p1=31
+[Iter 3950 | Time  119.4s] Best Z =  6509.98 | PM=653 S2=557399 S4p1=31
+[StagnationReset] Removed 53/214 WEAK records from PairMemory
+[Iter 3960 | Time  119.7s] Best Z =  6509.98 | PM=652 S2=559193 S4p1=31
+[Iter 3970 | Time  120.0s] Best Z =  6509.98 | PM=652 S2=561090 S4p1=31
+[Iter 3980 | Time  120.3s] Best Z =  6509.98 | PM=652 S2=563000 S4p1=31
+[Iter 3990 | Time  120.7s] Best Z =  6509.98 | PM=652 S2=564911 S4p1=31
+[Iter 4000 | Time  121.0s] Best Z =  6509.98 | PM=652 S2=566801 S4p1=31
+[StagnationReset] Removed 54/216 WEAK records from PairMemory
+[Iter 4010 | Time  121.3s] Best Z =  6509.98 | PM=652 S2=568623 S4p1=31
+[Iter 4020 | Time  121.6s] Best Z =  6509.98 | PM=652 S2=570477 S4p1=31
+[Iter 4030 | Time  121.9s] Best Z =  6509.98 | PM=652 S2=572400 S4p1=31
+[Iter 4040 | Time  122.2s] Best Z =  6509.98 | PM=652 S2=574300 S4p1=31
+[Iter 4050 | Time  122.5s] Best Z =  6509.98 | PM=652 S2=576242 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 4060 | Time  122.8s] Best Z =  6509.98 | PM=652 S2=578074 S4p1=31
+[Iter 4070 | Time  123.1s] Best Z =  6509.98 | PM=652 S2=579939 S4p1=31
+[Iter 4080 | Time  123.4s] Best Z =  6509.98 | PM=654 S2=581786 S4p1=31
+[Iter 4090 | Time  123.7s] Best Z =  6509.98 | PM=654 S2=583722 S4p1=31
+[Iter 4100 | Time  124.0s] Best Z =  6509.98 | PM=655 S2=585577 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 4110 | Time  124.4s] Best Z =  6509.98 | PM=652 S2=587492 S4p1=31
+[Iter 4120 | Time  124.7s] Best Z =  6509.98 | PM=652 S2=589413 S4p1=31
+[Iter 4130 | Time  125.0s] Best Z =  6509.98 | PM=652 S2=591325 S4p1=31
+[Iter 4140 | Time  125.3s] Best Z =  6509.98 | PM=653 S2=593191 S4p1=31
+[Iter 4150 | Time  125.6s] Best Z =  6509.98 | PM=655 S2=595056 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 4160 | Time  125.9s] Best Z =  6509.98 | PM=655 S2=596931 S4p1=31
+[Iter 4170 | Time  126.2s] Best Z =  6509.98 | PM=657 S2=598834 S4p1=31
+[Iter 4180 | Time  126.5s] Best Z =  6509.98 | PM=662 S2=600716 S4p1=31
+[Iter 4190 | Time  126.8s] Best Z =  6509.98 | PM=662 S2=602565 S4p1=31
+[Iter 4200 | Time  127.1s] Best Z =  6509.98 | PM=662 S2=604505 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 4210 | Time  127.4s] Best Z =  6509.98 | PM=657 S2=606361 S4p1=31
+[Iter 4220 | Time  127.7s] Best Z =  6509.98 | PM=657 S2=608224 S4p1=31
+[Iter 4230 | Time  128.1s] Best Z =  6509.98 | PM=657 S2=610130 S4p1=31
+[Iter 4240 | Time  128.4s] Best Z =  6509.98 | PM=659 S2=612037 S4p1=31
+[Iter 4250 | Time  128.7s] Best Z =  6509.98 | PM=661 S2=613918 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 4260 | Time  129.0s] Best Z =  6509.98 | PM=657 S2=615798 S4p1=31
+[Iter 4270 | Time  129.3s] Best Z =  6509.98 | PM=657 S2=617687 S4p1=31
+[Iter 4280 | Time  129.6s] Best Z =  6509.98 | PM=657 S2=619588 S4p1=31
+[Iter 4290 | Time  129.9s] Best Z =  6509.98 | PM=657 S2=621482 S4p1=31
+[Iter 4300 | Time  130.2s] Best Z =  6509.98 | PM=661 S2=623372 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 4310 | Time  130.5s] Best Z =  6509.98 | PM=654 S2=625263 S4p1=31
+[Iter 4320 | Time  130.9s] Best Z =  6509.98 | PM=655 S2=627211 S4p1=31
+[Iter 4330 | Time  131.2s] Best Z =  6509.98 | PM=655 S2=629125 S4p1=31
+[Iter 4340 | Time  131.5s] Best Z =  6509.98 | PM=655 S2=631049 S4p1=31
+[Iter 4350 | Time  131.8s] Best Z =  6509.98 | PM=657 S2=632988 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 4360 | Time  132.1s] Best Z =  6509.98 | PM=653 S2=634792 S4p1=31
+[Iter 4370 | Time  132.4s] Best Z =  6509.98 | PM=653 S2=636717 S4p1=31
+[Iter 4380 | Time  132.7s] Best Z =  6509.98 | PM=654 S2=638670 S4p1=31
+[Iter 4390 | Time  133.0s] Best Z =  6509.98 | PM=656 S2=640652 S4p1=31
+[Iter 4400 | Time  133.4s] Best Z =  6509.98 | PM=658 S2=642613 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 4410 | Time  133.7s] Best Z =  6509.98 | PM=654 S2=644463 S4p1=31
+[Iter 4420 | Time  134.0s] Best Z =  6509.98 | PM=654 S2=646346 S4p1=31
+[Iter 4430 | Time  134.3s] Best Z =  6509.98 | PM=654 S2=648252 S4p1=31
+[Iter 4440 | Time  134.6s] Best Z =  6509.98 | PM=656 S2=650193 S4p1=31
+[Iter 4450 | Time  134.9s] Best Z =  6509.98 | PM=656 S2=652074 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 4460 | Time  135.2s] Best Z =  6509.98 | PM=655 S2=653952 S4p1=31
+[Iter 4470 | Time  135.5s] Best Z =  6509.98 | PM=657 S2=655864 S4p1=31
+[Iter 4480 | Time  135.8s] Best Z =  6509.98 | PM=660 S2=657745 S4p1=31
+[Iter 4490 | Time  136.1s] Best Z =  6509.98 | PM=660 S2=659608 S4p1=31
+[Iter 4500 | Time  136.4s] Best Z =  6509.98 | PM=660 S2=661466 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 4510 | Time  136.8s] Best Z =  6509.98 | PM=653 S2=663289 S4p1=31
+[Iter 4520 | Time  137.1s] Best Z =  6509.98 | PM=653 S2=665222 S4p1=31
+[Iter 4530 | Time  137.4s] Best Z =  6509.98 | PM=653 S2=667144 S4p1=31
+[Iter 4540 | Time  137.7s] Best Z =  6509.98 | PM=654 S2=668989 S4p1=31
+[Iter 4550 | Time  137.9s] Best Z =  6509.98 | PM=654 S2=670890 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 4560 | Time  138.2s] Best Z =  6509.98 | PM=650 S2=672792 S4p1=31
+[Iter 4570 | Time  138.6s] Best Z =  6509.98 | PM=650 S2=674770 S4p1=31
+[Iter 4580 | Time  138.9s] Best Z =  6509.98 | PM=650 S2=676650 S4p1=31
+[Iter 4590 | Time  139.2s] Best Z =  6509.98 | PM=651 S2=678585 S4p1=31
+[Iter 4600 | Time  139.5s] Best Z =  6509.98 | PM=651 S2=680420 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 4610 | Time  139.8s] Best Z =  6509.98 | PM=649 S2=682301 S4p1=31
+[Iter 4620 | Time  140.1s] Best Z =  6509.98 | PM=651 S2=684298 S4p1=31
+[Iter 4630 | Time  140.4s] Best Z =  6509.98 | PM=651 S2=686163 S4p1=31
+[Iter 4640 | Time  140.7s] Best Z =  6509.98 | PM=651 S2=688066 S4p1=31
+[Iter 4650 | Time  141.0s] Best Z =  6509.98 | PM=651 S2=689983 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 4660 | Time  141.3s] Best Z =  6509.98 | PM=648 S2=691874 S4p1=31
+[Iter 4670 | Time  141.7s] Best Z =  6509.98 | PM=648 S2=693869 S4p1=31
+[Iter 4680 | Time  142.0s] Best Z =  6509.98 | PM=648 S2=695819 S4p1=31
+[Iter 4690 | Time  142.3s] Best Z =  6509.98 | PM=648 S2=697800 S4p1=31
+[Iter 4700 | Time  142.6s] Best Z =  6509.98 | PM=651 S2=699804 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 4710 | Time  142.9s] Best Z =  6509.98 | PM=649 S2=701749 S4p1=31
+[Iter 4720 | Time  143.2s] Best Z =  6509.98 | PM=649 S2=703690 S4p1=31
+[Iter 4730 | Time  143.5s] Best Z =  6509.98 | PM=649 S2=705629 S4p1=31
+[Iter 4740 | Time  143.8s] Best Z =  6509.98 | PM=653 S2=707548 S4p1=31
+[Iter 4750 | Time  144.1s] Best Z =  6509.98 | PM=655 S2=709522 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 4760 | Time  144.5s] Best Z =  6509.98 | PM=653 S2=711455 S4p1=31
+[Iter 4770 | Time  144.8s] Best Z =  6509.98 | PM=655 S2=713351 S4p1=31
+[Iter 4780 | Time  145.1s] Best Z =  6509.98 | PM=656 S2=715294 S4p1=31
+[Iter 4790 | Time  145.4s] Best Z =  6509.98 | PM=656 S2=717200 S4p1=31
+[Iter 4800 | Time  145.7s] Best Z =  6509.98 | PM=656 S2=719105 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 4810 | Time  146.1s] Best Z =  6509.98 | PM=656 S2=720959 S4p1=31
+[Iter 4820 | Time  146.4s] Best Z =  6509.98 | PM=656 S2=722878 S4p1=31
+[Iter 4830 | Time  146.7s] Best Z =  6509.98 | PM=656 S2=724782 S4p1=31
+[Iter 4840 | Time  147.0s] Best Z =  6509.98 | PM=658 S2=726711 S4p1=31
+[Iter 4850 | Time  147.3s] Best Z =  6509.98 | PM=658 S2=728592 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 4860 | Time  147.6s] Best Z =  6509.98 | PM=655 S2=730456 S4p1=31
+[Iter 4870 | Time  147.9s] Best Z =  6509.98 | PM=656 S2=732363 S4p1=31
+[Iter 4880 | Time  148.2s] Best Z =  6509.98 | PM=656 S2=734274 S4p1=31
+[Iter 4890 | Time  148.5s] Best Z =  6509.98 | PM=657 S2=736215 S4p1=31
+[Iter 4900 | Time  148.8s] Best Z =  6509.98 | PM=659 S2=738103 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 4910 | Time  149.1s] Best Z =  6509.98 | PM=650 S2=739995 S4p1=31
+[Iter 4920 | Time  149.4s] Best Z =  6509.98 | PM=651 S2=741956 S4p1=31
+[Iter 4930 | Time  149.7s] Best Z =  6509.98 | PM=651 S2=743904 S4p1=31
+[Iter 4940 | Time  150.0s] Best Z =  6509.98 | PM=653 S2=745895 S4p1=31
+[Iter 4950 | Time  150.3s] Best Z =  6509.98 | PM=654 S2=747828 S4p1=31
+[StagnationReset] Removed 55/222 WEAK records from PairMemory
+[Iter 4960 | Time  150.6s] Best Z =  6509.98 | PM=650 S2=749728 S4p1=31
+[Iter 4970 | Time  150.9s] Best Z =  6509.98 | PM=650 S2=751741 S4p1=31
+[Iter 4980 | Time  151.2s] Best Z =  6509.98 | PM=650 S2=753659 S4p1=31
+[Iter 4990 | Time  151.5s] Best Z =  6509.98 | PM=651 S2=755650 S4p1=31
+[Iter 5000 | Time  151.8s] Best Z =  6509.98 | PM=651 S2=757657 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 5010 | Time  152.1s] Best Z =  6509.98 | PM=651 S2=759579 S4p1=31
+[Iter 5020 | Time  152.4s] Best Z =  6509.98 | PM=651 S2=761570 S4p1=31
+[Iter 5030 | Time  152.7s] Best Z =  6509.98 | PM=651 S2=763551 S4p1=31
+[Iter 5040 | Time  153.0s] Best Z =  6509.98 | PM=651 S2=765586 S4p1=31
+[Iter 5050 | Time  153.4s] Best Z =  6509.98 | PM=651 S2=767634 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 5060 | Time  153.7s] Best Z =  6509.98 | PM=651 S2=769572 S4p1=31
+[Iter 5070 | Time  154.0s] Best Z =  6509.98 | PM=651 S2=771551 S4p1=31
+[Iter 5080 | Time  154.3s] Best Z =  6509.98 | PM=651 S2=773597 S4p1=31
+[Iter 5090 | Time  154.6s] Best Z =  6509.98 | PM=651 S2=775601 S4p1=31
+[Iter 5100 | Time  154.9s] Best Z =  6509.98 | PM=651 S2=777614 S4p1=31
+[StagnationReset] Removed 55/222 WEAK records from PairMemory
+[Iter 5110 | Time  155.3s] Best Z =  6509.98 | PM=651 S2=779588 S4p1=31
+[Iter 5120 | Time  155.6s] Best Z =  6509.98 | PM=651 S2=781611 S4p1=31
+[Iter 5130 | Time  155.9s] Best Z =  6509.98 | PM=651 S2=783577 S4p1=31
+[Iter 5140 | Time  156.2s] Best Z =  6509.98 | PM=652 S2=785526 S4p1=31
+[Iter 5150 | Time  156.5s] Best Z =  6509.98 | PM=652 S2=787547 S4p1=31
+[StagnationReset] Removed 55/222 WEAK records from PairMemory
+[Iter 5160 | Time  156.8s] Best Z =  6509.98 | PM=651 S2=789510 S4p1=31
+[Iter 5170 | Time  157.1s] Best Z =  6509.98 | PM=651 S2=791510 S4p1=31
+[Iter 5180 | Time  157.4s] Best Z =  6509.98 | PM=651 S2=793460 S4p1=31
+[Iter 5190 | Time  157.7s] Best Z =  6509.98 | PM=651 S2=795452 S4p1=31
+[Iter 5200 | Time  158.0s] Best Z =  6509.98 | PM=651 S2=797450 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 5210 | Time  158.4s] Best Z =  6509.98 | PM=651 S2=799395 S4p1=31
+[Iter 5220 | Time  158.7s] Best Z =  6509.98 | PM=653 S2=801352 S4p1=31
+[Iter 5230 | Time  159.0s] Best Z =  6509.98 | PM=653 S2=803378 S4p1=31
+[Iter 5240 | Time  159.3s] Best Z =  6509.98 | PM=653 S2=805345 S4p1=31
+[Iter 5250 | Time  159.6s] Best Z =  6509.98 | PM=653 S2=807285 S4p1=31
+[StagnationReset] Removed 55/222 WEAK records from PairMemory
+[Iter 5260 | Time  159.9s] Best Z =  6509.98 | PM=653 S2=809265 S4p1=31
+[Iter 5270 | Time  160.2s] Best Z =  6509.98 | PM=655 S2=811306 S4p1=31
+[Iter 5280 | Time  160.5s] Best Z =  6509.98 | PM=658 S2=813314 S4p1=31
+[Iter 5290 | Time  160.8s] Best Z =  6509.98 | PM=660 S2=815243 S4p1=31
+[Iter 5300 | Time  161.1s] Best Z =  6509.98 | PM=660 S2=817090 S4p1=31
+[StagnationReset] Removed 55/222 WEAK records from PairMemory
+[Iter 5310 | Time  161.4s] Best Z =  6509.98 | PM=657 S2=818994 S4p1=31
+[Iter 5320 | Time  161.8s] Best Z =  6509.98 | PM=659 S2=820939 S4p1=31
+[Iter 5330 | Time  162.1s] Best Z =  6509.98 | PM=659 S2=822817 S4p1=31
+[Iter 5340 | Time  162.4s] Best Z =  6509.98 | PM=661 S2=824718 S4p1=31
+[Iter 5350 | Time  162.7s] Best Z =  6509.98 | PM=661 S2=826525 S4p1=31
+[StagnationReset] Removed 55/222 WEAK records from PairMemory
+[Iter 5360 | Time  163.0s] Best Z =  6509.98 | PM=655 S2=828361 S4p1=31
+[Iter 5370 | Time  163.3s] Best Z =  6509.98 | PM=659 S2=830279 S4p1=31
+[Iter 5380 | Time  163.6s] Best Z =  6509.98 | PM=659 S2=832226 S4p1=31
+[Iter 5390 | Time  163.9s] Best Z =  6509.98 | PM=662 S2=834085 S4p1=31
+[Iter 5400 | Time  164.2s] Best Z =  6509.98 | PM=662 S2=835960 S4p1=31
+[StagnationReset] Removed 55/222 WEAK records from PairMemory
+[Iter 5410 | Time  164.5s] Best Z =  6509.98 | PM=656 S2=837845 S4p1=31
+[Iter 5420 | Time  164.8s] Best Z =  6509.98 | PM=656 S2=839774 S4p1=31
+[Iter 5430 | Time  165.1s] Best Z =  6509.98 | PM=656 S2=841724 S4p1=31
+[Iter 5440 | Time  165.5s] Best Z =  6509.98 | PM=657 S2=843671 S4p1=31
+[Iter 5450 | Time  165.8s] Best Z =  6509.98 | PM=659 S2=845634 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 5460 | Time  166.1s] Best Z =  6509.98 | PM=655 S2=847558 S4p1=31
+[Iter 5470 | Time  166.4s] Best Z =  6509.98 | PM=655 S2=849536 S4p1=31
+[Iter 5480 | Time  166.7s] Best Z =  6509.98 | PM=656 S2=851499 S4p1=31
+[Iter 5490 | Time  167.0s] Best Z =  6509.98 | PM=656 S2=853430 S4p1=31
+[Iter 5500 | Time  167.3s] Best Z =  6509.98 | PM=657 S2=855344 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 5510 | Time  167.6s] Best Z =  6509.98 | PM=656 S2=857279 S4p1=31
+[Iter 5520 | Time  167.9s] Best Z =  6509.98 | PM=656 S2=859266 S4p1=31
+[Iter 5530 | Time  168.2s] Best Z =  6509.98 | PM=656 S2=861229 S4p1=31
+[Iter 5540 | Time  168.6s] Best Z =  6509.98 | PM=657 S2=863145 S4p1=31
+[Iter 5550 | Time  168.9s] Best Z =  6509.98 | PM=657 S2=865091 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 5560 | Time  169.2s] Best Z =  6509.98 | PM=655 S2=867018 S4p1=31
+[Iter 5570 | Time  169.5s] Best Z =  6509.98 | PM=655 S2=869025 S4p1=31
+[Iter 5580 | Time  169.8s] Best Z =  6509.98 | PM=657 S2=870975 S4p1=31
+[Iter 5590 | Time  170.1s] Best Z =  6509.98 | PM=657 S2=872924 S4p1=31
+[Iter 5600 | Time  170.4s] Best Z =  6509.98 | PM=657 S2=874882 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 5610 | Time  170.7s] Best Z =  6509.98 | PM=655 S2=876812 S4p1=31
+[Iter 5620 | Time  171.0s] Best Z =  6509.98 | PM=655 S2=878722 S4p1=31
+[Iter 5630 | Time  171.3s] Best Z =  6509.98 | PM=655 S2=880651 S4p1=31
+[Iter 5640 | Time  171.6s] Best Z =  6509.98 | PM=655 S2=882554 S4p1=31
+[Iter 5650 | Time  171.9s] Best Z =  6509.98 | PM=655 S2=884467 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 5660 | Time  172.2s] Best Z =  6509.98 | PM=653 S2=886344 S4p1=31
+[Iter 5670 | Time  172.5s] Best Z =  6509.98 | PM=653 S2=888306 S4p1=31
+[Iter 5680 | Time  172.8s] Best Z =  6509.98 | PM=653 S2=890265 S4p1=31
+[Iter 5690 | Time  173.1s] Best Z =  6509.98 | PM=654 S2=892158 S4p1=31
+[Iter 5700 | Time  173.4s] Best Z =  6509.98 | PM=654 S2=894158 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 5710 | Time  173.7s] Best Z =  6509.98 | PM=652 S2=896085 S4p1=31
+[Iter 5720 | Time  174.0s] Best Z =  6509.98 | PM=652 S2=898018 S4p1=31
+[Iter 5730 | Time  174.3s] Best Z =  6509.98 | PM=652 S2=900022 S4p1=31
+[Iter 5740 | Time  174.6s] Best Z =  6509.98 | PM=652 S2=901992 S4p1=31
+[Iter 5750 | Time  174.9s] Best Z =  6509.98 | PM=652 S2=903980 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 5760 | Time  175.2s] Best Z =  6509.98 | PM=652 S2=905851 S4p1=31
+[Iter 5770 | Time  175.5s] Best Z =  6509.98 | PM=652 S2=907847 S4p1=31
+[Iter 5780 | Time  175.8s] Best Z =  6509.98 | PM=652 S2=909804 S4p1=31
+[Iter 5790 | Time  176.1s] Best Z =  6509.98 | PM=652 S2=911738 S4p1=31
+[Iter 5800 | Time  176.4s] Best Z =  6509.98 | PM=652 S2=913643 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 5810 | Time  176.7s] Best Z =  6509.98 | PM=652 S2=915545 S4p1=31
+[Iter 5820 | Time  177.0s] Best Z =  6517.96 | PM=654 S2=917514 S4p1=31
+[Iter 5830 | Time  177.3s] Best Z =  6517.96 | PM=654 S2=919475 S4p1=31
+[Iter 5840 | Time  177.6s] Best Z =  6517.96 | PM=657 S2=921454 S4p1=31
+[Iter 5850 | Time  177.9s] Best Z =  6517.96 | PM=658 S2=923412 S4p1=31
+[Iter 5860 | Time  178.2s] Best Z =  6517.96 | PM=658 S2=925287 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 5870 | Time  178.5s] Best Z =  6517.96 | PM=650 S2=927142 S4p1=31
+[Iter 5880 | Time  178.8s] Best Z =  6517.96 | PM=650 S2=929107 S4p1=31
+[Iter 5890 | Time  179.1s] Best Z =  6517.96 | PM=650 S2=931079 S4p1=31
+[Iter 5900 | Time  179.4s] Best Z =  6517.96 | PM=650 S2=933036 S4p1=31
+[Iter 5910 | Time  179.7s] Best Z =  6517.96 | PM=650 S2=934981 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 5920 | Time  180.0s] Best Z =  6517.96 | PM=651 S2=936911 S4p1=31
+[Iter 5930 | Time  180.3s] Best Z =  6517.96 | PM=651 S2=938857 S4p1=31
+[Iter 5940 | Time  180.6s] Best Z =  6517.96 | PM=651 S2=940816 S4p1=31
+[Iter 5950 | Time  180.9s] Best Z =  6517.96 | PM=651 S2=942755 S4p1=31
+[Iter 5960 | Time  181.2s] Best Z =  6517.96 | PM=651 S2=944766 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 5970 | Time  181.5s] Best Z =  6517.96 | PM=650 S2=946683 S4p1=31
+[Iter 5980 | Time  181.8s] Best Z =  6517.96 | PM=653 S2=948594 S4p1=31
+[Iter 5990 | Time  182.1s] Best Z =  6517.96 | PM=654 S2=950540 S4p1=31
+[Iter 6000 | Time  182.4s] Best Z =  6517.96 | PM=654 S2=952502 S4p1=31
+[Iter 6010 | Time  182.7s] Best Z =  6517.96 | PM=656 S2=954427 S4p1=31
+[StagnationReset] Removed 55/222 WEAK records from PairMemory
+[Iter 6020 | Time  183.1s] Best Z =  6517.96 | PM=650 S2=956332 S4p1=31
+[Iter 6030 | Time  183.4s] Best Z =  6517.96 | PM=650 S2=958315 S4p1=31
+[Iter 6040 | Time  183.7s] Best Z =  6517.96 | PM=650 S2=960244 S4p1=31
+[Iter 6050 | Time  184.0s] Best Z =  6517.96 | PM=650 S2=962214 S4p1=31
+[Iter 6060 | Time  184.3s] Best Z =  6517.96 | PM=650 S2=964117 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 6070 | Time  184.6s] Best Z =  6517.96 | PM=650 S2=966020 S4p1=31
+[Iter 6080 | Time  184.9s] Best Z =  6517.96 | PM=650 S2=967959 S4p1=31
+[Iter 6090 | Time  185.2s] Best Z =  6517.96 | PM=651 S2=969905 S4p1=31
+[Iter 6100 | Time  185.5s] Best Z =  6517.96 | PM=651 S2=971890 S4p1=31
+[Iter 6110 | Time  185.8s] Best Z =  6517.96 | PM=651 S2=973837 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 6120 | Time  186.1s] Best Z =  6517.96 | PM=651 S2=975785 S4p1=31
+[Iter 6130 | Time  186.4s] Best Z =  6517.96 | PM=651 S2=977703 S4p1=31
+[Iter 6140 | Time  186.7s] Best Z =  6517.96 | PM=651 S2=979586 S4p1=31
+[Iter 6150 | Time  187.1s] Best Z =  6517.96 | PM=651 S2=981569 S4p1=31
+[Iter 6160 | Time  187.4s] Best Z =  6517.96 | PM=651 S2=983509 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 6170 | Time  187.7s] Best Z =  6517.96 | PM=651 S2=985406 S4p1=31
+[Iter 6180 | Time  188.0s] Best Z =  6517.96 | PM=653 S2=987347 S4p1=31
+[Iter 6190 | Time  188.3s] Best Z =  6517.96 | PM=653 S2=989311 S4p1=31
+[Iter 6200 | Time  188.6s] Best Z =  6517.96 | PM=653 S2=991293 S4p1=31
+[Iter 6210 | Time  188.9s] Best Z =  6517.96 | PM=653 S2=993195 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 6220 | Time  189.2s] Best Z =  6517.96 | PM=652 S2=995090 S4p1=31
+[Iter 6230 | Time  189.5s] Best Z =  6517.96 | PM=653 S2=997032 S4p1=31
+[Iter 6240 | Time  189.8s] Best Z =  6517.96 | PM=653 S2=998969 S4p1=31
+[Iter 6250 | Time  190.1s] Best Z =  6517.96 | PM=653 S2=1000942 S4p1=31
+[Iter 6260 | Time  190.4s] Best Z =  6517.96 | PM=653 S2=1002882 S4p1=31
+[StagnationReset] Removed 55/220 WEAK records from PairMemory
+[Iter 6270 | Time  190.7s] Best Z =  6517.96 | PM=650 S2=1004830 S4p1=31
+[Iter 6280 | Time  191.0s] Best Z =  6517.96 | PM=650 S2=1006818 S4p1=31
+[Iter 6290 | Time  191.3s] Best Z =  6517.96 | PM=651 S2=1008794 S4p1=31
+[Iter 6300 | Time  191.6s] Best Z =  6517.96 | PM=654 S2=1010721 S4p1=31
+[Iter 6310 | Time  192.0s] Best Z =  6517.96 | PM=654 S2=1012679 S4p1=31
+[StagnationReset] Removed 55/221 WEAK records from PairMemory
+[Iter 6320 | Time  192.3s] Best Z =  6517.96 | PM=652 S2=1014603 S4p1=31
+[Iter 6330 | Time  192.6s] Best Z =  6517.96 | PM=652 S2=1016577 S4p1=31
+[Iter 6340 | Time  192.9s] Best Z =  6517.96 | PM=653 S2=1018485 S4p1=31
+[Iter 6350 | Time  193.2s] Best Z =  6517.96 | PM=654 S2=1020444 S4p1=31
+[Iter 6360 | Time  193.5s] Best Z =  6517.96 | PM=654 S2=1022363 S4p1=31
+[StagnationReset] Removed 55/222 WEAK records from PairMemory
+[Iter 6370 | Time  193.8s] Best Z =  6517.96 | PM=651 S2=1024264 S4p1=31
+[Iter 6380 | Time  194.1s] Best Z =  6517.96 | PM=651 S2=1026225 S4p1=31
+[Iter 6390 | Time  194.4s] Best Z =  6517.96 | PM=651 S2=1028163 S4p1=31
+[Iter 6400 | Time  194.7s] Best Z =  6517.96 | PM=653 S2=1030129 S4p1=31
+[Iter 6410 | Time  195.0s] Best Z =  6517.96 | PM=653 S2=1032109 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 6420 | Time  195.3s] Best Z =  6517.96 | PM=647 S2=1034068 S4p1=31
+[Iter 6430 | Time  195.6s] Best Z =  6517.96 | PM=647 S2=1036006 S4p1=31
+[Iter 6440 | Time  195.9s] Best Z =  6517.96 | PM=647 S2=1038009 S4p1=31
+[Iter 6450 | Time  196.2s] Best Z =  6517.96 | PM=647 S2=1039963 S4p1=31
+[Iter 6460 | Time  196.5s] Best Z =  6517.96 | PM=647 S2=1041928 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 6470 | Time  196.8s] Best Z =  6517.96 | PM=646 S2=1043840 S4p1=31
+[Iter 6480 | Time  197.1s] Best Z =  6517.96 | PM=646 S2=1045853 S4p1=31
+[Iter 6490 | Time  197.4s] Best Z =  6517.96 | PM=646 S2=1047842 S4p1=31
+[Iter 6500 | Time  197.7s] Best Z =  6517.96 | PM=646 S2=1049810 S4p1=31
+[Iter 6510 | Time  198.1s] Best Z =  6517.96 | PM=646 S2=1051787 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 6520 | Time  198.4s] Best Z =  6517.96 | PM=648 S2=1053761 S4p1=31
+[Iter 6530 | Time  198.7s] Best Z =  6517.96 | PM=648 S2=1055759 S4p1=31
+[Iter 6540 | Time  199.0s] Best Z =  6517.96 | PM=648 S2=1057732 S4p1=31
+[Iter 6550 | Time  199.3s] Best Z =  6517.96 | PM=648 S2=1059719 S4p1=31
+[Iter 6560 | Time  199.6s] Best Z =  6517.96 | PM=648 S2=1061634 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 6570 | Time  199.9s] Best Z =  6517.96 | PM=645 S2=1063553 S4p1=31
+[Iter 6580 | Time  200.1s] Best Z =  6517.96 | PM=645 S2=1065556 S4p1=31
+[Iter 6590 | Time  200.5s] Best Z =  6517.96 | PM=645 S2=1067534 S4p1=31
+[Iter 6600 | Time  200.8s] Best Z =  6517.96 | PM=646 S2=1069489 S4p1=31
+[Iter 6610 | Time  201.1s] Best Z =  6517.96 | PM=646 S2=1071436 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 6620 | Time  201.4s] Best Z =  6517.96 | PM=644 S2=1073348 S4p1=31
+[Iter 6630 | Time  201.7s] Best Z =  6517.96 | PM=644 S2=1075319 S4p1=31
+[Iter 6640 | Time  202.0s] Best Z =  6517.96 | PM=644 S2=1077361 S4p1=31
+[Iter 6650 | Time  202.3s] Best Z =  6517.96 | PM=644 S2=1079328 S4p1=31
+[Iter 6660 | Time  202.6s] Best Z =  6517.96 | PM=644 S2=1081313 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 6670 | Time  202.9s] Best Z =  6517.96 | PM=644 S2=1083248 S4p1=31
+[Iter 6680 | Time  203.2s] Best Z =  6517.96 | PM=644 S2=1085234 S4p1=31
+[Iter 6690 | Time  203.5s] Best Z =  6517.96 | PM=645 S2=1087237 S4p1=31
+[Iter 6700 | Time  203.8s] Best Z =  6517.96 | PM=645 S2=1089228 S4p1=31
+[Iter 6710 | Time  204.1s] Best Z =  6517.96 | PM=645 S2=1091190 S4p1=31
+[StagnationReset] Removed 54/216 WEAK records from PairMemory
+[Iter 6720 | Time  204.4s] Best Z =  6517.96 | PM=641 S2=1093152 S4p1=31
+[Iter 6730 | Time  204.7s] Best Z =  6517.96 | PM=641 S2=1095192 S4p1=31
+[Iter 6740 | Time  205.1s] Best Z =  6517.96 | PM=641 S2=1097228 S4p1=31
+[Iter 6750 | Time  205.4s] Best Z =  6517.96 | PM=641 S2=1099143 S4p1=31
+[Iter 6760 | Time  205.7s] Best Z =  6517.96 | PM=641 S2=1101187 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 6770 | Time  206.0s] Best Z =  6517.96 | PM=640 S2=1103106 S4p1=31
+[Iter 6780 | Time  206.3s] Best Z =  6517.96 | PM=640 S2=1105128 S4p1=31
+[Iter 6790 | Time  206.6s] Best Z =  6517.96 | PM=640 S2=1107125 S4p1=31
+[Iter 6800 | Time  206.9s] Best Z =  6517.96 | PM=640 S2=1109180 S4p1=31
+[Iter 6810 | Time  207.2s] Best Z =  6517.96 | PM=640 S2=1111113 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 6820 | Time  207.5s] Best Z =  6517.96 | PM=640 S2=1113119 S4p1=31
+[Iter 6830 | Time  207.8s] Best Z =  6517.96 | PM=640 S2=1115121 S4p1=31
+[Iter 6840 | Time  208.1s] Best Z =  6517.96 | PM=640 S2=1117180 S4p1=31
+[Iter 6850 | Time  208.4s] Best Z =  6517.96 | PM=640 S2=1119183 S4p1=31
+[Iter 6860 | Time  208.7s] Best Z =  6517.96 | PM=640 S2=1121211 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 6870 | Time  209.0s] Best Z =  6517.96 | PM=640 S2=1123172 S4p1=31
+[Iter 6880 | Time  209.3s] Best Z =  6517.96 | PM=641 S2=1125194 S4p1=31
+[Iter 6890 | Time  209.6s] Best Z =  6517.96 | PM=642 S2=1127239 S4p1=31
+[Iter 6900 | Time  209.9s] Best Z =  6517.96 | PM=642 S2=1129265 S4p1=31
+[Iter 6910 | Time  210.2s] Best Z =  6517.96 | PM=642 S2=1131320 S4p1=31
+[StagnationReset] Removed 54/219 WEAK records from PairMemory
+[Iter 6920 | Time  210.5s] Best Z =  6517.96 | PM=641 S2=1133276 S4p1=31
+[Iter 6930 | Time  210.8s] Best Z =  6517.96 | PM=641 S2=1135383 S4p1=31
+[Iter 6940 | Time  211.1s] Best Z =  6517.96 | PM=641 S2=1137382 S4p1=31
+[Iter 6950 | Time  211.4s] Best Z =  6517.96 | PM=641 S2=1139413 S4p1=31
+[Iter 6960 | Time  211.7s] Best Z =  6517.96 | PM=642 S2=1141485 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 6970 | Time  212.0s] Best Z =  6517.96 | PM=639 S2=1143442 S4p1=31
+[Iter 6980 | Time  212.3s] Best Z =  6517.96 | PM=641 S2=1145472 S4p1=31
+[Iter 6990 | Time  212.6s] Best Z =  6517.96 | PM=642 S2=1147515 S4p1=31
+[Iter 7000 | Time  212.9s] Best Z =  6517.96 | PM=642 S2=1149496 S4p1=31
+[Iter 7010 | Time  213.2s] Best Z =  6517.96 | PM=642 S2=1151459 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 7020 | Time  213.5s] Best Z =  6517.96 | PM=637 S2=1153396 S4p1=31
+[Iter 7030 | Time  213.8s] Best Z =  6517.96 | PM=637 S2=1155427 S4p1=31
+[Iter 7040 | Time  214.1s] Best Z =  6517.96 | PM=637 S2=1157465 S4p1=31
+[Iter 7050 | Time  214.4s] Best Z =  6517.96 | PM=637 S2=1159556 S4p1=31
+[Iter 7060 | Time  214.7s] Best Z =  6517.96 | PM=639 S2=1161610 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 7070 | Time  215.1s] Best Z =  6517.96 | PM=639 S2=1163632 S4p1=31
+[Iter 7080 | Time  215.4s] Best Z =  6517.96 | PM=639 S2=1165637 S4p1=31
+[Iter 7090 | Time  215.7s] Best Z =  6517.96 | PM=640 S2=1167664 S4p1=31
+[Iter 7100 | Time  216.0s] Best Z =  6517.96 | PM=640 S2=1169737 S4p1=31
+[Iter 7110 | Time  216.3s] Best Z =  6517.96 | PM=640 S2=1171747 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 7120 | Time  216.6s] Best Z =  6517.96 | PM=637 S2=1173778 S4p1=31
+[Iter 7130 | Time  216.9s] Best Z =  6517.96 | PM=637 S2=1175808 S4p1=31
+[Iter 7140 | Time  217.2s] Best Z =  6517.96 | PM=637 S2=1177870 S4p1=31
+[Iter 7150 | Time  217.5s] Best Z =  6517.96 | PM=637 S2=1179918 S4p1=31
+[Iter 7160 | Time  217.8s] Best Z =  6517.96 | PM=637 S2=1182006 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 7170 | Time  218.1s] Best Z =  6517.96 | PM=636 S2=1183969 S4p1=31
+[Iter 7180 | Time  218.4s] Best Z =  6517.96 | PM=637 S2=1186036 S4p1=31
+[Iter 7190 | Time  218.7s] Best Z =  6517.96 | PM=637 S2=1188055 S4p1=31
+[Iter 7200 | Time  219.0s] Best Z =  6517.96 | PM=637 S2=1190104 S4p1=31
+[Iter 7210 | Time  219.3s] Best Z =  6517.96 | PM=637 S2=1192105 S4p1=31
+[StagnationReset] Removed 54/216 WEAK records from PairMemory
+[Iter 7220 | Time  219.6s] Best Z =  6517.96 | PM=636 S2=1194137 S4p1=31
+[Iter 7230 | Time  219.9s] Best Z =  6517.96 | PM=636 S2=1196172 S4p1=31
+[Iter 7240 | Time  220.2s] Best Z =  6517.96 | PM=636 S2=1198163 S4p1=31
+[Iter 7250 | Time  220.5s] Best Z =  6517.96 | PM=636 S2=1200236 S4p1=31
+[Iter 7260 | Time  220.8s] Best Z =  6517.96 | PM=636 S2=1202282 S4p1=31
+[Iter 7270 | Time  221.1s] Best Z =  6535.35 | PM=637 S2=1204318 S4p1=31
+[Iter 7280 | Time  221.4s] Best Z =  6535.35 | PM=638 S2=1206325 S4p1=31
+[Iter 7290 | Time  221.7s] Best Z =  6535.35 | PM=638 S2=1208299 S4p1=31
+[Iter 7300 | Time  222.0s] Best Z =  6535.35 | PM=638 S2=1210263 S4p1=31
+[Iter 7310 | Time  222.3s] Best Z =  6535.35 | PM=638 S2=1212269 S4p1=31
+[StagnationReset] Removed 53/214 WEAK records from PairMemory
+[Iter 7320 | Time  222.6s] Best Z =  6535.35 | PM=636 S2=1214258 S4p1=31
+[Iter 7330 | Time  222.9s] Best Z =  6535.35 | PM=636 S2=1216356 S4p1=31
+[Iter 7340 | Time  223.2s] Best Z =  6535.35 | PM=636 S2=1218401 S4p1=31
+[Iter 7350 | Time  223.5s] Best Z =  6535.35 | PM=636 S2=1220451 S4p1=31
+[Iter 7360 | Time  223.8s] Best Z =  6535.35 | PM=636 S2=1222506 S4p1=31
+[StagnationReset] Removed 54/217 WEAK records from PairMemory
+[Iter 7370 | Time  224.1s] Best Z =  6535.35 | PM=636 S2=1224509 S4p1=31
+[Iter 7380 | Time  224.4s] Best Z =  6535.35 | PM=638 S2=1226576 S4p1=31
+[Iter 7390 | Time  224.7s] Best Z =  6535.35 | PM=638 S2=1228579 S4p1=31
+[Iter 7400 | Time  225.0s] Best Z =  6535.35 | PM=638 S2=1230598 S4p1=31
+[Iter 7410 | Time  225.3s] Best Z =  6535.35 | PM=638 S2=1232574 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 7420 | Time  225.6s] Best Z =  6535.35 | PM=637 S2=1234576 S4p1=31
+[Iter 7430 | Time  225.9s] Best Z =  6535.35 | PM=637 S2=1236602 S4p1=31
+[Iter 7440 | Time  226.2s] Best Z =  6535.35 | PM=637 S2=1238621 S4p1=31
+[Iter 7450 | Time  226.5s] Best Z =  6535.35 | PM=637 S2=1240607 S4p1=31
+[Iter 7460 | Time  226.8s] Best Z =  6535.35 | PM=637 S2=1242694 S4p1=31
+[StagnationReset] Removed 54/218 WEAK records from PairMemory
+[Iter 7470 | Time  227.1s] Best Z =  6535.35 | PM=637 S2=1244699 S4p1=31
+[Iter 7480 | Time  227.4s] Best Z =  6535.35 | PM=639 S2=1246699 S4p1=31
+[Iter 7490 | Time  227.7s] Best Z =  6535.35 | PM=639 S2=1248660 S4p1=31
+[Iter 7500 | Time  228.0s] Best Z =  6535.35 | PM=639 S2=1250667 S4p1=31
+[Iter 7510 | Time  228.3s] Best Z =  6535.35 | PM=639 S2=1252635 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 7520 | Time  228.6s] Best Z =  6535.35 | PM=637 S2=1254630 S4p1=31
+[Iter 7530 | Time  228.9s] Best Z =  6535.35 | PM=637 S2=1256680 S4p1=31
+[Iter 7540 | Time  229.2s] Best Z =  6535.35 | PM=637 S2=1258686 S4p1=31
+[Iter 7550 | Time  229.5s] Best Z =  6535.35 | PM=637 S2=1260721 S4p1=31
+[Iter 7560 | Time  229.8s] Best Z =  6535.35 | PM=637 S2=1262729 S4p1=31
+[StagnationReset] Removed 54/216 WEAK records from PairMemory
+[Iter 7570 | Time  230.1s] Best Z =  6535.35 | PM=637 S2=1264718 S4p1=31
+[Iter 7580 | Time  230.4s] Best Z =  6535.35 | PM=637 S2=1266703 S4p1=31
+[Iter 7590 | Time  230.7s] Best Z =  6535.35 | PM=637 S2=1268708 S4p1=31
+[Iter 7600 | Time  231.0s] Best Z =  6535.35 | PM=637 S2=1270685 S4p1=31
+[Iter 7610 | Time  231.3s] Best Z =  6535.35 | PM=637 S2=1272730 S4p1=31
+[StagnationReset] Removed 53/214 WEAK records from PairMemory
+[Iter 7620 | Time  231.6s] Best Z =  6535.35 | PM=635 S2=1274699 S4p1=31
+[Iter 7630 | Time  231.9s] Best Z =  6535.35 | PM=635 S2=1276707 S4p1=31
+[Iter 7640 | Time  232.2s] Best Z =  6535.35 | PM=635 S2=1278748 S4p1=31
+[Iter 7650 | Time  232.5s] Best Z =  6535.35 | PM=635 S2=1280749 S4p1=31
+[Iter 7660 | Time  232.7s] Best Z =  6535.35 | PM=635 S2=1282752 S4p1=31
+[StagnationReset] Removed 53/214 WEAK records from PairMemory
+[Iter 7670 | Time  233.1s] Best Z =  6535.35 | PM=635 S2=1284747 S4p1=31
+[Iter 7680 | Time  233.4s] Best Z =  6535.35 | PM=635 S2=1286807 S4p1=31
+[Iter 7690 | Time  233.7s] Best Z =  6535.35 | PM=637 S2=1288833 S4p1=31
+[Iter 7700 | Time  234.0s] Best Z =  6535.35 | PM=637 S2=1290845 S4p1=31
+[Iter 7710 | Time  234.3s] Best Z =  6535.35 | PM=637 S2=1292895 S4p1=31
+[StagnationReset] Removed 53/215 WEAK records from PairMemory
+[Iter 7720 | Time  234.6s] Best Z =  6535.35 | PM=636 S2=1294850 S4p1=31
+[Iter 7730 | Time  234.9s] Best Z =  6535.35 | PM=636 S2=1296871 S4p1=31
+[Iter 7740 | Time  235.2s] Best Z =  6535.35 | PM=636 S2=1298913 S4p1=31
+[Iter 7750 | Time  235.4s] Best Z =  6535.35 | PM=637 S2=1300937 S4p1=31
+[Iter 7760 | Time  235.8s] Best Z =  6535.35 | PM=637 S2=1302909 S4p1=31
+[StagnationReset] Removed 53/214 WEAK records from PairMemory
+[Iter 7770 | Time  236.0s] Best Z =  6535.35 | PM=636 S2=1304891 S4p1=31
+[Iter 7780 | Time  236.4s] Best Z =  6535.35 | PM=636 S2=1306903 S4p1=31
+[Iter 7790 | Time  236.7s] Best Z =  6535.35 | PM=640 S2=1308856 S4p1=31
+[Iter 7800 | Time  237.0s] Best Z =  6535.35 | PM=640 S2=1310869 S4p1=31
+[Iter 7810 | Time  237.3s] Best Z =  6535.35 | PM=640 S2=1312873 S4p1=31
+[StagnationReset] Removed 53/214 WEAK records from PairMemory
+[Iter 7820 | Time  237.5s] Best Z =  6535.35 | PM=636 S2=1314770 S4p1=31
+[Iter 7830 | Time  237.8s] Best Z =  6535.35 | PM=636 S2=1316749 S4p1=31
+[Iter 7840 | Time  238.1s] Best Z =  6535.35 | PM=636 S2=1318745 S4p1=31
+[Iter 7850 | Time  238.4s] Best Z =  6535.35 | PM=636 S2=1320749 S4p1=31
+[Iter 7860 | Time  238.7s] Best Z =  6535.35 | PM=636 S2=1322767 S4p1=31
+[StagnationReset] Removed 53/213 WEAK records from PairMemory
+[Iter 7870 | Time  239.0s] Best Z =  6535.35 | PM=637 S2=1324731 S4p1=31
+[Iter 7880 | Time  239.3s] Best Z =  6535.35 | PM=637 S2=1326714 S4p1=31
+[Iter 7890 | Time  239.6s] Best Z =  6535.35 | PM=637 S2=1328695 S4p1=31
+[Iter 7900 | Time  239.9s] Best Z =  6535.35 | PM=637 S2=1330668 S4p1=31
+[Stop] Time limit reached (240.0s)
+
+==================================================
+  FINAL RESULT
+==================================================
+  Best Z = 6535.3481
+  Total iterations = 7902
+  Time = 240.02 seconds
+==================================================
+
+Best Schedule:
+  Machine 1: J181(C=9.8) J114(C=17.5) J51(C=29.6) J61(C=40.0) J186(C=55.5) J74(C=66.8) J8(C=77.7) J141(C=98.5) 
+  Machine 2: J42(C=9.5) J180(C=18.6) J87(C=32.5) J33(C=44.9) J3(C=59.5) J157(C=73.7) J168(C=89.8) 
+  Machine 3: J119(C=9.0) J101(C=19.7) J190(C=30.9) J130(C=40.7) J50(C=48.6) J88(C=58.2) J170(C=70.4) J138(C=86.1) 
+  Machine 4: J68(C=11.3) J73(C=19.8) J199(C=28.7) J148(C=38.5) J60(C=50.1) J100(C=58.3) J78(C=75.5) J45(C=97.2) 
+  Machine 5: J131(C=8.0) J129(C=17.9) J175(C=25.6) J84(C=34.3) J28(C=42.5) J162(C=51.7) J137(C=66.0) J167(C=79.7) J106(C=95.4) 
+  Machine 6: J139(C=11.6) J153(C=20.0) J195(C=31.1) J173(C=39.9) J184(C=50.6) J9(C=59.7) J23(C=68.8) J53(C=83.4) J118(C=99.3) 
+  Rejected: J133 J19 J54 J41 J38 J192 J44 J152 J80 J21 J6 J172 J7 J30 J89 J150 J16 J176 J104 J197 J123 J117 J198 J109 J135 J18 J22 J26 J98 J2 J200 J14 J81 J47 J120 J63 J188 J24 J166 J169 J32 J149 J164 J115 J64 J161 J126 J69 J95 J76 J55 J154 J158 J163 J193 J13 J189 J134 J136 J17 J75 J182 J102 J62 J58 J171 J159 J67 J4 J185 J66 J124 J132 J25 J15 J57 J90 J160 J108 J92 J194 J178 J125 J112 J187 J196 J27 J144 J35 J46 J29 J48 J111 J165 J156 J99 J116 J174 J147 J72 J128 J151 J37 J12 J97 J39 J65 J91 J43 J96 J143 J121 J155 J110 J10 J113 J142 J94 J103 J85 J177 J146 J34 J145 J56 J127 J20 J83 J49 J40 J36 J179 J107 J71 J183 J191 J70 J77 J1 J79 J140 J5 J93 J105 J86 J82 J122 J59 J11 J52 J31 
+
+==================================================
+            STMO DIAGNOSTIC REPORT
+==================================================
+ Best Z value          : 6535.35
+ Total iterations      : 7902 / 50000
+ Time used             : 240.0s / 240.0s
+ Best improved at iter : 7262
+--------------------------------------------------
+ Stage 2 total repairs : 1331070
+ Stage 4 Phase1 hits   : 31
+ Stagnation resets     : 133
+--------------------------------------------------
+ PairMemory entries    : 637
+ TripletMemory entries : 29
+ Elite archive size    : 10 / 10
+--------------------------------------------------
+ DIAGNOSIS:
+   [ok] Convergence pattern looks healthy
+   [ok] Stage 2 active
+   [ok] Stage 4 Phase 1 active
+==================================================
+
+: 1342250
+ Stage 4 Phase1 hits   : 31
+ Stagnation resets     : 134
+--------------------------------------------------
+ PairMemory entries    : 638
+ TripletMemory entries : 29
+ Elite archive size    : 10 / 10
+--------------------------------------------------
+ DIAGNOSIS:
+   [ok] Convergence pattern looks healthy
+   [ok] Stage 2 active
+   [ok] Stage 4 Phase 1 active
+==================================================
+
