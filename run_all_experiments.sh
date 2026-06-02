@@ -167,11 +167,15 @@ for N in "${Ns[@]}"; do
       cp "$PARAM_FILE" ./param.txt
       rm -f ./out.txt  # remove any leftover out.txt from previous runs
 
+      # Disable errexit around STMO run so EXIT_CODE is always captured,
+      # and around grep parsing because grep exits 1 on no-match.
+      set +e
       START=$(date +%s)
       "$EXEC" > "$LOG_DIR/stdout_N${N}_M${M}_S${Seed}.txt" 2>&1
       EXIT_CODE=$?
       END=$(date +%s)
       ELAPSED=$((END - START))
+      set -e
 
       if [ $EXIT_CODE -ne 0 ]; then
           echo "FAILED (exit $EXIT_CODE)"
@@ -182,21 +186,24 @@ for N in "${Ns[@]}"; do
 
       OUT="$LOG_DIR/stdout_N${N}_M${M}_S${Seed}.txt"
 
-      # Parse from STMO.cpp's FINAL RESULT section and diagnostic report
+      # Parse from STMO.cpp's FINAL RESULT section and diagnostic report.
+      # set +e: grep returns 1 on no-match; must not kill the script.
+      set +e
       # "  Best Z = 8650.6221"
       BEST_Z=$(grep -m1 "^  Best Z ="           "$OUT" | awk '{print $4}')
       # "  Total iterations = 1447"
       ITERS=$(  grep -m1 "^  Total iterations =" "$OUT" | awk '{print $4}')
       # "  Time = 120.04 seconds"
       TIME_S=$( grep -m1 "^  Time ="             "$OUT" | awk '{print $3}')
-      # "║ Best improved at iter: 1395"
-      BEST_AT=$(grep -m1 "Best improved at iter" "$OUT" | grep -oP '\d+\s*║' | grep -oP '\d+')
-      # "║ Stage 2 total repairs:  NNN"
+      # " Best improved at iter : 544"  (no box-drawing chars in Run003+)
+      BEST_AT=$(grep -m1 "Best improved at iter" "$OUT" | grep -oP '\d+' | tail -1)
+      # " Stage 2 total repairs : NNN"
       S2REP=$(  grep -m1 "Stage 2 total repairs" "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
-      # "║ Stage 4 Phase1 hits  :  NNN"
+      # " Stage 4 Phase1 hits   : NNN"
       S4HIT=$(  grep -m1 "Stage 4 Phase1 hits"   "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
-      # "║ Stagnation resets    :  NNN"
+      # " Stagnation resets     : NNN"
       STAG=$(   grep -m1 "Stagnation resets"     "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
+      set -e
 
       BEST_Z=${BEST_Z:-"PARSE_ERR"}
       ITERS=${ITERS:-"?"}
