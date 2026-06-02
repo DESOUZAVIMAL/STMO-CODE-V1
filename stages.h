@@ -240,18 +240,7 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
                     }
                     if (pos_jj < 0 || pos_jk < 0) continue;
 
-                    int machJj = t.M_select[pos_jj];
-                    if (machJj == 0) continue;   // jj rejected — cannot anchor
-
-                    // B3: relocate jk to immediately FOLLOW jj on jj's machine.
-                    // This actually FORMS the STRONG (jj,jk) adjacency the
-                    // label promised — old code merely swapped positions.
-                    Turtle candidate = relocateAfter(t, pos_jk, pos_jj);
-                    int newPosJk = -1;
-                    for (int pos = 0; pos < N_Order; pos++)
-                        if (candidate.Order_seq[pos] == jk) { newPosJk = pos; break; }
-                    if (newPosJk >= 0) candidate.M_select[newPosJk] = machJj;
-                    candidate.cacheValid = false;
+                    Turtle candidate = moveOrderSwap(t, pos_jj, pos_jk);
                     decodeAndEval(candidate);
 
                     if (candidate.obj > t.obj) {   // strict
