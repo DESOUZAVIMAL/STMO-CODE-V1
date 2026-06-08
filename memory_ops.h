@@ -72,10 +72,19 @@ void updatePairMemory(PairMemory& pm, const EvalSnapshot& snap) {
         }
     }
 
-    // Ghost cleanup
+    // Ghost cleanup — prune ONLY insignificant pairs, never by score sign.
+    // ghost  = decayed near-zero POSITIVE noise.
+    // stale  = not observed for GHOST_MAX_AGE iters (bounds memory; age resets
+    //          to 0 whenever a pair is re-observed in PASS 2 above).
+    // Negative-score pairs are CRITICAL repair targets and MUST survive to be
+    // labelled by labelAllPairs.
     std::vector<std::pair<int,int>> toRemove;
-    for (const auto& entry : pm)
-        if (entry.second.avgScore < GHOST_THRESHOLD) toRemove.push_back(entry.first);
+    for (const auto& entry : pm) {
+        const PairRecord& r = entry.second;
+        bool positiveGhost = (r.avgScore >= 0.0f && r.avgScore < GHOST_THRESHOLD);
+        bool stale         = (r.age > GHOST_MAX_AGE);
+        if (positiveGhost || stale) toRemove.push_back(entry.first);
+    }
     for (const auto& key : toRemove) pm.erase(key);
 }
 
@@ -227,8 +236,13 @@ StructuralMap buildStructuralMap(const Turtle& t, const PairMemory& pm) {
 // ============================================================
 void updateEliteArchive(EliteArchive& ea, Population pop) {
     std::vector<Turtle> candidates;
-    for (int i = 0; i < ea.count; i++) candidates.push_back(ea.turtles[i]);
-    for (int i = 0; i < P; i++) if (pop[i].cacheValid) candidates.push_back(pop[i]);
+    // Only feasible turtles may enter the archive (the archive head becomes the
+    // reported BestZ). Existing entries are re-validated too — cheap, and keeps
+    // the archive invariant airtight.
+    for (int i = 0; i < ea.count; i++)
+        if (validateTurtle(ea.turtles[i])) candidates.push_back(ea.turtles[i]);
+    for (int i = 0; i < P; i++)
+        if (pop[i].cacheValid && validateTurtle(pop[i])) candidates.push_back(pop[i]);
 
     std::sort(candidates.begin(), candidates.end(),
         [](const Turtle& a, const Turtle& b){ return a.obj > b.obj; });

@@ -70,6 +70,8 @@ extern int   g_eSize;          // replaces E_SIZE in elite archive
 // ------------------------------------------------------------
 #define DF              0.95f
 #define GHOST_THRESHOLD 0.01f
+#define GHOST_MAX_AGE   100     // Run006: iters w/o observation before a pair is pruned (conservative)
+#define PM_WARN_SIZE    5000    // Run006: log-only PairMemory-size warning threshold (no eviction)
 #define STRONG_SIGMA_MULT   0.5f
 #define WEAK_SIGMA_MULT     0.5f
 #define TRIPLET_MIN_COUNT   2

@@ -49,9 +49,13 @@ struct DiagCounters {
 };
 
 void printProgress(int iter, float bestObj, float elapsed,
-                   int pmSize, int s2repairs, int s4phase1) {
-    printf("[Iter %4d | Time %6.1fs] Best Z = %8.2f | PM=%d S2=%d S4p1=%d\n",
-           iter, elapsed, bestObj, pmSize, s2repairs, s4phase1);
+                   int pmSize, int ccrit, int s2repairs, int s4phase1) {
+    // Run006: PM size + Ccrit (LABEL_CRITICAL count) added; [PM_WARN] appended
+    // here (NOT inside updatePairMemory) only when PM exceeds PM_WARN_SIZE.
+    printf("[Iter %4d | Time %6.1fs] Best Z = %8.2f | PM=%d%s Ccrit=%d S2=%d S4p1=%d\n",
+           iter, elapsed, bestObj, pmSize,
+           (pmSize > PM_WARN_SIZE ? " [PM_WARN]" : ""),
+           ccrit, s2repairs, s4phase1);
 }
 
 void printDiagnosticReport(const DiagCounters& diag, const PairMemory& pm,
@@ -202,15 +206,36 @@ int main() {
             diag.stagnationResets++;
         }
 
-        if (iter % PRINT_EVERY == 0)
-            printProgress(iter, bestObj, elapsed, (int)pairMem.size(),
+        if (iter % PRINT_EVERY == 0) {
+            int ccrit = 0;
+            for (const auto& e : pairMem)
+                if (e.second.label == LABEL_CRITICAL) ccrit++;
+            printProgress(iter, bestObj, elapsed, (int)pairMem.size(), ccrit,
                           diag.stage2TotalRepairs, diag.stage4Phase1Success);
+        }
     }
 
     elapsed = (float)(clock() - startClock) / CLOCKS_PER_SEC;
     diag.totalIterations = iter - 1;
-    diag.bestObjFinal    = bestObj;
     diag.timeUsed        = elapsed;
+
+    // ── Final-best feasibility gate (compiled into the official build too) ──
+    // Re-decode the reported best from its encoding and HARD-STOP if it is
+    // infeasible: never emit a BestZ from an invalid solution. Report
+    // best.obj recomputed here — not any stale cached bestObj.
+    Turtle best;
+    bool haveBest = (eliteArchive.count > 0);
+    if (haveBest) {
+        best = eliteArchive.turtles[0];
+        decodeAndEval(best);                 // recompute objective from the encoding
+        if (!validateTurtle(best)) {         // REAL check — runs in the official build too
+            fprintf(stderr, "ERROR: final best failed feasibility validation; aborting run.\n");
+            return 2;                        // never report a BestZ from an infeasible solution
+        }
+        ASSERT_VALID(best);                  // also hard-stops in the debug build
+        bestObj = best.obj;                  // report THIS value, not a stale bestObj
+    }
+    diag.bestObjFinal = bestObj;
 
     printf("\n==================================================\n");
     printf("  FINAL RESULT\n");
@@ -220,8 +245,7 @@ int main() {
     printf("  Time = %.2f seconds\n", elapsed);
     printf("==================================================\n");
 
-    if (eliteArchive.count > 0) {
-        const Turtle& best = eliteArchive.turtles[0];
+    if (haveBest) {
         printf("\nBest Schedule:\n");
         for (int m = 0; m < M_Machine; m++) {
             printf("  Machine %d: ", m+1);

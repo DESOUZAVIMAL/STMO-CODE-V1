@@ -168,11 +168,42 @@ void genData() {
 }
 
 // ============================================================
+// FEASIBILITY GUARD
+// True iff t encodes a valid OAS-SDST solution:
+//   - Order_seq is a permutation of {1..N_Order}
+//   - every M_select in [0, M_Machine]   (0 == rejected)
+// O(N); single-threaded, so the static buffer is safe.
+// ============================================================
+bool validateTurtle(const Turtle& t) {
+    static bool seen[MAX_N + 1];
+    for (int j = 0; j <= N_Order; j++) seen[j] = false;
+    for (int i = 0; i < N_Order; i++) {
+        int job = t.Order_seq[i];
+        if (job < 1 || job > N_Order) return false;   // out of range
+        if (seen[job])                return false;   // duplicate  <-- the Run002 bug class
+        seen[job] = true;
+    }
+    for (int j = 1; j <= N_Order; j++)
+        if (!seen[j]) return false;                   // missing
+    for (int i = 0; i < N_Order; i++)
+        if (t.M_select[i] < 0 || t.M_select[i] > M_Machine) return false;
+    return true;
+}
+
+#ifdef STMO_VALIDATE
+  #define ASSERT_VALID(t) do { if(!validateTurtle(t)){ \
+      fprintf(stderr,"INVALID turtle at %s:%d\n",__FILE__,__LINE__); fflush(stderr); abort(); } } while(0)
+#else
+  #define ASSERT_VALID(t) ((void)0)
+#endif
+
+// ============================================================
 // DECODE AND EVALUATE
 // SE RULE: ONLY function that sets cacheValid = true.
 // Run003 C2-prep: also fills machineObj[] (per-machine contribution).
 // ============================================================
 void decodeAndEval(Turtle& t) {
+    ASSERT_VALID(t);   // debug-only: pinpoint a bad turtle at evaluation time
     for (int m = 0; m < M_Machine; m++) t.machineCount[m] = 0;
 
     for (int pos = 0; pos < N_Order; pos++) {
@@ -343,8 +374,9 @@ Turtle moveCombo(const Turtle& t) {
 // currently at position `afterPos`, carrying all per-position data
 // (job id, machine, keys). Returns a copy with cacheValid=false.
 //
-// This is used by Stage 4 (B3) and Stage 5 (B2) to actually FORM a
-// target adjacency — unlike moveOrderSwap which only exchanges spots.
+// This is used by Stage 5 (B2) to actually FORM a target adjacency —
+// unlike moveOrderSwap which only exchanges spots. (Stage 4 was reverted
+// to moveOrderSwap in Run005; it no longer uses relocateAfter.)
 // Both index branches verified by hand for correctness.
 // ============================================================
 Turtle relocateAfter(const Turtle& t, int from, int afterPos) {

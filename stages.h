@@ -5,7 +5,7 @@
 //   A3  Stage 1 uses g_nc          (was NC)
 //   A4  Stage 2 uses g_machineBudget (was MACHINE_BUDGET)
 //   B2  Stage 5 uses TripletMemory  (triplet transfer — was unused)
-//   B3  Stage 4 forms (jj,jk) adjacency via relocateAfter (was swap)
+//   B3  Stage 4 breaks the weak (ji,jj) pair via moveOrderSwap (Run005 revert)
 //   B4  Stage 4 resets stage4_phase1 before the hasTarget check
 //
 // Acceptance criteria:
@@ -78,7 +78,8 @@ void stage1_OceanCurrentDrift(Population pop) {
             decodeAndEval(candidate);
             if (candidate.obj > best.obj) best = candidate;
         }
-        if (best.obj >= t.obj) pop[p] = best;
+        if (best.obj >= t.obj && validateTurtle(best)) pop[p] = best;   // guard accept
+        ASSERT_VALID(t);
     }
 }
 
@@ -153,7 +154,7 @@ void stage2_MemoryAwareDrift(Population pop, const PairMemory& pm, const M0Pool&
                         } else continue;
                     }
 
-                    if (newObj >= t.obj) {
+                    if (newObj >= t.obj && validateTurtle(candidate)) {
                         t = candidate;
                         t.stage2_repairs++;
                         repaired = true;
@@ -161,6 +162,7 @@ void stage2_MemoryAwareDrift(Population pop, const PairMemory& pm, const M0Pool&
                 }
             }
         }
+        ASSERT_VALID(t);
     }
 }
 
@@ -175,12 +177,13 @@ void stage3_ACMM(Population pop, PairMemory& pm, TripletMemory& tm,
     for (int p = 0; p < P; p++) {
         if (pop[p].cacheValid) structMaps[p] = buildStructuralMap(pop[p], pm);
         else structMaps[p] = StructuralMap();
+        ASSERT_VALID(pop[p]);   // ACMM is memory-only; turtles must be untouched
     }
 }
 
 // ============================================================
 // STAGE 4 — MFBO (Phase 1)
-// B3: form (jj,jk) adjacency via relocateAfter (not swap).
+// B3: break the weak (ji,jj) pair via moveOrderSwap (Run005 revert; not relocate).
 // B4: reset stage4_phase1 BEFORE the hasTarget check.
 // ============================================================
 void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemory& pm) {
@@ -243,7 +246,7 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
                     Turtle candidate = moveOrderSwap(t, pos_jj, pos_jk);
                     decodeAndEval(candidate);
 
-                    if (candidate.obj > t.obj) {   // strict
+                    if (candidate.obj > t.obj && validateTurtle(candidate)) {   // strict
                         t = candidate;
                         t.stage4_phase1++;
                         return true;
@@ -257,6 +260,7 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
             if (improved) anyImproved = true;
         }
         // Phase 2 VNS — DEFERRED (professor approval).
+        ASSERT_VALID(t);
     }
 }
 
@@ -336,7 +340,7 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
             candidate.cacheValid = false;
             decodeAndEval(candidate);
 
-            if (candidate.obj > t.obj) { t = candidate; improved = true; }
+            if (candidate.obj > t.obj && validateTurtle(candidate)) { t = candidate; improved = true; }
         }
 
         // ── Operation 1: Elite pair transfer (STRONG pairs) ──────
@@ -373,7 +377,7 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
                     candidate.cacheValid = false;
                     decodeAndEval(candidate);
 
-                    if (candidate.obj > t.obj) { t = candidate; improved = true; }
+                    if (candidate.obj > t.obj && validateTurtle(candidate)) { t = candidate; improved = true; }
                 }
             }
         }
@@ -388,9 +392,10 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
             for (int mach = 1; mach <= M_Machine && !improved; mach++) {
                 Turtle candidate = moveMachineRevise(t, rejPos, mach);
                 decodeAndEval(candidate);
-                if (candidate.obj > t.obj) { t = candidate; improved = true; }
+                if (candidate.obj > t.obj && validateTurtle(candidate)) { t = candidate; improved = true; }
             }
         }
+        ASSERT_VALID(t);
     }
 }
 
