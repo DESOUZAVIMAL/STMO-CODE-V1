@@ -201,8 +201,11 @@ for N in "${Ns[@]}"; do
       S2REP=$(  grep -m1 "Stage 2 total repairs" "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
       # " Stage 4 Phase1 hits   : NNN"
       S4HIT=$(  grep -m1 "Stage 4 Phase1 hits"   "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
-      # " Stagnation resets     : NNN"
-      STAG=$(   grep -m1 "Stagnation resets"     "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
+      # " Convergence restarts  : NNN" (Run7+) or legacy " Stagnation resets     : NNN"
+      STAG=$(   grep -m1 "Convergence restarts"  "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
+      if [ -z "$STAG" ]; then
+          STAG=$(grep -m1 "Stagnation resets" "$OUT" | grep -oP ':\s*\d+' | grep -oP '\d+')
+      fi
       set -e
 
       BEST_Z=${BEST_Z:-"PARSE_ERR"}

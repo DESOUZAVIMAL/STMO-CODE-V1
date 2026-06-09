@@ -62,11 +62,11 @@ struct DiagCounters {
 
 void printProgress(int iter, float bestObj, float elapsed,
                    int pmSize, int s2repairs, int s4phase1) {
-    printf("[Iter %4d | Time %6.1fs] Best Z = %8.2f | PM=%d%s Ccrit=%d Cweak=%d restarts=%d"
+    printf("[Iter %4d | Time %6.1fs] Best Z = %8.2f | PM=%d%s Ccrit=%d Cweak=%d restarts=%d S2=%d S4p1=%d"
            " | S1acc=%ld S1g=%ld S2acc=%ld S2s=%ld S2g=%ld S4acc=%ld S4g=%ld S5acc=%ld S5g=%ld\n",
            iter, elapsed, bestObj, pmSize,
            (pmSize > PM_WARN_SIZE ? " [PM_WARN]" : ""),
-           g_ccrit, g_cweak, g_restartCount,
+           g_ccrit, g_cweak, g_restartCount, s2repairs, s4phase1,
            g_s1_acc, g_s1_gbest, g_s2_acc, g_s2_strict, g_s2_gbest,
            g_s4_acc, g_s4_gbest, g_s5_acc, g_s5_gbest);
 }
