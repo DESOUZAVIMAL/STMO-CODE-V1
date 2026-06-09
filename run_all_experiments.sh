@@ -55,9 +55,15 @@ if ! command -v g++ &>/dev/null; then
 fi
 if command -v "$GXX" &>/dev/null || [ -f "$GXX" ]; then
     # --stack flag sets 8 MB stack on Windows (needed: Population+EliteArchive ~2.4 MB)
-    "$GXX" -O2 -std=c++11 -static -static-libgcc -static-libstdc++ \
-           -Wl,--stack,8388608 -o STMO.exe STMO.cpp -lm
-    echo "Compile OK."
+    if "$GXX" -O2 -std=c++11 -static -static-libgcc -static-libstdc++ \
+           -Wl,--stack,8388608 -o STMO.exe STMO.cpp -lm; then
+        echo "Compile OK."
+    elif [ -f "./STMO.exe" ]; then
+        echo "WARNING: compile failed in bash; using existing STMO.exe."
+    else
+        echo "ERROR: compile failed and no STMO.exe present. Cannot run."
+        exit 1
+    fi
 elif [ -f "./STMO.exe" ]; then
     echo "g++ not found — using existing STMO.exe."
 else
