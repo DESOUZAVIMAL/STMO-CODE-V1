@@ -78,7 +78,11 @@ void stage1_OceanCurrentDrift(Population pop) {
             decodeAndEval(candidate);
             if (candidate.obj > best.obj) best = candidate;
         }
-        if (best.obj >= t.obj && validateTurtle(best)) pop[p] = best;   // guard accept
+        if (best.obj >= t.obj && validateTurtle(best)) {
+            pop[p] = best;
+            g_s1_acc++;
+            if (pop[p].obj > g_globalBest) g_s1_gbest++;
+        }
         ASSERT_VALID(t);
     }
 }
@@ -155,9 +159,13 @@ void stage2_MemoryAwareDrift(Population pop, const PairMemory& pm, const M0Pool&
                     }
 
                     if (newObj >= t.obj && validateTurtle(candidate)) {
+                        float preObj = t.obj;
                         t = candidate;
                         t.stage2_repairs++;
                         repaired = true;
+                        g_s2_acc++;
+                        if (t.obj > preObj) g_s2_strict++;
+                        if (t.obj > g_globalBest) g_s2_gbest++;
                     }
                 }
             }
@@ -173,7 +181,9 @@ void stage3_ACMM(Population pop, PairMemory& pm, TripletMemory& tm,
                  const EvalSnapshot& snap, StructuralMap* structMaps) {
     updatePairMemory(pm, snap);
     labelAllPairs(pm);
+#if ENABLE_TRIPLETS
     runODTP(pm, tm, pop);
+#endif
     for (int p = 0; p < P; p++) {
         if (pop[p].cacheValid) structMaps[p] = buildStructuralMap(pop[p], pm);
         else structMaps[p] = StructuralMap();
@@ -249,6 +259,8 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
                     if (candidate.obj > t.obj && validateTurtle(candidate)) {   // strict
                         t = candidate;
                         t.stage4_phase1++;
+                        g_s4_acc++;
+                        if (t.obj > g_globalBest) g_s4_gbest++;
                         return true;
                     }
                 }
@@ -282,6 +294,7 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
         bool improved = false;
 
         // ── Operation 0 (B2): Triplet transfer from TripletMemory ──
+#if ENABLE_TRIPLETS
         for (int tIdx = 0; tIdx < (int)tm.size() && !improved; tIdx++) {
             const TripletRecord& tr = tm[tIdx];
             if (tr.score <= 0.0f) continue;
@@ -340,8 +353,14 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
             candidate.cacheValid = false;
             decodeAndEval(candidate);
 
-            if (candidate.obj > t.obj && validateTurtle(candidate)) { t = candidate; improved = true; }
+            if (candidate.obj > t.obj && validateTurtle(candidate)) {
+                t = candidate;
+                improved = true;
+                g_s5_acc++;
+                if (t.obj > g_globalBest) g_s5_gbest++;
+            }
         }
+#endif // ENABLE_TRIPLETS
 
         // ── Operation 1: Elite pair transfer (STRONG pairs) ──────
         for (int e = 0; e < ea.count && !improved; e++) {
@@ -377,7 +396,12 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
                     candidate.cacheValid = false;
                     decodeAndEval(candidate);
 
-                    if (candidate.obj > t.obj && validateTurtle(candidate)) { t = candidate; improved = true; }
+                    if (candidate.obj > t.obj && validateTurtle(candidate)) {
+                        t = candidate;
+                        improved = true;
+                        g_s5_acc++;
+                        if (t.obj > g_globalBest) g_s5_gbest++;
+                    }
                 }
             }
         }
@@ -392,7 +416,12 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
             for (int mach = 1; mach <= M_Machine && !improved; mach++) {
                 Turtle candidate = moveMachineRevise(t, rejPos, mach);
                 decodeAndEval(candidate);
-                if (candidate.obj > t.obj && validateTurtle(candidate)) { t = candidate; improved = true; }
+                if (candidate.obj > t.obj && validateTurtle(candidate)) {
+                    t = candidate;
+                    improved = true;
+                    g_s5_acc++;
+                    if (t.obj > g_globalBest) g_s5_gbest++;
+                }
             }
         }
         ASSERT_VALID(t);

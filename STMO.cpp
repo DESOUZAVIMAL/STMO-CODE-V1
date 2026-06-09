@@ -33,6 +33,18 @@ int   g_machineBudget = MACHINE_BUDGET_BASE; // 3 default
 int   g_eSize         = E_SIZE_BASE;         // 5 default
 
 // ============================================================
+// Run 7: Productivity counters + global-best tracker
+// ============================================================
+long  g_s1_acc=0,  g_s1_gbest=0;
+long  g_s2_acc=0,  g_s2_strict=0,  g_s2_gbest=0;
+long  g_s4_acc=0,  g_s4_gbest=0;
+long  g_s5_acc=0,  g_s5_gbest=0;
+int   g_restartCount=0;
+int   g_ccrit=0;
+int   g_cweak=0;
+float g_globalBest=0.0f;
+
+// ============================================================
 // DIAGNOSTIC COUNTERS
 // ============================================================
 struct DiagCounters {
@@ -49,13 +61,14 @@ struct DiagCounters {
 };
 
 void printProgress(int iter, float bestObj, float elapsed,
-                   int pmSize, int ccrit, int s2repairs, int s4phase1) {
-    // Run006: PM size + Ccrit (LABEL_CRITICAL count) added; [PM_WARN] appended
-    // here (NOT inside updatePairMemory) only when PM exceeds PM_WARN_SIZE.
-    printf("[Iter %4d | Time %6.1fs] Best Z = %8.2f | PM=%d%s Ccrit=%d S2=%d S4p1=%d\n",
+                   int pmSize, int s2repairs, int s4phase1) {
+    printf("[Iter %4d | Time %6.1fs] Best Z = %8.2f | PM=%d%s Ccrit=%d Cweak=%d restarts=%d"
+           " | S1acc=%ld S1g=%ld S2acc=%ld S2s=%ld S2g=%ld S4acc=%ld S4g=%ld S5acc=%ld S5g=%ld\n",
            iter, elapsed, bestObj, pmSize,
            (pmSize > PM_WARN_SIZE ? " [PM_WARN]" : ""),
-           ccrit, s2repairs, s4phase1);
+           g_ccrit, g_cweak, g_restartCount,
+           g_s1_acc, g_s1_gbest, g_s2_acc, g_s2_strict, g_s2_gbest,
+           g_s4_acc, g_s4_gbest, g_s5_acc, g_s5_gbest);
 }
 
 void printDiagnosticReport(const DiagCounters& diag, const PairMemory& pm,
@@ -71,7 +84,7 @@ void printDiagnosticReport(const DiagCounters& diag, const PairMemory& pm,
     printf("--------------------------------------------------\n");
     printf(" Stage 2 total repairs : %d\n", diag.stage2TotalRepairs);
     printf(" Stage 4 Phase1 hits   : %d\n", diag.stage4Phase1Success);
-    printf(" Stagnation resets     : %d\n", diag.stagnationResets);
+    printf(" Convergence restarts  : %d\n", g_restartCount);
     printf("--------------------------------------------------\n");
     printf(" PairMemory entries    : %d\n", (int)pm.size());
     printf(" TripletMemory entries : %d\n", (int)tm.size());
@@ -89,6 +102,13 @@ void printDiagnosticReport(const DiagCounters& diag, const PairMemory& pm,
     if (diag.stage4Phase1Success == 0) printf("   [!] Stage 4 Phase 1 never succeeded\n");
     else                               printf("   [ok] Stage 4 Phase 1 active\n");
     if ((int)pm.size() < 5) printf("   [!] PairMemory very small (< 5 entries)\n");
+    printf("--------------------------------------------------\n");
+    printf(" [STAGE PRODUCTIVITY]\n");
+    printf(" S1: accepted=%-8ld  globalBest=%ld\n",                 g_s1_acc, g_s1_gbest);
+    printf(" S2: accepted=%-8ld  strict=%-8ld  globalBest=%ld\n",  g_s2_acc, g_s2_strict, g_s2_gbest);
+    printf(" S4: accepted=%-8ld  globalBest=%ld\n",                 g_s4_acc, g_s4_gbest);
+    printf(" S5: accepted=%-8ld  globalBest=%ld\n",                 g_s5_acc, g_s5_gbest);
+    printf(" Restarts: %d\n", g_restartCount);
     printf("==================================================\n\n");
 }
 
@@ -157,6 +177,7 @@ int main() {
     labelAllPairs(pairMem);
 
     float bestObj = eliteArchive.count > 0 ? eliteArchive.turtles[0].obj : 0.0f;
+    g_globalBest = bestObj;
     printf("[BatchEval 1] Initial best Z = %.2f | PM entries = %d\n\n",
            bestObj, (int)pairMem.size());
 
@@ -187,11 +208,15 @@ int main() {
         EvalSnapshot snap3 = batchEvaluate(pop, eliteArchive, m0Pool, iter, true, true);
 
         float currentBest = eliteArchive.count > 0 ? eliteArchive.turtles[0].obj : 0.0f;
-        if (currentBest > bestObj) {
+        bool bestImproved = (currentBest > bestObj);
+        if (bestImproved) {
             bestObj = currentBest;
+            g_globalBest = bestObj;
             diag.iterBestImproved = iter;
             stagnationCounter = 0;
-        } else stagnationCounter++;
+        } else {
+            stagnationCounter++;
+        }
 
         for (int p = 0; p < P; p++) {
             diag.stage2TotalRepairs  += pop[p].stage2_repairs;
@@ -200,17 +225,20 @@ int main() {
             pop[p].stage4_phase1  = 0;
         }
 
-        if (stagnationCounter >= g_kStag) {
-            stagnationReset(pairMem);
+        // Run 7: convergence-triggered restart (replaces stagnationReset)
+        if (!bestImproved
+                && stagnationCounter >= RESTART_STAG
+                && g_ccrit == 0
+                && elapsed < 0.80f * (float)g_endTime) {
+            convergenceRestart(pop, P, pairMem);
             stagnationCounter = 0;
-            diag.stagnationResets++;
+            g_restartCount++;
+            printf("[Restart] iter=%d restart=#%d perturbed %d/%d turtles\n",
+                   iter, g_restartCount, P/2, P);
         }
 
         if (iter % PRINT_EVERY == 0) {
-            int ccrit = 0;
-            for (const auto& e : pairMem)
-                if (e.second.label == LABEL_CRITICAL) ccrit++;
-            printProgress(iter, bestObj, elapsed, (int)pairMem.size(), ccrit,
+            printProgress(iter, bestObj, elapsed, (int)pairMem.size(),
                           diag.stage2TotalRepairs, diag.stage4Phase1Success);
         }
     }

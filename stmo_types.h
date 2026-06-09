@@ -7,6 +7,7 @@
 
 #include "config.h"
 #include <map>
+#include <unordered_map>
 #include <vector>
 #include <utility>
 
@@ -45,7 +46,14 @@ struct PairRecord {
     PairRecord() : avgScore(0.0f), count(0), age(0), label(' ') {}
 };
 
-typedef std::map<std::pair<int,int>, PairRecord> PairMemory;
+struct PairHash {
+    std::size_t operator()(const std::pair<int,int>& p) const noexcept {
+        // Perfect hash for job-ID pairs: IDs are 1..N where N <= 200 < 256.
+        return static_cast<std::size_t>(p.first) * 256u + static_cast<std::size_t>(p.second);
+    }
+};
+
+typedef std::unordered_map<std::pair<int,int>, PairRecord, PairHash> PairMemory;
 
 struct TripletRecord {
     int   ja, jb, jc;

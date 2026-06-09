@@ -112,6 +112,7 @@ void labelAllPairs(PairMemory& pm) {
     float weakThresh   = mu - WEAK_SIGMA_MULT   * sigma;
     if (weakThresh < 0.0f) weakThresh = 0.0f;
 
+    int critCount = 0, weakCount = 0;
     for (auto& entry : pm) {
         PairRecord& rec = entry.second;
         if (rec.count < g_minCount) { rec.label = LABEL_NONE; continue; }
@@ -119,7 +120,11 @@ void labelAllPairs(PairMemory& pm) {
         else if (rec.avgScore < weakThresh)   rec.label = LABEL_WEAK;
         else if (rec.avgScore >= strongThresh)rec.label = LABEL_STRONG;
         else                                  rec.label = LABEL_NEUTRAL;
+        if (rec.label == LABEL_CRITICAL) critCount++;
+        else if (rec.label == LABEL_WEAK) weakCount++;
     }
+    g_ccrit = critCount;
+    g_cweak = weakCount;
 }
 
 // ============================================================
@@ -303,6 +308,27 @@ void stagnationReset(PairMemory& pm) {
 
     printf("[StagnationReset] Removed %d/%d WEAK records from PairMemory\n",
            removeCount, (int)weakEntries.size());
+}
+
+// ============================================================
+// CONVERGENCE-TRIGGERED RESTART (Run 7)
+// Re-randomises the worst ~50% of the population and clears PairMemory.
+// The global best in the elite archive is never touched here.
+// initializeTurtleRandom already calls decodeAndEval internally.
+// ============================================================
+void convergenceRestart(Turtle pop[], int popSz, PairMemory& pm) {
+    std::vector<double> objs;
+    objs.reserve(popSz);
+    for (int i = 0; i < popSz; ++i)
+        objs.push_back(pop[i].obj);
+    std::sort(objs.begin(), objs.end());
+    double median = objs[popSz / 2];
+
+    for (int i = 0; i < popSz; ++i) {
+        if (pop[i].obj <= median)
+            initializeTurtleRandom(pop[i]);
+    }
+    pm.clear();
 }
 
 #endif // MEMORY_OPS_H

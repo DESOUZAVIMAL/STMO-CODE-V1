@@ -50,6 +50,16 @@ extern int   g_nc;             // replaces NC in Stage 1
 extern int   g_machineBudget;  // replaces MACHINE_BUDGET in Stage 2
 extern int   g_eSize;          // replaces E_SIZE in elite archive
 
+// Run 7 global counters and state (defined in STMO.cpp)
+extern long  g_s1_acc,  g_s1_gbest;
+extern long  g_s2_acc,  g_s2_strict,  g_s2_gbest;
+extern long  g_s4_acc,  g_s4_gbest;
+extern long  g_s5_acc,  g_s5_gbest;
+extern int   g_restartCount;
+extern int   g_ccrit;
+extern int   g_cweak;
+extern float g_globalBest;
+
 // ------------------------------------------------------------
 // STAGE 1 — OceanCurrentDrift
 // ------------------------------------------------------------
@@ -85,6 +95,12 @@ extern int   g_eSize;          // replaces E_SIZE in elite archive
 // STAGNATION HANDLING
 // ------------------------------------------------------------
 #define STAG_RESET_FRACTION 0.25f
+
+// ------------------------------------------------------------
+// RUN 7 — Convergence-triggered restart + speed changes
+// ------------------------------------------------------------
+#define ENABLE_TRIPLETS 0   // set to 1 to re-enable triplet subsystem for ablation
+#define RESTART_STAG    2000   // restart after this many no-improvement iters
 
 // ------------------------------------------------------------
 // OUTPUT
