@@ -108,4 +108,48 @@ extern float g_globalBest;
 #define PRINT_EVERY     10
 #define PRINT_DIAG      1
 
+// ============================================================
+// RUN 009 — DIAGNOSTIC / DATA-GATHERING RUN
+// ------------------------------------------------------------
+// Master switch for ALL diagnostic logging. With DIAG_MODE 0 the
+// binary is the unchanged Run 7/8 algorithm (all diag code drops out).
+// The two stopping values below are the ONLY algorithm-run-config
+// changes for Run 009 (spec §1). Iteration cap is the PRIMARY stop;
+// the 600 s wall-clock is a safety ceiling. Applied to ALL N so every
+// repeat is compared at equal iterations (removes the "Run 8 paradox").
+// ============================================================
+#ifndef DIAG_MODE
+#define DIAG_MODE          1        // 0 = pristine Run 7/8 algorithm, 1 = full instrumentation
+#endif
+#ifndef MAX_ITERATIONS
+#define MAX_ITERATIONS     30000    // Run009 primary stop (replaces g_maxIter in DIAG run config)
+#endif
+#define DIAG_END_TIME      600.0f   // Run009 safety ceiling (replaces g_endTime), all N
+#define DIAG_REPRO_RUNS    3        // repeats per instance for the reproducibility probe (§1b)
+
+// Diagnostic logging intervals (§4)
+#define DIAG_TRAJ_EVERY    10       // trajectory.csv
+#define DIAG_WINDOW_EVERY  50       // diversity / basin / m0 / stage_window
+#define DIAG_PM_EVERY      100      // pairmemory.csv + objective recompute (integrity)
+
+// ------------------------------------------------------------
+// Passive per-stage accumulators fed by hooks inside the stages.
+// Defined in STMO.cpp. The macros below expand at the stage accept /
+// propose sites; they ONLY increment diagnostic counters — they never
+// touch the RNG, a turtle, or any acceptance decision. With DIAG_MODE 0
+// they expand to nothing, so stages.h is unchanged in the official build.
+// Index by stage number {1,2,4,5}; slots 0 and 3 are unused.
+// ------------------------------------------------------------
+#if DIAG_MODE
+extern double g_diag_acc_dz[6];     // sum of accepted ΔZ per stage (current window)
+extern long   g_diag_acc_n[6];      // accepted count per stage (current window)
+extern long   g_diag_prop_n[6];     // proposed-move count per stage (current window)
+extern long   g_diag_ch_prop[6];    // proposed-move count per stage (run total, code-health)
+  #define DIAG_PROPOSE(s)     do { int _s=(s); if(_s>=0&&_s<=5){ g_diag_prop_n[_s]++; g_diag_ch_prop[_s]++; } } while(0)
+  #define DIAG_ACCEPT(s,dz)   do { int _s=(s); if(_s>=0&&_s<=5){ g_diag_acc_dz[_s]+=(double)(dz); g_diag_acc_n[_s]++; } } while(0)
+#else
+  #define DIAG_PROPOSE(s)     ((void)0)
+  #define DIAG_ACCEPT(s,dz)   ((void)0)
+#endif
+
 #endif // CONFIG_H

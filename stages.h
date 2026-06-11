@@ -76,9 +76,11 @@ void stage1_OceanCurrentDrift(Population pop) {
         for (int c = 0; c < g_nc; c++) {           // A3: adaptive candidates
             Turtle candidate = generateRandomMove(t);
             decodeAndEval(candidate);
+            DIAG_PROPOSE(1);
             if (candidate.obj > best.obj) best = candidate;
         }
         if (best.obj >= t.obj && validateTurtle(best)) {
+            DIAG_ACCEPT(1, best.obj - t.obj);
             pop[p] = best;
             g_s1_acc++;
             if (pop[p].obj > g_globalBest) g_s1_gbest++;
@@ -158,12 +160,14 @@ void stage2_MemoryAwareDrift(Population pop, const PairMemory& pm, const M0Pool&
                         } else continue;
                     }
 
+                    DIAG_PROPOSE(2);
                     if (newObj >= t.obj && validateTurtle(candidate)) {
                         float preObj = t.obj;
                         t = candidate;
                         t.stage2_repairs++;
                         repaired = true;
                         g_s2_acc++;
+                        DIAG_ACCEPT(2, t.obj - preObj);
                         if (t.obj > preObj) g_s2_strict++;
                         if (t.obj > g_globalBest) g_s2_gbest++;
                     }
@@ -255,8 +259,10 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
 
                     Turtle candidate = moveOrderSwap(t, pos_jj, pos_jk);
                     decodeAndEval(candidate);
+                    DIAG_PROPOSE(4);
 
                     if (candidate.obj > t.obj && validateTurtle(candidate)) {   // strict
+                        DIAG_ACCEPT(4, candidate.obj - t.obj);
                         t = candidate;
                         t.stage4_phase1++;
                         g_s4_acc++;
@@ -395,8 +401,10 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
                         if (candidate.Order_seq[pos] == e_jj) { candidate.M_select[pos] = machJi; break; }
                     candidate.cacheValid = false;
                     decodeAndEval(candidate);
+                    DIAG_PROPOSE(5);
 
                     if (candidate.obj > t.obj && validateTurtle(candidate)) {
+                        DIAG_ACCEPT(5, candidate.obj - t.obj);
                         t = candidate;
                         improved = true;
                         g_s5_acc++;
@@ -416,7 +424,9 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
             for (int mach = 1; mach <= M_Machine && !improved; mach++) {
                 Turtle candidate = moveMachineRevise(t, rejPos, mach);
                 decodeAndEval(candidate);
+                DIAG_PROPOSE(5);
                 if (candidate.obj > t.obj && validateTurtle(candidate)) {
+                    DIAG_ACCEPT(5, candidate.obj - t.obj);
                     t = candidate;
                     improved = true;
                     g_s5_acc++;

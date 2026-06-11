@@ -15,6 +15,7 @@
 #include "problem.h"
 #include "memory_ops.h"
 #include "stages.h"
+#include "diag.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -43,6 +44,14 @@ int   g_restartCount=0;
 int   g_ccrit=0;
 int   g_cweak=0;
 float g_globalBest=0.0f;
+
+// Run009 passive diagnostic accumulators (fed by DIAG_PROPOSE/DIAG_ACCEPT).
+#if DIAG_MODE
+double g_diag_acc_dz[6]   = {0,0,0,0,0,0};
+long   g_diag_acc_n[6]    = {0,0,0,0,0,0};
+long   g_diag_prop_n[6]   = {0,0,0,0,0,0};
+long   g_diag_ch_prop[6]  = {0,0,0,0,0,0};
+#endif
 
 // ============================================================
 // DIAGNOSTIC COUNTERS
@@ -115,9 +124,17 @@ void printDiagnosticReport(const DiagCounters& diag, const PairMemory& pm,
 // ============================================================
 // MAIN
 // ============================================================
-int main() {
+int main(int argc, char** argv) {
     setvbuf(stdout, NULL, _IONBF, 0);
-    srand((unsigned int)time(NULL));
+    srand((unsigned int)time(NULL));   // NOTE: overwritten by srand(Seed) in genData() — kept unchanged
+
+    // Run009 repeat index (1-based) for the reproducibility probe. From argv[1]
+    // if given, else the DIAG_REPEAT env var, else 1. Purely a logging tag — it
+    // does NOT touch the RNG or any algorithm state.
+    int g_diagRepeat = 1;
+    if (argc > 1) g_diagRepeat = atoi(argv[1]);
+    else { const char* e = getenv("DIAG_REPEAT"); if (e) g_diagRepeat = atoi(e); }
+    (void)g_diagRepeat;
 
     printf("==================================================\n");
     printf("  Sea Turtle Migration Optimization (STMO)\n");
@@ -160,6 +177,15 @@ int main() {
     printf("[Config]   P=%d DF=%.2f\n\n", P, DF);
     // ─────────────────────────────────────────────────────────────
 
+    // ── Run009 run config (applies in BOTH DIAG modes so the §7 gate
+    // compares like-for-like): iteration cap is the primary stop, 600 s
+    // is the safety ceiling, uniform across all N. Algorithm logic, RNG,
+    // and operators are untouched — only the stopping bounds change. ──
+    g_maxIter = MAX_ITERATIONS;     // 30000
+    g_endTime = DIAG_END_TIME;      // 600.0
+    printf("[Run009]   MaxIter=%d EndTime=%.0fs DIAG_MODE=%d\n\n",
+           g_maxIter, g_endTime, DIAG_MODE);
+
     PairMemory    pairMem;
     TripletMemory tripletMem;
     EliteArchive  eliteArchive;
@@ -180,6 +206,14 @@ int main() {
     g_globalBest = bestObj;
     printf("[BatchEval 1] Initial best Z = %.2f | PM entries = %d\n\n",
            bestObj, (int)pairMem.size());
+
+#if DIAG_MODE
+    diag::begin(N_Order, M_Machine, Seed, g_diagRepeat);
+    Turtle diagPrevBest;                       // previous global-best, for best_events deltas
+    if (eliteArchive.count > 0) diagPrevBest = eliteArchive.turtles[0];
+    // iter-0 checkpoint: dump the initial population + first scalar rows.
+    diag::iterEnd(0, 0.0f, pop, eliteArchive, pairMem, m0Pool, bestObj);
+#endif
 
     DiagCounters diag;
     int   stagnationCounter = 0;
@@ -210,10 +244,18 @@ int main() {
         float currentBest = eliteArchive.count > 0 ? eliteArchive.turtles[0].obj : 0.0f;
         bool bestImproved = (currentBest > bestObj);
         if (bestImproved) {
+#if DIAG_MODE
+            if (eliteArchive.count > 0)
+                diag::bestEvent(iter, eliteArchive.turtles[0], diagPrevBest,
+                                bestObj, currentBest, pairMem);
+#endif
             bestObj = currentBest;
             g_globalBest = bestObj;
             diag.iterBestImproved = iter;
             stagnationCounter = 0;
+#if DIAG_MODE
+            if (eliteArchive.count > 0) diagPrevBest = eliteArchive.turtles[0];
+#endif
         } else {
             stagnationCounter++;
         }
@@ -241,6 +283,11 @@ int main() {
             printProgress(iter, bestObj, elapsed, (int)pairMem.size(),
                           diag.stage2TotalRepairs, diag.stage4Phase1Success);
         }
+
+#if DIAG_MODE
+        // Passive end-of-iteration logging. Reads existing state only.
+        diag::iterEnd(iter, elapsed, pop, eliteArchive, pairMem, m0Pool, bestObj);
+#endif
     }
 
     elapsed = (float)(clock() - startClock) / CLOCKS_PER_SEC;
@@ -264,6 +311,12 @@ int main() {
         bestObj = best.obj;                  // report THIS value, not a stale bestObj
     }
     diag.bestObjFinal = bestObj;
+
+#if DIAG_MODE
+    // Final population dump + runtime/summary/code-health + reproducibility row.
+    diag::end(diag.totalIterations, elapsed, pop, eliteArchive,
+              pairMem, tripletMem, m0Pool, bestObj);
+#endif
 
     printf("\n==================================================\n");
     printf("  FINAL RESULT\n");
