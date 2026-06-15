@@ -113,19 +113,30 @@ extern float g_globalBest;
 // ------------------------------------------------------------
 // Master switch for ALL diagnostic logging. With DIAG_MODE 0 the
 // binary is the unchanged Run 7/8 algorithm (all diag code drops out).
-// The two stopping values below are the ONLY algorithm-run-config
-// changes for Run 009 (spec §1). Iteration cap is the PRIMARY stop;
-// the 600 s wall-clock is a safety ceiling. Applied to ALL N so every
-// repeat is compared at equal iterations (removes the "Run 8 paradox").
+//
+// STOP CONFIG (per-N, applied in STMO.cpp). A diagnostic run does not
+// need equal iterations across N — the point is to SEE how far each size
+// gets in a fixed budget. So large N is mainly time-bound (that IS the
+// bottleneck evidence) and small N gets a high iteration ceiling:
+//     N <= 50  : 120 s wall ceiling, 50000-iter cap
+//     N >= 100 : 300 s wall ceiling, 20000-iter cap
+//
+// REPRODUCIBILITY: time-bound stopping makes 3 repeats stop at slightly
+// different iterations (machine jitter) -> the determinism check would
+// false-flag. So the reproducibility probe sets env DIAG_FORCE_ITERS=<n>,
+// which makes that run PURELY iteration-bound (clock disabled) so all
+// repeats stop at the IDENTICAL iteration. DIAG_FORCE_ITERS is also how
+// the verification gate and the sanitizer get a short, bounded run.
 // ============================================================
 #ifndef DIAG_MODE
 #define DIAG_MODE          1        // 0 = pristine Run 7/8 algorithm, 1 = full instrumentation
 #endif
-#ifndef MAX_ITERATIONS
-#define MAX_ITERATIONS     30000    // Run009 primary stop (replaces g_maxIter in DIAG run config)
-#endif
-#define DIAG_END_TIME      600.0f   // Run009 safety ceiling (replaces g_endTime), all N
+#define DIAG_ENDTIME_SMALL 120.0f   // N <= 50  : wall-clock safety ceiling
+#define DIAG_MAXITER_SMALL 50000    // N <= 50  : iteration cap
+#define DIAG_ENDTIME_LARGE 300.0f   // N >= 100 : wall-clock ceiling (real stop for N >= 150)
+#define DIAG_MAXITER_LARGE 20000    // N >= 100 : iteration cap (real stop for N = 100)
 #define DIAG_REPRO_RUNS    3        // repeats per instance for the reproducibility probe (§1b)
+#define DIAG_REPRO_ITERS   5000     // iteration-bound cap used by the reproducibility probe
 
 // Diagnostic logging intervals (§4)
 #define DIAG_TRAJ_EVERY    10       // trajectory.csv

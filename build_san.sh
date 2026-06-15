@@ -39,7 +39,7 @@ fi
 
 echo "Building sanitizer binary (ASan + UBSan) ..."
 if ! "$GXX" -O1 -g -std=c++11 \
-        -DDIAG_MODE=1 -DMAX_ITERATIONS=$SAN_ITERS \
+        -DDIAG_MODE=1 \
         -fsanitize=address,undefined -fno-omit-frame-pointer \
         -o STMO_san STMO.cpp -lm; then
     echo "ERROR: sanitizer build failed."
@@ -73,8 +73,11 @@ for inst in "${INSTANCES[@]}"; do
     echo -n "Sanitizing N=$N M=$M Seed=$Seed (cap $SAN_ITERS iters) ... "
     cp "$PARAM_FILE" ./param.txt
 
+    # DIAG_FORCE_ITERS makes the run iteration-bound at a short cap so the
+    # (10-30x slower) sanitizer finishes quickly; bugs surface in the first
+    # few thousand iters, not only at the full per-N budget.
     set +e
-    ./STMO_san 1 > "$LOG" 2>&1
+    DIAG_FORCE_ITERS=$SAN_ITERS ./STMO_san 1 > "$LOG" 2>&1
     set -e
 
     if grep -qE "runtime error|ERROR: AddressSanitizer|ERROR: LeakSanitizer|UndefinedBehaviorSanitizer|SUMMARY: " "$LOG"; then

@@ -49,9 +49,10 @@ namespace diag {
 // Run-config metadata (set by begin()).
 // ------------------------------------------------------------
 static int   g_N = 0, g_M = 0, g_Seed = 0, g_repeat = 1;
-static char  g_dir[512]     = {0};   // results/run_009_diag/N{N}_M{M}_S{Seed}/repeat{r}
-static char  g_instDir[512] = {0};   // results/run_009_diag/N{N}_M{M}_S{Seed}
+static char  g_dir[512]     = {0};   // results/run_009_diag/N{N}_M{M}_S{Seed}{TAG}/repeat{r}
+static char  g_instDir[512] = {0};   // results/run_009_diag/N{N}_M{M}_S{Seed}{TAG}
 static char  g_rootDir[256] = {0};   // results/run_009_diag
+static char  g_tag[64]      = {0};   // optional DIAG_TAG suffix (e.g. "_repro") — output path only
 
 // File handles (opened once per instance, flushed at checkpoints).
 static FILE* f_traj    = NULL;
@@ -178,10 +179,14 @@ static void makeDirs() {
     // mkdir each path component; ignore EEXIST. (POSIX; on MSYS2 this
     // maps to Windows dirs.) Pure filesystem — no RNG, no algorithm state.
     char path[768];
+    // Optional output-path tag (e.g. "_repro") so a reproducibility pass does
+    // not collide with the main data pass. Path-only; never touches RNG/state.
+    { const char* tg = getenv("DIAG_TAG");
+      if (tg && tg[0]) snprintf(g_tag, sizeof(g_tag), "%s", tg); else g_tag[0] = 0; }
     const char* parts[] = { "results", "results/run_009_diag" };
     for (int i = 0; i < 2; ++i) mkdir(parts[i], 0775);
     snprintf(g_rootDir, sizeof(g_rootDir), "results/run_009_diag");
-    snprintf(g_instDir, sizeof(g_instDir), "results/run_009_diag/N%d_M%d_S%d", g_N, g_M, g_Seed);
+    snprintf(g_instDir, sizeof(g_instDir), "results/run_009_diag/N%d_M%d_S%d%s", g_N, g_M, g_Seed, g_tag);
     mkdir(g_instDir, 0775);
     snprintf(g_dir, sizeof(g_dir), "%s/repeat%d", g_instDir, g_repeat);
     mkdir(g_dir, 0775);
@@ -623,7 +628,10 @@ static const char* verdict(long prop, long acc, long g) {
 }
 
 static void appendReproRow(int finalIter, float finalWall, float bestZ) {
-    char p[1024]; snprintf(p, sizeof(p), "%s/reproducibility.csv", g_rootDir);
+    // Tagged passes (e.g. the iteration-bound reproducibility probe) write to a
+    // separate reproducibility{TAG}.csv so the determinism verdict reads only
+    // like-for-like rows and never mixes in time-bound main-pass rows.
+    char p[1024]; snprintf(p, sizeof(p), "%s/reproducibility%s.csv", g_rootDir, g_tag);
     bool exists = false;
     { FILE* t = fopen(p, "r"); if (t) { exists = true; fclose(t); } }
     FILE* f = fopen(p, "a"); if (!f) return;

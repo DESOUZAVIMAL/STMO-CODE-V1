@@ -177,14 +177,26 @@ int main(int argc, char** argv) {
     printf("[Config]   P=%d DF=%.2f\n\n", P, DF);
     // ─────────────────────────────────────────────────────────────
 
-    // ── Run009 run config (applies in BOTH DIAG modes so the §7 gate
-    // compares like-for-like): iteration cap is the primary stop, 600 s
-    // is the safety ceiling, uniform across all N. Algorithm logic, RNG,
-    // and operators are untouched — only the stopping bounds change. ──
-    g_maxIter = MAX_ITERATIONS;     // 30000
-    g_endTime = DIAG_END_TIME;      // 600.0
-    printf("[Run009]   MaxIter=%d EndTime=%.0fs DIAG_MODE=%d\n\n",
-           g_maxIter, g_endTime, DIAG_MODE);
+    // ── Run009 per-N stop config (applies in BOTH DIAG modes so the §7
+    // gate compares like-for-like). Only the stopping BOUNDS change here;
+    // algorithm logic, RNG, and operators are untouched.
+    //   N <= 50  : 120 s ceiling / 50000-iter cap
+    //   N >= 100 : 300 s ceiling / 20000-iter cap
+    // The wall-clock is the real stop for large N (that is the bottleneck
+    // evidence we want); the iter cap bounds small N and prevents runaway. ──
+    if (N_Order <= 50) { g_endTime = DIAG_ENDTIME_SMALL; g_maxIter = DIAG_MAXITER_SMALL; }
+    else               { g_endTime = DIAG_ENDTIME_LARGE; g_maxIter = DIAG_MAXITER_LARGE; }
+
+    // Reproducibility probe / gate / sanitizer override: when DIAG_FORCE_ITERS
+    // is set, make the run PURELY iteration-bound (disable the clock) so every
+    // repeat stops at the IDENTICAL iteration. Purely a stop bound — it does
+    // not touch the RNG, operators, or any acceptance decision.
+    bool diagForced = false;
+    { const char* fi = getenv("DIAG_FORCE_ITERS");
+      if (fi && atoi(fi) > 0) { g_maxIter = atoi(fi); g_endTime = 1.0e9f; diagForced = true; } }
+
+    printf("[Run009]   MaxIter=%d EndTime=%.0fs DIAG_MODE=%d%s\n\n",
+           g_maxIter, g_endTime, DIAG_MODE, diagForced ? " [FORCED ITER-BOUND]" : "");
 
     PairMemory    pairMem;
     TripletMemory tripletMem;
