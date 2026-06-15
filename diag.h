@@ -43,6 +43,20 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+// ------------------------------------------------------------
+// Portable directory creation. POSIX mkdir() takes (path, mode);
+// Windows/MinGW provides _mkdir(path) only (no mode arg) in <direct.h>.
+// This shim is filesystem plumbing for the diagnostic output folders —
+// it has NO effect on the algorithm, RNG, or any logged value. The
+// created directory is identical either way.
+// ------------------------------------------------------------
+#if defined(_WIN32) || defined(__MINGW32__) || defined(__MINGW64__)
+  #include <direct.h>
+  #define STMO_MKDIR(p) _mkdir(p)
+#else
+  #define STMO_MKDIR(p) mkdir((p), 0775)
+#endif
+
 namespace diag {
 
 // ------------------------------------------------------------
@@ -176,20 +190,20 @@ static void adjacencySet(const Turtle& t, std::vector<long>& out) {
 // Directory + file setup.
 // ------------------------------------------------------------
 static void makeDirs() {
-    // mkdir each path component; ignore EEXIST. (POSIX; on MSYS2 this
-    // maps to Windows dirs.) Pure filesystem — no RNG, no algorithm state.
+    // Create each path component via STMO_MKDIR (portable shim above);
+    // ignore EEXIST. Pure filesystem — no RNG, no algorithm state.
     char path[768];
     // Optional output-path tag (e.g. "_repro") so a reproducibility pass does
     // not collide with the main data pass. Path-only; never touches RNG/state.
     { const char* tg = getenv("DIAG_TAG");
       if (tg && tg[0]) snprintf(g_tag, sizeof(g_tag), "%s", tg); else g_tag[0] = 0; }
     const char* parts[] = { "results", "results/run_009_diag" };
-    for (int i = 0; i < 2; ++i) mkdir(parts[i], 0775);
+    for (int i = 0; i < 2; ++i) STMO_MKDIR(parts[i]);
     snprintf(g_rootDir, sizeof(g_rootDir), "results/run_009_diag");
     snprintf(g_instDir, sizeof(g_instDir), "results/run_009_diag/N%d_M%d_S%d%s", g_N, g_M, g_Seed, g_tag);
-    mkdir(g_instDir, 0775);
+    STMO_MKDIR(g_instDir);
     snprintf(g_dir, sizeof(g_dir), "%s/repeat%d", g_instDir, g_repeat);
-    mkdir(g_dir, 0775);
+    STMO_MKDIR(g_dir);
     (void)path;
 }
 static FILE* openOut(const char* name, const char* header) {
