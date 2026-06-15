@@ -2,7 +2,13 @@
 
 **Dataset:** 45 data instances (N∈{30,50,100,150,200} × M∈{3,6,9} × Seed∈{10,20,30}),
 each run once under the per-N budget (N≤50: 120s/50k iters; N≥100: 300s/20k iters),
-plus a 5-instance ×3 reproducibility probe. Generated on the lab PC, analyzed offline.
+plus a 5-instance ×3 reproducibility probe. Generated on the lab PC.
+Analysis pipeline: `analyze_run009.py` (aggregate) + `deep_scan.py` (every stream, every
+instance). Master tables: `run009_metrics.csv`, `deep_metrics.csv`.
+
+> **Note on revision:** an initial pass blamed Stage 2 (which dominates *accepts*). The full
+> per-stream scan corrected this: the true compute cost is *proposals/decodes*, and there
+> **Stage 5 dominates (95%+)**. This document reflects the corrected, all-streams analysis.
 
 ---
 
@@ -10,154 +16,139 @@ plus a 5-instance ×3 reproducibility probe. Generated on the lab PC, analyzed o
 
 | Check | Result |
 |---|---|
-| **Reproducibility** | ✅ all 5 probe instances **DETERMINISTIC** — identical Z *and* trajectory hash across 3 repeats |
-| **Objective integrity** | ✅ **0 violations** across 60 integrity files — every accepted move's recomputed objective matched the incremental |
-| Sanitizer (ASan/UBSan) | ⚠️ not in dataset (lab-PC mingw64 can't link sanitizers; needs a UCRT64/CLANG64 or Linux pass) |
+| **Reproducibility** | ✅ all 5 probe instances **DETERMINISTIC** (identical Z + trajectory hash ×3) |
+| **Objective integrity** | ✅ **0 violations** across 60 files — every accepted move's recompute matched |
+| Sanitizer | ⚠️ not in dataset (lab-PC mingw64 can't link ASan; needs UCRT64/CLANG64 or Linux) |
 
-**The Run 7 `unordered_map` did NOT break determinism**, and the evaluation engine has no
-feasibility/objective bugs. The data is trustworthy.
-
----
-
-## 1. Executive summary — the bottleneck
-
-> **The mid/large-N problem is a SPEED problem, not a search-quality problem. Stage 2
-> (MemoryAwareDrift) performs ~2–3 million accepted moves per run, of which 99.3–99.9% are
-> non-improving "sideways" moves — each costing a full O(N) re-decode. This workload grows
-> with N (65 → 202 accepts/iteration), collapsing throughput ~10× from N30 to N200. Because
-> large-N runs are still improving when they hit the time limit (best found at ~90% of the
-> run), making the algorithm faster would translate almost directly into better solutions.**
-
-Two distinct regimes emerged:
-
-| Regime | N | Symptom | Root cause |
-|---|---|---|---|
-| **Starved** | 100–200 | improves until the budget runs out (best @ 81–90% of run) | too slow → too few iterations |
-| **Stalled** | 30–50 | converges at ~50% then runs a dead tail | nothing left to find / weak late-search |
+Run 7's `unordered_map` did **not** break determinism; the evaluation engine is bug-free.
 
 ---
 
-## 2. SPEED findings
+## 1. Executive summary
 
-### 2.1 Throughput collapses ~10× with N  *(F1, F2)*
-
-| N | iters/sec | ms/iter | final_iter (mean) |
-|---|---|---|---|
-| 30 | 425.7 | 2.38 | 47,940 |
-| 50 | 225.5 | 4.51 | 27,059 |
-| 100 | 97.5 | 11.27 | 19,771 |
-| 150 | 57.5 | 19.46 | 15,434 |
-| 200 | 41.5 | 27.77 | 12,439 |
-
-Per-iteration cost grows ~11.7× while N grows 6.7× → **super-linear (~N¹·⁴)**, not the O(N)
-a single decode would predict. The extra factor is the Stage 2 workload (below).
-
-### 2.2 Stage 2 is the sink: millions of mostly-useless evaluations  *(F3)*
-
-| N | S2 accepts/iter | % sideways (non-improving) | S2 accepts/run |
-|---|---|---|---|
-| 30 | 65.3 | 99.9% | 3,130,257 |
-| 100 | 153.2 | 99.6% | 3,011,594 |
-| 200 | 202.2 | 99.3% | 2,181,841 |
-
-Per-stage accepted moves at **N200** (mean): **S1 = 373k, S2 = 2.18M, S4 = 515, S5 = 2,953.**
-Stage 2 is ~85% of all accepted moves and dwarfs every other stage by 1000×. Of its 2.18M
-accepts, only **1,839 (0.08%)** ever improved the global best.
-
-**Why:** Stage 2 accepts on `ΔZ ≥ 0` (non-worsening), so every equal-objective move is taken
-and re-decoded. PairMemory flags more weak/critical pairs as N grows (§4), giving Stage 2 ever
-more repair targets → the accepts/iter climb from 65 to 202.
+> **The mid/large-N problem has two coupled root causes, both computational waste:**
+>
+> 1. **Stage 5 (CMA) consumes ~95% of all candidate evaluations** — ~308 million decodes/run at
+>    N200 — while accepting **0.001%** of them. It scans enormous neighborhoods that almost never
+>    improve.
+> 2. **The search plateaus after ~10% of iterations** — 99.8% of the total objective gain is
+>    captured early; the remaining ~90% of the budget yields <0.2%. STMO spends most of its run
+>    grinding (mostly inside Stage 5) for almost nothing.
+>
+> These connect through a third finding: **75% of orders are rejected at N200**, producing a huge
+> M0 pool that Stage 5's reinsertion operator rescans every iteration → the decode explosion.
 
 ---
 
-## 3. QUALITY / CONVERGENCE findings
+## 2. Compute bottleneck — Stage 5  *(D1, D4)*
 
-### 3.1 Large N is iteration-STARVED, not stagnated  *(F5, F7)*
+**Proposals (decodes) per stage — share of all evaluations:**
 
-| N | best found at (frac of run) | dead-tail frac | best events |
-|---|---|---|---|
-| 30 | 0.49 | 0.51 | 39 |
-| 50 | 0.60 | 0.40 | 59 |
-| 100 | 0.81 | 0.19 | 89 |
-| 150 | 0.87 | 0.13 | 96 |
-| 200 | 0.90 | 0.11 | 104 |
+| N | S1 | S2 | S4 | **S5** | decodes/iter |
+|---|---|---|---|---|---|
+| 30 | 5.8% | 18.0% | 1.2% | **74.9%** | 1,658 |
+| 100 | 0.8% | 5.5% | 0.1% | **93.6%** | 12,251 |
+| 200 | 0.6% | 3.8% | 0.0% | **95.6%** | 29,594 |
 
-This **refutes the "early stagnation at large N" hypothesis.** At N200 the best keeps improving
-to 90% of the run — it stops because it runs out of budget, not because it's stuck. **Therefore
-speed gains ⇒ quality gains at large N:** more iterations in the same 300s would yield more of
-the 104 improvement events.
+At N200, Stage 5 issues **~308 million decodes/run** (≈24,700 per iteration). **Acceptance rate by
+stage** (accepts ÷ proposals): S1 ≈ 20–33%, S2 ≈ 18–23%, S4 ≈ 0.2–1.4%, **S5 ≈ 0.001%**. Stage 5
+evaluates ~100,000 candidates to accept one. This is the single largest lever in the codebase.
 
-Conversely, **small N (30–50) does stall** — it converges at ~50% and then wastes the rest. A
-different problem (late-search intensification / nothing left to exploit), lower priority.
+*Why:* Stage 5 Operation 2 reinserts every rejected order into every machine (≈150 × 9 candidates
+per turtle at N200), and Operation 1 scans elites × machines × positions — almost all rejected.
 
-### 3.2 Stage contribution  *(F4)*
-
-Global-best-contribution counts at N200 (mean): **S2g = 1,839, S5g = 184, S4g = 75, S1g = 42.**
-Stage 2 is both the speed sink *and* the dominant improver — it is inefficient, not useless.
-**Stage 4 barely fires** (~500 accepts/run across all N) and contributes little, consistent
-with the review finding that its guidance criterion no longer matches its move (swap vs the
-pair it scores). Not a bottleneck, but a wasted mechanism.
+> Correction to the first pass: **Stage 2 dominates *accepts* (2M+/run) but is only 3.8% of
+> *decodes***. Its accepts are 99% sideways (equal-objective) moves — real waste, but a minor
+> compute cost next to S5. (kept as a secondary target, §7 P3.)
 
 ---
 
-## 4. PairMemory behavior  *(F6)*
+## 3. Search plateaus early, then wastes the budget  *(D2)*
 
-| N | peak | final | churn (peak/final) | ccrit peak |
-|---|---|---|---|---|
-| 30 | 768 | 131 | 6.5× | 191 |
-| 100 | 5,917 | 357 | 20.5× | 3,405 |
-| 200 | 14,547 | 619 | 28.7× | 12,239 |
+**Fraction of total objective gain achieved within the first 10% of iterations:**
 
-PairMemory **bloats to ~15k entries at N200 then collapses to ~600** (28× churn), and the
-critical-pair count peaks at ~12k. This bloat is what feeds Stage 2 more targets → more
-sideways work. Memory growth and the Stage 2 explosion are the same story.
+| N | gain by 10% of iters | best-event at (frac of run) |
+|---|---|---|
+| 30 | 98.7% | 0.49 |
+| 100 | 99.4% | 0.81 |
+| 200 | 99.8% | 0.90 |
+
+99%+ of the quality is reached in the first ~10% of iterations. The late "best events" (at 90% of
+the run for N200) are **marginal** — together <0.2% of the gain. So STMO is **plateaued, not
+starved**: extra iterations would add almost nothing; the issue is that ~90% of the budget produces
+negligible improvement (and most of that time is the Stage 5 decode explosion).
+
+**Objective-space convergence** confirms it: population objective spread (`obj_std`) collapses from
+~19,000 → ~97 at N200, i.e. all 30 turtles reach near-identical objective early — even though they
+stay **structurally** distinct (`distinct_full` = 30/30 throughout, Hamming ≈ N). Many different
+orderings give the same objective: a **flat plateau landscape** the current operators can't escape.
 
 ---
 
-## 5. Diversity  *(refutes collapse)*
+## 4. OAS-specific: high and growing rejection  *(D3)*
 
-`distinct_full` = **30/30 at first and last checkpoint for every N.** The population never
-collapses — ironically because Stage 2's constant sideways churn keeps it moving. Elite-archive
-duplication was inconclusive (N30/N200 fully distinct; N100 showed possible order-sequence
-overlap that may differ in machine assignment). **Diversity is not a problem here.**
+| N | 30 | 50 | 100 | 150 | 200 |
+|---|---|---|---|---|---|
+| **orders rejected** | 20% | 36% | 62% | 70% | **75%** |
+| incumbent tardiness | 67 | 167 | 352 | 459 | 552 |
+
+At large N the incumbent **rejects three of every four orders**. This may be over-conservative
+(rejecting forgoes revenue to avoid tardiness) and is worth testing as a quality weakness — and it
+mechanically **drives the Stage 5 explosion** (more rejects → bigger M0 pool → more reinsertion
+decodes). Speed and quality share this root.
 
 ---
 
-## 6. Hypothesis scorecard (vs the pre-run code review)
+## 5. Small-N restart thrashing  *(new)*
+
+Convergence-restarts per run: **N30 fires 11–22×**, N50 4–10×, N100 1–6×, N150/200 1–5×. Small N
+plateaus, `ccrit`→0, restart fires, re-converges — repeatedly — yet the best is still found at only
+~50% of the run, so the restarts rarely produce a better solution. The restart mechanism is busy
+but largely ineffective at escaping the plateau.
+
+---
+
+## 6. Memory & diversity (secondary)
+
+- **PairMemory churns hugely:** ~27,000 entries created and ~26,000 deleted per run at N200; peak
+  ~15k → final ~600; critical-pair count grows 5 → 219; most-negative score −212 → −1,885.
+- **No diversity collapse:** `distinct_full` never drops below 30/30. Elite-archive duplication is
+  minor and only at small/mid N (≈4.6/5 distinct at N30; full distinctness at N200).
+
+---
+
+## 7. Hypothesis scorecard
 
 | Hypothesis | Verdict |
 |---|---|
-| Stage 2 does huge low-value work | ✅ **CONFIRMED** — 99%+ sideways, 2–3M accepts/run |
-| No delta-eval → cost dominates | ✅ **CONFIRMED** — super-linear per-iter cost |
-| Stage 4 criterion mismatch → wasted | ✅ **CONFIRMED** (weakly) — fires rarely, low contribution |
-| Early stagnation at large N | ❌ **REFUTED** — large N improves to ~90% of run (starved) |
-| Elite-archive duplication starves S5 | ⚠️ **INCONCLUSIVE** — not a primary effect |
-| Population diversity collapse | ❌ **REFUTED** — 30/30 distinct throughout |
+| A stage does huge low-value work | ✅ **CONFIRMED** — but it's **Stage 5** (95% of decodes, 0.001% accept), not S2 |
+| Stage 2 does mostly-useless work | ✅ partly — 99% sideways accepts, but only 3.8% of decodes |
+| No delta-eval → cost dominates | ✅ confirmed — every decode is full O(N) |
+| Stage 4 wasted | ✅ confirmed — <0.1% of decodes, rarely accepts |
+| Early stagnation at large N | ✅ **CONFIRMED (revised)** — plateaus by ~10% of iters (first pass wrongly read it as "starved") |
+| Elite/diversity collapse | ❌ refuted — population stays 30/30 distinct |
+| (new) Over-rejection at large N | ⚠️ **flagged** — 75% reject at N200, needs a quality test |
 
 ---
 
-## 7. Improvement plan — Run 010 (prioritized, data-justified)
+## 8. Improvement plan — Run 010 (re-prioritized by *decode* cost)
 
-Each fix is isolated and gate-verifiable; Run 009 is the **before** baseline.
-
-| Priority | Fix | Evidence | Predicted payoff |
+| Pri | Fix | Evidence | Predicted payoff |
 |---|---|---|---|
-| **P1** | **Incremental (delta) evaluation** — recompute only the edited machine's tail; use the already-present `partialReeval`/`machineObj[]` (currently unused). Apply→eval→undo to kill the 24 KB copies. | §2: 2–3M full O(N) decodes/run dominate cost | **5–15× speed at N200**; since large N is starved (§3.1), this directly improves Best Z |
-| **P2** | **Tighten / throttle Stage 2** — accept on strict `ΔZ > 0`, or cap sideways moves per machine, or add don't-look bits so a machine that failed repair is skipped until it changes. | §2.2: 99% of S2 accepts are non-improving | removes most wasted work; compounds with P1 |
-| **P3** | **Bound PairMemory growth** — cap/evict to stop the 15k bloat that feeds S2 targets. | §4: 28× churn, 12k critical pairs at N200 | fewer S2 targets → less wasted work |
-| **P4** | **Fix Stage 4's guidance criterion** — score the pair the swap actually creates (or restore relocate semantics). | §3.2: S4 fires rarely, low yield | recovers S4 as a real improver |
-| P5 | Small-N late-search (dead-tail) — stronger intensification or earlier stop. | §3.1: N30 dead-tail 0.51 | reclaims wasted small-N budget |
+| **P1** | **Throttle Stage 5's neighborhood scan** — cap candidates to top-K by PairMemory score; skip Operation 1 when no STRONG pair exists; bound M0-reinsertion attempts. | §2: S5 = 95% of decodes at 0.001% accept | **largest single compute cut (~5–10×)** with negligible quality loss |
+| **P2** | **Incremental (delta) evaluation** — recompute only the edited machine's tail (`partialReeval`/`machineObj[]` already exist, unused); apply→eval→undo to drop 24 KB copies. | §2: all decodes are full O(N) | multiplies P1; cheaper decodes everywhere |
+| **P3** | **Tighten Stage 2 acceptance** to strict ΔZ>0 or cap sideways moves. | §2 note: 99% sideways accepts | removes residual waste |
+| **P4** | **Attack the plateau** — redirect compute freed by P1/P2 into stronger diversification/perturbation (current restart is ineffective, §5). | §3: 90% of budget yields <0.2% | converts saved time into actual quality |
+| **P5** | **Test the rejection balance** — is 75% reject optimal or leaving revenue? | §4 | potential Best-Z gain at large N |
+| **P6** | **Fix Stage 4's guidance criterion** (score the pair the swap creates). | §2 | recovers S4 as an improver |
 
-**Sequence:** P1 first (biggest lever, and it makes large-N quality improve for free), each
-change gate-verified (DIAG 0 vs 1 identical is not required post-fix, but a FULL-vs-incremental
-objective cross-check is — the `integrity_violations` machinery already does this). Measure
-Best Z and iters/sec before/after on the same 45 instances.
+**Method:** each fix isolated and measured against this Run 009 baseline (Best Z + decodes/iter +
+iters/sec on the same 45 instances); cross-check objective with the existing integrity machinery.
 
 ---
 
-## 8. Figures (`analysis/figures/`)
+## 9. Figures (`analysis/figures/`)
 
-F1 speed scaling · F2 cost/iter · F3 Stage 2 workload · F4 stage contribution ·
-F5 convergence timing · F6 PairMemory bloat · F7 convergence curves.
-
-Master table: `analysis/run009_metrics.csv` (one row per instance).
+Corrected story: **D1** proposal share (S5 dominance) · **D2** early plateau · **D3** rejection rate
+· **D4** per-stage accept rates. Supporting: F1 speed scaling · F2 cost/iter · F5 convergence timing
+· F6 PairMemory bloat · F7 convergence curves. (F3/F4 reflect the superseded accept-based view.)
