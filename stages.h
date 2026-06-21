@@ -206,6 +206,16 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
         const StructuralMap& sm = structMaps[p];
 
         t.stage4_phase1 = 0;            // B4: reset unconditionally
+
+        // Run10 A: position cache for Stage 4 (captured by the tryCandidates
+        // lambda and the C2 improvement pass). t is only modified on a
+        // successful move, which exits the loops immediately, so posOf4
+        // never goes stale during use.
+        std::unordered_map<int,int> posOf4;
+        posOf4.reserve(N_Order);
+        for (int pos = 0; pos < N_Order; pos++)
+            if (t.M_select[pos] != 0) posOf4[t.Order_seq[pos]] = pos;
+
         if (!sm.hasTarget) continue;
 
         bool anyImproved = false;
@@ -250,12 +260,11 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
 
                 for (const auto& cand : candidates) {
                     int jk = cand.jk;
-                    int pos_jj = -1, pos_jk = -1;
-                    for (int pos = 0; pos < N_Order; pos++) {
-                        if (t.Order_seq[pos] == jj) pos_jj = pos;
-                        if (t.Order_seq[pos] == jk) pos_jk = pos;
-                    }
-                    if (pos_jj < 0 || pos_jk < 0) continue;
+                    auto itJJ = posOf4.find(jj);
+                    auto itJK = posOf4.find(jk);
+                    if (itJJ == posOf4.end() || itJK == posOf4.end()) continue;
+                    int pos_jj = itJJ->second;
+                    int pos_jk = itJK->second;
 
                     Turtle candidate = moveOrderSwap(t, pos_jj, pos_jk);
                     decodeAndEval(candidate);
@@ -276,6 +285,44 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
             bool improved = tryCandidates(LABEL_STRONG);
             if (!improved) improved = tryCandidates(LABEL_NEUTRAL);
             if (improved) anyImproved = true;
+        }
+
+        // Run10 C2: strong-pair improvement pass.
+        // Runs only if repair found nothing. Strict acceptance (obj > t.obj).
+        if (!anyImproved && !sm.strongPairs.empty()) {
+            std::vector<std::pair<int,int>> improveCands = sm.strongPairs;
+            std::sort(improveCands.begin(), improveCands.end(),
+                [&pm](const std::pair<int,int>& a, const std::pair<int,int>& b) {
+                    auto ia = pm.find(a); auto ib = pm.find(b);
+                    float sa = (ia != pm.end()) ? ia->second.avgScore : 0.0f;
+                    float sb = (ib != pm.end()) ? ib->second.avgScore : 0.0f;
+                    return sa < sb;  // lowest score first
+                });
+            bool improveDone = false;
+            int  improveTries = 0;
+            for (const auto& sp : improveCands) {
+                if (improveTries >= 3 || improveDone) break;
+                int jj = sp.second;
+                auto itPos = posOf4.find(jj);
+                if (itPos == posOf4.end()) { improveTries++; continue; }
+                int pos_jj = itPos->second;
+                for (int pos2 = 0; pos2 < N_Order && !improveDone; pos2++) {
+                    if (pos2 == pos_jj) continue;
+                    if (t.M_select[pos2] == 0) continue;
+                    Turtle candidate = moveOrderSwap(t, pos_jj, pos2);
+                    decodeAndEval(candidate);
+                    DIAG_PROPOSE(4);
+                    if (candidate.obj > t.obj && validateTurtle(candidate)) {
+                        DIAG_ACCEPT(4, candidate.obj - t.obj);
+                        t = candidate;
+                        t.stage4_phase1++;
+                        g_s4_acc++;
+                        if (t.obj > g_globalBest) g_s4_gbest++;
+                        improveDone = true;
+                    }
+                }
+                improveTries++;
+            }
         }
         // Phase 2 VNS — DEFERRED (professor approval).
         ASSERT_VALID(t);
@@ -298,6 +345,19 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
         Turtle& t = pop[p];
         if (!t.cacheValid) decodeAndEval(t);
         bool improved = false;
+
+        // Run10 A: position cache (built once per turtle, used by Op1).
+        // Indexes ALL jobs (incl. rejected) so it mirrors the original full
+        // Order_seq scan EXACTLY: a rejected e_ji is still filtered by the
+        // existing `machJi == 0` check below, and a rejected e_jj can still be
+        // re-accepted to form an elite STRONG pair (behavior-preserving).
+        // Order_seq is a permutation so each job maps to one unique position.
+        // Op0 (triplets) is compiled out and Op1 breaks on first improvement,
+        // so posOf never goes stale during use.
+        std::unordered_map<int,int> posOf;
+        posOf.reserve(N_Order);
+        for (int pos = 0; pos < N_Order; pos++)
+            posOf[t.Order_seq[pos]] = pos;
 
         // ── Operation 0 (B2): Triplet transfer from TripletMemory ──
 #if ENABLE_TRIPLETS
@@ -372,6 +432,7 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
         for (int e = 0; e < ea.count && !improved; e++) {
             const Turtle& elite = ea.turtles[e];
             if (!elite.cacheValid) continue;
+            if (elite.obj > 0.0f && t.obj >= elite.obj * 0.995f) continue;  // Run10 A
             for (int em = 0; em < M_Machine && !improved; em++) {
                 for (int k = 0; k < elite.machineCount[em] - 1 && !improved; k++) {
                     int e_ji = elite.machineSeq[em][k];
@@ -385,12 +446,11 @@ void stage5_CMA(Population pop, const EliteArchive& ea, const PairMemory& pm,
                                 t.machineSeq[tm2][tk+1] == e_jj) { presentInT = true; break; }
                     if (presentInT) continue;
 
-                    int pos_ji = -1, pos_jj_in_t = -1;
-                    for (int pos = 0; pos < N_Order; pos++) {
-                        if (t.Order_seq[pos] == e_ji) pos_ji = pos;
-                        if (t.Order_seq[pos] == e_jj) pos_jj_in_t = pos;
-                    }
-                    if (pos_ji < 0 || pos_jj_in_t < 0) continue;
+                    auto itJi = posOf.find(e_ji);
+                    auto itJj = posOf.find(e_jj);
+                    if (itJi == posOf.end() || itJj == posOf.end()) continue;
+                    int pos_ji      = itJi->second;
+                    int pos_jj_in_t = itJj->second;
 
                     int machJi = t.M_select[pos_ji];
                     if (machJi == 0) continue;

@@ -177,15 +177,15 @@ int main(int argc, char** argv) {
     printf("[Config]   P=%d DF=%.2f\n\n", P, DF);
     // ─────────────────────────────────────────────────────────────
 
-    // ── Run009 per-N stop config (applies in BOTH DIAG modes so the §7
+    // ── Run10 per-N stop config (applies in BOTH DIAG modes so the §7
     // gate compares like-for-like). Only the stopping BOUNDS change here;
     // algorithm logic, RNG, and operators are untouched.
-    //   N <= 50  : 120 s ceiling / 50000-iter cap
-    //   N >= 100 : 300 s ceiling / 20000-iter cap
-    // The wall-clock is the real stop for large N (that is the bottleneck
-    // evidence we want); the iter cap bounds small N and prevents runaway. ──
-    if (N_Order <= 50) { g_endTime = DIAG_ENDTIME_SMALL; g_maxIter = DIAG_MAXITER_SMALL; }
-    else               { g_endTime = DIAG_ENDTIME_LARGE; g_maxIter = DIAG_MAXITER_LARGE; }
+    //   N <= 100 : 120 s ceiling / 50000-iter cap
+    //   N >= 150 : 180 s ceiling / 50000-iter cap
+    // The wall-clock is the real stop (time is the bottleneck evidence we
+    // want); the high iter cap keeps TIME the stop and prevents runaway. ──
+    if (N_Order <= 100) { g_endTime = DIAG_ENDTIME_SMALL; g_maxIter = DIAG_MAXITER_SMALL; }  // Run10: was <= 50
+    else                { g_endTime = DIAG_ENDTIME_LARGE; g_maxIter = DIAG_MAXITER_LARGE; }
 
     // Reproducibility probe / gate / sanitizer override: when DIAG_FORCE_ITERS
     // is set, make the run PURELY iteration-bound (disable the clock) so every

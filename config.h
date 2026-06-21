@@ -36,10 +36,10 @@
 // Baseline values for adaptive parameters (large-N overrides in STMO.cpp)
 #define NC_BASE            3     // Stage 1 candidates (small/medium N)
 #define NC_LARGE           5     // Run003 A3: N >= 150
-#define MACHINE_BUDGET_BASE  3   // Stage 2 repairs per machine (small/medium N)
-#define MACHINE_BUDGET_LARGE 5   // Run003 A4: N >= 150
+#define MACHINE_BUDGET_BASE  5   // Run10 D: was 3 — Stage 2 repairs per machine (small/medium N)
+#define MACHINE_BUDGET_LARGE 7   // Run10 D: was 5 — N >= 150
 #define E_SIZE_BASE        5     // elite archive size (small/medium N)
-#define E_SIZE_LARGE      10     // Run003 A5: N >= 150 (must be <= MAX_P)
+#define E_SIZE_LARGE       5     // Run10 D: was 10 — N >= 150 (must be <= MAX_P)
 
 // Global runtime values — STMO.cpp sets these after reading N.
 extern int   g_maxIter;        // replaces MAX_ITER in main loop
@@ -73,7 +73,7 @@ extern float g_globalBest;
 // ------------------------------------------------------------
 // STAGE 2 — MemoryAwareDrift
 // ------------------------------------------------------------
-#define MAX_ATTEMPTS    5
+#define MAX_ATTEMPTS    3   // Run10 D: was 5
 
 // ------------------------------------------------------------
 // STAGE 3 — ACMM (Pair Memory)
@@ -131,10 +131,10 @@ extern float g_globalBest;
 #ifndef DIAG_MODE
 #define DIAG_MODE          1        // 0 = pristine Run 7/8 algorithm, 1 = full instrumentation
 #endif
-#define DIAG_ENDTIME_SMALL 120.0f   // N <= 50  : wall-clock safety ceiling
-#define DIAG_MAXITER_SMALL 50000    // N <= 50  : iteration cap
-#define DIAG_ENDTIME_LARGE 300.0f   // N >= 100 : wall-clock ceiling (real stop for N >= 150)
-#define DIAG_MAXITER_LARGE 20000    // N >= 100 : iteration cap (real stop for N = 100)
+#define DIAG_ENDTIME_SMALL 120.0f   // Run10: N <= 100 : wall-clock ceiling
+#define DIAG_MAXITER_SMALL 50000    // Run10: N <= 100 : iteration cap
+#define DIAG_ENDTIME_LARGE 180.0f   // Run10: N >= 150 : wall-clock ceiling (was 300)
+#define DIAG_MAXITER_LARGE 50000    // Run10: N >= 150 : raise cap so TIME is the stop (was 20000)
 #define DIAG_REPRO_RUNS    3        // repeats per instance for the reproducibility probe (§1b)
 #define DIAG_REPRO_ITERS   5000     // iteration-bound cap used by the reproducibility probe
 

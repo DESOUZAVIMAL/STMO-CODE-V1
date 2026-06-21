@@ -47,12 +47,17 @@ void updatePairMemory(PairMemory& pm, const EvalSnapshot& snap) {
         else it->second = (it->second + obs.score) * 0.5f;
     }
 
-    // PASS 1: decay non-observed
+    // PASS 1: frequency-sensitive decay — Run10 B
     for (auto& entry : pm) {
         if (freshScores.find(entry.first) == freshScores.end()) {
-            entry.second.avgScore *= DF;
-            entry.second.age++;
-            entry.second.label = LABEL_NONE;
+            PairRecord& rec = entry.second;
+            float decayRate;
+            if      (rec.count >= 10) decayRate = 0.995f;
+            else if (rec.count >= 5)  decayRate = 0.970f;
+            else                      decayRate = 0.900f;
+            rec.avgScore *= decayRate;
+            rec.age++;
+            rec.label = LABEL_NONE;
         }
     }
 
@@ -206,6 +211,8 @@ StructuralMap buildStructuralMap(const Turtle& t, const PairMemory& pm) {
     StructuralMap sm;
     struct CandidateTarget { int ji, jj; float score; };
     std::vector<CandidateTarget> weakTargets;
+    std::vector<CandidateTarget> critTargets;     // Run10 C1
+    std::vector<CandidateTarget> neutralTargets;  // Run10 C1
 
     for (int m = 0; m < M_Machine; m++) {
         for (int k = 0; k < t.machineCount[m] - 1; k++) {
@@ -215,23 +222,42 @@ StructuralMap buildStructuralMap(const Turtle& t, const PairMemory& pm) {
             auto it  = pm.find(key);
             if (it == pm.end()) continue;
             const PairRecord& rec = it->second;
-            if (rec.label == LABEL_STRONG) sm.strongPairs.push_back(key);
-            if (rec.label == LABEL_WEAK || rec.label == LABEL_CRITICAL) {
+            if (rec.label == LABEL_STRONG) {
+                sm.strongPairs.push_back(key);
+            } else if (rec.label == LABEL_CRITICAL) {
+                CandidateTarget ct; ct.ji = ji; ct.jj = jj; ct.score = rec.avgScore;
+                critTargets.push_back(ct);
+            } else if (rec.label == LABEL_WEAK) {
                 CandidateTarget ct; ct.ji = ji; ct.jj = jj; ct.score = rec.avgScore;
                 weakTargets.push_back(ct);
+            } else if (rec.label == LABEL_NEUTRAL) {
+                CandidateTarget ct; ct.ji = ji; ct.jj = jj; ct.score = rec.avgScore;
+                neutralTargets.push_back(ct);
             }
         }
     }
 
-    std::sort(weakTargets.begin(), weakTargets.end(),
-        [](const CandidateTarget& a, const CandidateTarget& b){ return a.score < b.score; });
+    // Run10 C1: prioritise CRITICAL, then WEAK, then NEUTRAL targets.
+    auto cmpScore = [](const CandidateTarget& a, const CandidateTarget& b){
+        return a.score < b.score;
+    };
+    std::sort(critTargets.begin(),    critTargets.end(),    cmpScore);
+    std::sort(weakTargets.begin(),    weakTargets.end(),    cmpScore);
+    std::sort(neutralTargets.begin(), neutralTargets.end(), cmpScore);
 
-    int maxTargets = std::min((int)weakTargets.size(), 3);
-    for (int i = 0; i < maxTargets; i++) {
-        StructuralMap::WeakTarget wt;
-        wt.ji = weakTargets[i].ji; wt.jj = weakTargets[i].jj; wt.score = weakTargets[i].score;
-        sm.targets.push_back(wt);
-    }
+    const int MAX_TARGETS = 5;   // Run10: was hardcoded 3
+    auto addTargets = [&](const std::vector<CandidateTarget>& src) {
+        for (const auto& ct : src) {
+            if ((int)sm.targets.size() >= MAX_TARGETS) break;
+            StructuralMap::WeakTarget wt;
+            wt.ji = ct.ji; wt.jj = ct.jj; wt.score = ct.score;
+            sm.targets.push_back(wt);
+        }
+    };
+    addTargets(critTargets);
+    addTargets(weakTargets);
+    addTargets(neutralTargets);
+
     sm.hasTarget = !sm.targets.empty();
     return sm;
 }
