@@ -80,7 +80,7 @@ extern float g_globalBest;
 // ------------------------------------------------------------
 #define DF              0.95f
 #define GHOST_THRESHOLD 0.01f
-#define GHOST_MAX_AGE   100     // Run006: iters w/o observation before a pair is pruned (conservative)
+#define GHOST_MAX_AGE   1000    // Run10-R: was 100 — data showed pruning at iter 200-700 kills critical signal
 #define PM_WARN_SIZE    5000    // Run006: log-only PairMemory-size warning threshold (no eviction)
 #define STRONG_SIGMA_MULT   0.5f
 #define WEAK_SIGMA_MULT     0.5f
@@ -133,7 +133,7 @@ extern float g_globalBest;
 #endif
 #define DIAG_ENDTIME_SMALL 120.0f   // Run10: N <= 100 : wall-clock ceiling
 #define DIAG_MAXITER_SMALL 50000    // Run10: N <= 100 : iteration cap
-#define DIAG_ENDTIME_LARGE 180.0f   // Run10: N >= 150 : wall-clock ceiling (was 300)
+#define DIAG_ENDTIME_LARGE 240.0f   // Run10-final: N >= 150 : 240s (was 180)
 #define DIAG_MAXITER_LARGE 50000    // Run10: N >= 150 : raise cap so TIME is the stop (was 20000)
 #define DIAG_REPRO_RUNS    3        // repeats per instance for the reproducibility probe (§1b)
 #define DIAG_REPRO_ITERS   5000     // iteration-bound cap used by the reproducibility probe

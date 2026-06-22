@@ -287,6 +287,10 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
             if (improved) anyImproved = true;
         }
 
+        /* Run10-final: C2 strong-pair pass DISABLED — commented out, not deleted
+           (diagnostic showed millions of near-zero-yield S4 proposals, 0.013%
+           accept, collapsing iteration count at large N). Re-enable by removing
+           this open and the matching close below.
         // Run10 C2: strong-pair improvement pass.
         // Runs only if repair found nothing. Strict acceptance (obj > t.obj).
         if (!anyImproved && !sm.strongPairs.empty()) {
@@ -324,6 +328,7 @@ void stage4_MFBO(Population pop, const StructuralMap* structMaps, const PairMemo
                 improveTries++;
             }
         }
+        */  // end Run10-final C2 disable
         // Phase 2 VNS — DEFERRED (professor approval).
         ASSERT_VALID(t);
     }
