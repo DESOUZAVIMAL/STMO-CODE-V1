@@ -17,7 +17,7 @@
 // ------------------------------------------------------------
 // POPULATION
 // ------------------------------------------------------------
-#define P           30
+#define P           50   // Run11: was 30
 
 // ------------------------------------------------------------
 // Run 003 — Adaptive config by N (set at runtime in STMO.cpp).
@@ -133,7 +133,7 @@ extern float g_globalBest;
 #endif
 #define DIAG_ENDTIME_SMALL 120.0f   // Run10: N <= 100 : wall-clock ceiling
 #define DIAG_MAXITER_SMALL 50000    // Run10: N <= 100 : iteration cap
-#define DIAG_ENDTIME_LARGE 240.0f   // Run10-final: N >= 150 : 240s (was 180)
+#define DIAG_ENDTIME_LARGE 180.0f   // Run11: N >= 150 : 180s (was 240)
 #define DIAG_MAXITER_LARGE 50000    // Run10: N >= 150 : raise cap so TIME is the stop (was 20000)
 #define DIAG_REPRO_RUNS    3        // repeats per instance for the reproducibility probe (§1b)
 #define DIAG_REPRO_ITERS   5000     // iteration-bound cap used by the reproducibility probe

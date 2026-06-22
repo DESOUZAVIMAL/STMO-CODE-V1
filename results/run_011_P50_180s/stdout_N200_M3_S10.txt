@@ -1,0 +1,779 @@
+==================================================
+  Sea Turtle Migration Optimization (STMO)
+  OAS-SDST Problem - Wu et al. (2018)
+==================================================
+
+[genData] N=200 M=3 Seed=10
+[Adaptive] N=200 -> MaxIter=50000 EndTime=240s KStag=50 MinCount=1
+[Adaptive] NC=5 MachineBudget=7 ESize=5
+[Config]   P=50 DF=0.95
+
+[Run009]   MaxIter=50000 EndTime=180s DIAG_MODE=0
+
+[Init] Initializing 50 turtles randomly...
+[Init] Done.
+
+[BatchEval 1] Evaluating initial population...
+[BatchEval 1] Initial best Z = -296245.56 | PM entries = 6716
+
+[Loop] Starting main loop...
+[Loop] Stopping when time >= 180s OR iter >= 50000
+
+[Iter   10 | Time    0.2s] Best Z = -12144.73 | PM=17902 [PM_WARN] Ccrit=17388 Cweak=0 restarts=0 S2=10498 S4p1=369 | S1acc=500 S1g=6 S2acc=10498 S2s=9434 S2g=998 S4acc=369 S4g=88 S5acc=346 S5g=88
+[Iter   20 | Time    0.3s] Best Z =  2615.05 | PM=19714 [PM_WARN] Ccrit=18594 Cweak=0 restarts=0 S2=16661 S4p1=472 | S1acc=1000 S1g=10 S2acc=16661 S2s=13114 S2g=1392 S4acc=472 S4g=96 S5acc=730 S5g=128
+[Iter   30 | Time    0.4s] Best Z =  2951.05 | PM=19861 [PM_WARN] Ccrit=18472 Cweak=0 restarts=0 S2=18175 S4p1=494 | S1acc=1500 S1g=11 S2acc=18175 S2s=13370 S2g=1409 S4acc=494 S4g=97 S5acc=1118 S5g=144
+[Iter   40 | Time    0.6s] Best Z =  3120.26 | PM=19931 [PM_WARN] Ccrit=18423 Cweak=0 restarts=0 S2=19117 S4p1=501 | S1acc=2000 S1g=11 S2acc=19117 S2s=13463 S2g=1419 S4acc=501 S4g=97 S5acc=1345 S5g=154
+[Iter   50 | Time    0.8s] Best Z =  3251.77 | PM=19959 [PM_WARN] Ccrit=18385 Cweak=0 restarts=0 S2=19911 S4p1=503 | S1acc=2500 S1g=13 S2acc=19911 S2s=13501 S2g=1423 S4acc=503 S4g=97 S5acc=1426 S5g=156
+[Iter   60 | Time    1.1s] Best Z =  3251.77 | PM=19963 [PM_WARN] Ccrit=18355 Cweak=0 restarts=0 S2=20590 S4p1=505 | S1acc=3000 S1g=13 S2acc=20590 S2s=13525 S2g=1423 S4acc=505 S4g=97 S5acc=1487 S5g=156
+[Iter   70 | Time    1.3s] Best Z =  3328.62 | PM=19909 [PM_WARN] Ccrit=18321 Cweak=0 restarts=0 S2=21149 S4p1=510 | S1acc=3500 S1g=15 S2acc=21149 S2s=13550 S2g=1432 S4acc=510 S4g=99 S5acc=1571 S5g=162
+[Iter   80 | Time    1.6s] Best Z =  3412.05 | PM=19813 [PM_WARN] Ccrit=18291 Cweak=0 restarts=0 S2=21690 S4p1=514 | S1acc=4000 S1g=15 S2acc=21690 S2s=13586 S2g=1435 S4acc=514 S4g=99 S5acc=1656 S5g=165
+[Iter   90 | Time    1.8s] Best Z =  3412.05 | PM=19658 [PM_WARN] Ccrit=18274 Cweak=0 restarts=0 S2=22103 S4p1=517 | S1acc=4500 S1g=15 S2acc=22103 S2s=13597 S2g=1435 S4acc=517 S4g=99 S5acc=1689 S5g=165
+[Iter  100 | Time    2.1s] Best Z =  3412.05 | PM=19599 [PM_WARN] Ccrit=18263 Cweak=0 restarts=0 S2=22451 S4p1=518 | S1acc=5000 S1g=15 S2acc=22451 S2s=13606 S2g=1435 S4acc=518 S4g=99 S5acc=1718 S5g=165
+[Iter  110 | Time    2.3s] Best Z =  3428.55 | PM=19595 [PM_WARN] Ccrit=18237 Cweak=0 restarts=0 S2=22747 S4p1=522 | S1acc=5500 S1g=16 S2acc=22747 S2s=13623 S2g=1437 S4acc=522 S4g=99 S5acc=1794 S5g=165
+[Iter  120 | Time    2.6s] Best Z =  3428.55 | PM=19585 [PM_WARN] Ccrit=18224 Cweak=0 restarts=0 S2=23010 S4p1=529 | S1acc=6000 S1g=16 S2acc=23010 S2s=13629 S2g=1437 S4acc=529 S4g=99 S5acc=1813 S5g=165
+[Iter  130 | Time    2.8s] Best Z =  3428.55 | PM=19575 [PM_WARN] Ccrit=18215 Cweak=0 restarts=0 S2=23259 S4p1=531 | S1acc=6500 S1g=16 S2acc=23259 S2s=13639 S2g=1437 S4acc=531 S4g=99 S5acc=1832 S5g=165
+[Iter  140 | Time    3.1s] Best Z =  3491.78 | PM=19573 [PM_WARN] Ccrit=18200 Cweak=0 restarts=0 S2=23478 S4p1=537 | S1acc=7000 S1g=16 S2acc=23478 S2s=13646 S2g=1438 S4acc=537 S4g=99 S5acc=1865 S5g=165
+[Iter  150 | Time    3.3s] Best Z =  3512.28 | PM=19581 [PM_WARN] Ccrit=18186 Cweak=0 restarts=0 S2=23660 S4p1=540 | S1acc=7500 S1g=16 S2acc=23660 S2s=13657 S2g=1438 S4acc=540 S4g=99 S5acc=1917 S5g=167
+[Iter  160 | Time    3.6s] Best Z =  3523.78 | PM=19579 [PM_WARN] Ccrit=18168 Cweak=0 restarts=0 S2=23856 S4p1=545 | S1acc=8000 S1g=16 S2acc=23856 S2s=13663 S2g=1439 S4acc=545 S4g=99 S5acc=1945 S5g=167
+[Iter  170 | Time    3.8s] Best Z =  3540.68 | PM=19581 [PM_WARN] Ccrit=18155 Cweak=0 restarts=0 S2=23985 S4p1=547 | S1acc=8500 S1g=16 S2acc=23985 S2s=13664 S2g=1439 S4acc=547 S4g=99 S5acc=1974 S5g=168
+[Iter  180 | Time    4.1s] Best Z =  3540.68 | PM=19581 [PM_WARN] Ccrit=18143 Cweak=0 restarts=0 S2=24124 S4p1=547 | S1acc=9000 S1g=16 S2acc=24124 S2s=13667 S2g=1439 S4acc=547 S4g=99 S5acc=1994 S5g=168
+[Iter  190 | Time    4.4s] Best Z =  3540.68 | PM=19578 [PM_WARN] Ccrit=18139 Cweak=0 restarts=0 S2=24243 S4p1=547 | S1acc=9500 S1g=16 S2acc=24243 S2s=13669 S2g=1439 S4acc=547 S4g=99 S5acc=2004 S5g=168
+[Iter  200 | Time    4.6s] Best Z =  3540.68 | PM=19576 [PM_WARN] Ccrit=18131 Cweak=0 restarts=0 S2=24347 S4p1=547 | S1acc=10000 S1g=16 S2acc=24347 S2s=13671 S2g=1439 S4acc=547 S4g=99 S5acc=2009 S5g=168
+[Iter  210 | Time    4.9s] Best Z =  3540.68 | PM=19567 [PM_WARN] Ccrit=18126 Cweak=0 restarts=0 S2=24444 S4p1=547 | S1acc=10500 S1g=16 S2acc=24444 S2s=13672 S2g=1439 S4acc=547 S4g=99 S5acc=2012 S5g=168
+[Iter  220 | Time    5.2s] Best Z =  3540.68 | PM=19550 [PM_WARN] Ccrit=18125 Cweak=0 restarts=0 S2=24524 S4p1=547 | S1acc=11000 S1g=16 S2acc=24524 S2s=13674 S2g=1439 S4acc=547 S4g=99 S5acc=2015 S5g=168
+[Iter  230 | Time    5.4s] Best Z =  3540.68 | PM=19536 [PM_WARN] Ccrit=18122 Cweak=0 restarts=0 S2=24587 S4p1=547 | S1acc=11500 S1g=16 S2acc=24587 S2s=13674 S2g=1439 S4acc=547 S4g=99 S5acc=2020 S5g=168
+[Iter  240 | Time    5.7s] Best Z =  3540.68 | PM=19522 [PM_WARN] Ccrit=18117 Cweak=0 restarts=0 S2=24640 S4p1=547 | S1acc=12000 S1g=16 S2acc=24640 S2s=13674 S2g=1439 S4acc=547 S4g=99 S5acc=2032 S5g=168
+[Iter  250 | Time    5.9s] Best Z =  3540.68 | PM=19501 [PM_WARN] Ccrit=18114 Cweak=0 restarts=0 S2=24701 S4p1=547 | S1acc=12500 S1g=16 S2acc=24701 S2s=13677 S2g=1439 S4acc=547 S4g=99 S5acc=2037 S5g=168
+[Iter  260 | Time    6.2s] Best Z =  3540.68 | PM=19476 [PM_WARN] Ccrit=18110 Cweak=0 restarts=0 S2=24750 S4p1=547 | S1acc=13000 S1g=16 S2acc=24750 S2s=13677 S2g=1439 S4acc=547 S4g=99 S5acc=2040 S5g=168
+[Iter  270 | Time    6.4s] Best Z =  3558.06 | PM=19449 [PM_WARN] Ccrit=18110 Cweak=0 restarts=0 S2=24803 S4p1=547 | S1acc=13500 S1g=16 S2acc=24803 S2s=13680 S2g=1439 S4acc=547 S4g=99 S5acc=2063 S5g=169
+[Iter  280 | Time    6.7s] Best Z =  3558.06 | PM=19424 [PM_WARN] Ccrit=18106 Cweak=0 restarts=0 S2=24841 S4p1=547 | S1acc=14000 S1g=16 S2acc=24841 S2s=13682 S2g=1439 S4acc=547 S4g=99 S5acc=2071 S5g=169
+[Iter  290 | Time    7.0s] Best Z =  3558.06 | PM=19401 [PM_WARN] Ccrit=18106 Cweak=0 restarts=0 S2=24873 S4p1=547 | S1acc=14500 S1g=16 S2acc=24873 S2s=13683 S2g=1439 S4acc=547 S4g=99 S5acc=2074 S5g=169
+[Iter  300 | Time    7.2s] Best Z =  3591.61 | PM=19388 [PM_WARN] Ccrit=18104 Cweak=0 restarts=0 S2=24911 S4p1=547 | S1acc=15000 S1g=17 S2acc=24911 S2s=13683 S2g=1439 S4acc=547 S4g=99 S5acc=2086 S5g=169
+[Iter  310 | Time    7.5s] Best Z =  3591.61 | PM=19389 [PM_WARN] Ccrit=18100 Cweak=0 restarts=0 S2=24945 S4p1=547 | S1acc=15500 S1g=17 S2acc=24945 S2s=13684 S2g=1439 S4acc=547 S4g=99 S5acc=2094 S5g=169
+[Iter  320 | Time    7.7s] Best Z =  3591.61 | PM=19379 [PM_WARN] Ccrit=18100 Cweak=0 restarts=0 S2=24971 S4p1=547 | S1acc=16000 S1g=17 S2acc=24971 S2s=13684 S2g=1439 S4acc=547 S4g=99 S5acc=2095 S5g=169
+[Iter  330 | Time    8.0s] Best Z =  3612.30 | PM=19380 [PM_WARN] Ccrit=18099 Cweak=0 restarts=0 S2=25011 S4p1=547 | S1acc=16500 S1g=18 S2acc=25011 S2s=13687 S2g=1439 S4acc=547 S4g=99 S5acc=2097 S5g=169
+[Iter  340 | Time    8.3s] Best Z =  3612.30 | PM=19374 [PM_WARN] Ccrit=18094 Cweak=0 restarts=0 S2=25059 S4p1=547 | S1acc=17000 S1g=18 S2acc=25059 S2s=13688 S2g=1439 S4acc=547 S4g=99 S5acc=2104 S5g=169
+[Iter  350 | Time    8.5s] Best Z =  3612.30 | PM=19370 [PM_WARN] Ccrit=18090 Cweak=0 restarts=0 S2=25099 S4p1=547 | S1acc=17500 S1g=18 S2acc=25099 S2s=13688 S2g=1439 S4acc=547 S4g=99 S5acc=2108 S5g=169
+[Iter  360 | Time    8.8s] Best Z =  3612.30 | PM=19369 [PM_WARN] Ccrit=18088 Cweak=0 restarts=0 S2=25128 S4p1=547 | S1acc=18000 S1g=18 S2acc=25128 S2s=13688 S2g=1439 S4acc=547 S4g=99 S5acc=2108 S5g=169
+[Iter  370 | Time    9.1s] Best Z =  3612.30 | PM=19368 [PM_WARN] Ccrit=18087 Cweak=0 restarts=0 S2=25157 S4p1=547 | S1acc=18500 S1g=18 S2acc=25157 S2s=13689 S2g=1439 S4acc=547 S4g=99 S5acc=2111 S5g=169
+[Iter  380 | Time    9.3s] Best Z =  3612.30 | PM=19370 [PM_WARN] Ccrit=18087 Cweak=0 restarts=0 S2=25191 S4p1=548 | S1acc=19000 S1g=18 S2acc=25191 S2s=13691 S2g=1439 S4acc=548 S4g=99 S5acc=2115 S5g=169
+[Iter  390 | Time    9.6s] Best Z =  3612.30 | PM=19376 [PM_WARN] Ccrit=18081 Cweak=0 restarts=0 S2=25217 S4p1=548 | S1acc=19500 S1g=18 S2acc=25217 S2s=13692 S2g=1439 S4acc=548 S4g=99 S5acc=2124 S5g=169
+[Iter  400 | Time    9.8s] Best Z =  3612.30 | PM=19375 [PM_WARN] Ccrit=18079 Cweak=0 restarts=0 S2=25246 S4p1=548 | S1acc=20000 S1g=18 S2acc=25246 S2s=13692 S2g=1439 S4acc=548 S4g=99 S5acc=2129 S5g=169
+[Iter  410 | Time   10.1s] Best Z =  3612.30 | PM=19374 [PM_WARN] Ccrit=18075 Cweak=0 restarts=0 S2=25274 S4p1=548 | S1acc=20500 S1g=18 S2acc=25274 S2s=13693 S2g=1439 S4acc=548 S4g=99 S5acc=2134 S5g=169
+[Iter  420 | Time   10.4s] Best Z =  3612.30 | PM=19372 [PM_WARN] Ccrit=18074 Cweak=0 restarts=0 S2=25306 S4p1=548 | S1acc=21000 S1g=18 S2acc=25306 S2s=13693 S2g=1439 S4acc=548 S4g=99 S5acc=2137 S5g=169
+[Iter  430 | Time   10.6s] Best Z =  3627.09 | PM=19373 [PM_WARN] Ccrit=18072 Cweak=0 restarts=0 S2=25339 S4p1=548 | S1acc=21500 S1g=19 S2acc=25339 S2s=13693 S2g=1439 S4acc=548 S4g=99 S5acc=2147 S5g=169
+[Iter  440 | Time   10.9s] Best Z =  3627.09 | PM=19375 [PM_WARN] Ccrit=18071 Cweak=0 restarts=0 S2=25381 S4p1=549 | S1acc=22000 S1g=19 S2acc=25381 S2s=13694 S2g=1439 S4acc=549 S4g=99 S5acc=2151 S5g=169
+[Iter  450 | Time   11.2s] Best Z =  3627.09 | PM=19378 [PM_WARN] Ccrit=18066 Cweak=0 restarts=0 S2=25418 S4p1=549 | S1acc=22500 S1g=19 S2acc=25418 S2s=13697 S2g=1439 S4acc=549 S4g=99 S5acc=2156 S5g=169
+[Iter  460 | Time   11.4s] Best Z =  3627.09 | PM=19377 [PM_WARN] Ccrit=18066 Cweak=0 restarts=0 S2=25444 S4p1=549 | S1acc=23000 S1g=19 S2acc=25444 S2s=13697 S2g=1439 S4acc=549 S4g=99 S5acc=2156 S5g=169
+[Iter  470 | Time   11.7s] Best Z =  3627.09 | PM=19377 [PM_WARN] Ccrit=18065 Cweak=0 restarts=0 S2=25475 S4p1=549 | S1acc=23500 S1g=19 S2acc=25475 S2s=13697 S2g=1439 S4acc=549 S4g=99 S5acc=2156 S5g=169
+[Iter  480 | Time   12.0s] Best Z =  3627.09 | PM=19376 [PM_WARN] Ccrit=18065 Cweak=0 restarts=0 S2=25502 S4p1=550 | S1acc=24000 S1g=19 S2acc=25502 S2s=13697 S2g=1439 S4acc=550 S4g=99 S5acc=2156 S5g=169
+[Iter  490 | Time   12.2s] Best Z =  3627.09 | PM=19375 [PM_WARN] Ccrit=18065 Cweak=0 restarts=0 S2=25534 S4p1=550 | S1acc=24500 S1g=19 S2acc=25534 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2157 S5g=169
+[Iter  500 | Time   12.5s] Best Z =  3627.09 | PM=19373 [PM_WARN] Ccrit=18065 Cweak=0 restarts=0 S2=25562 S4p1=550 | S1acc=25000 S1g=19 S2acc=25562 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2157 S5g=169
+[Iter  510 | Time   12.8s] Best Z =  3627.09 | PM=19372 [PM_WARN] Ccrit=18064 Cweak=0 restarts=0 S2=25591 S4p1=550 | S1acc=25500 S1g=19 S2acc=25591 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2158 S5g=169
+[Iter  520 | Time   13.0s] Best Z =  3627.09 | PM=19371 [PM_WARN] Ccrit=18063 Cweak=0 restarts=0 S2=25612 S4p1=550 | S1acc=26000 S1g=19 S2acc=25612 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2160 S5g=169
+[Iter  530 | Time   13.3s] Best Z =  3630.05 | PM=19369 [PM_WARN] Ccrit=18061 Cweak=0 restarts=0 S2=25619 S4p1=550 | S1acc=26500 S1g=20 S2acc=25619 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2160 S5g=169
+[Iter  540 | Time   13.5s] Best Z =  3630.05 | PM=19369 [PM_WARN] Ccrit=18061 Cweak=0 restarts=0 S2=25620 S4p1=550 | S1acc=27000 S1g=20 S2acc=25620 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2160 S5g=169
+[Iter  550 | Time   13.8s] Best Z =  3636.64 | PM=19368 [PM_WARN] Ccrit=18060 Cweak=0 restarts=0 S2=25620 S4p1=550 | S1acc=27500 S1g=20 S2acc=25620 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2161 S5g=170
+[Iter  560 | Time   14.1s] Best Z =  3708.69 | PM=19373 [PM_WARN] Ccrit=18052 Cweak=0 restarts=0 S2=25624 S4p1=550 | S1acc=28000 S1g=21 S2acc=25624 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2200 S5g=171
+[Iter  570 | Time   14.3s] Best Z =  3708.69 | PM=19375 [PM_WARN] Ccrit=18050 Cweak=0 restarts=0 S2=25626 S4p1=550 | S1acc=28500 S1g=21 S2acc=25626 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2206 S5g=171
+[Iter  580 | Time   14.6s] Best Z =  3708.69 | PM=19378 [PM_WARN] Ccrit=18049 Cweak=0 restarts=0 S2=25628 S4p1=550 | S1acc=29000 S1g=21 S2acc=25628 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2208 S5g=171
+[Iter  590 | Time   14.8s] Best Z =  3708.69 | PM=19378 [PM_WARN] Ccrit=18049 Cweak=0 restarts=0 S2=25630 S4p1=550 | S1acc=29500 S1g=21 S2acc=25630 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2210 S5g=171
+[Iter  600 | Time   15.1s] Best Z =  3708.69 | PM=19377 [PM_WARN] Ccrit=18049 Cweak=0 restarts=0 S2=25631 S4p1=550 | S1acc=30000 S1g=21 S2acc=25631 S2s=13698 S2g=1439 S4acc=550 S4g=99 S5acc=2211 S5g=171
+[Iter  610 | Time   15.4s] Best Z =  3708.69 | PM=19379 [PM_WARN] Ccrit=18049 Cweak=0 restarts=0 S2=25632 S4p1=550 | S1acc=30500 S1g=21 S2acc=25632 S2s=13699 S2g=1439 S4acc=550 S4g=99 S5acc=2211 S5g=171
+[Iter  620 | Time   15.6s] Best Z =  3708.69 | PM=19379 [PM_WARN] Ccrit=18048 Cweak=0 restarts=0 S2=25632 S4p1=550 | S1acc=31000 S1g=21 S2acc=25632 S2s=13699 S2g=1439 S4acc=550 S4g=99 S5acc=2211 S5g=171
+[Iter  630 | Time   15.9s] Best Z =  3714.39 | PM=19379 [PM_WARN] Ccrit=18048 Cweak=0 restarts=0 S2=25632 S4p1=550 | S1acc=31500 S1g=22 S2acc=25632 S2s=13699 S2g=1439 S4acc=550 S4g=99 S5acc=2211 S5g=171
+[Iter  640 | Time   16.2s] Best Z =  3714.39 | PM=19378 [PM_WARN] Ccrit=18048 Cweak=0 restarts=0 S2=25632 S4p1=550 | S1acc=32000 S1g=22 S2acc=25632 S2s=13699 S2g=1439 S4acc=550 S4g=99 S5acc=2211 S5g=171
+[Iter  650 | Time   16.4s] Best Z =  3714.39 | PM=19377 [PM_WARN] Ccrit=18048 Cweak=0 restarts=0 S2=25632 S4p1=550 | S1acc=32500 S1g=22 S2acc=25632 S2s=13699 S2g=1439 S4acc=550 S4g=99 S5acc=2211 S5g=171
+[Iter  660 | Time   16.7s] Best Z =  3714.39 | PM=19378 [PM_WARN] Ccrit=18048 Cweak=0 restarts=0 S2=25632 S4p1=551 | S1acc=33000 S1g=22 S2acc=25632 S2s=13699 S2g=1439 S4acc=551 S4g=99 S5acc=2212 S5g=171
+[Iter  670 | Time   17.0s] Best Z =  3714.39 | PM=19378 [PM_WARN] Ccrit=18047 Cweak=0 restarts=0 S2=25632 S4p1=551 | S1acc=33500 S1g=22 S2acc=25632 S2s=13699 S2g=1439 S4acc=551 S4g=99 S5acc=2212 S5g=171
+[Iter  680 | Time   17.2s] Best Z =  3714.39 | PM=19378 [PM_WARN] Ccrit=18046 Cweak=0 restarts=0 S2=25632 S4p1=551 | S1acc=34000 S1g=22 S2acc=25632 S2s=13699 S2g=1439 S4acc=551 S4g=99 S5acc=2213 S5g=171
+[Iter  690 | Time   17.5s] Best Z =  3714.39 | PM=19379 [PM_WARN] Ccrit=18045 Cweak=0 restarts=0 S2=25633 S4p1=551 | S1acc=34500 S1g=22 S2acc=25633 S2s=13699 S2g=1439 S4acc=551 S4g=99 S5acc=2215 S5g=171
+[Iter  700 | Time   17.8s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18045 Cweak=0 restarts=0 S2=25633 S4p1=551 | S1acc=35000 S1g=22 S2acc=25633 S2s=13699 S2g=1439 S4acc=551 S4g=99 S5acc=2216 S5g=171
+[Iter  710 | Time   18.0s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18045 Cweak=0 restarts=0 S2=25634 S4p1=551 | S1acc=35500 S1g=22 S2acc=25634 S2s=13700 S2g=1439 S4acc=551 S4g=99 S5acc=2217 S5g=171
+[Iter  720 | Time   18.3s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18044 Cweak=0 restarts=0 S2=25637 S4p1=551 | S1acc=36000 S1g=22 S2acc=25637 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2217 S5g=171
+[Iter  730 | Time   18.6s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18043 Cweak=0 restarts=0 S2=25638 S4p1=551 | S1acc=36500 S1g=22 S2acc=25638 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2217 S5g=171
+[Iter  740 | Time   18.8s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18043 Cweak=0 restarts=0 S2=25638 S4p1=551 | S1acc=37000 S1g=22 S2acc=25638 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2217 S5g=171
+[Iter  750 | Time   19.1s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18043 Cweak=0 restarts=0 S2=25638 S4p1=551 | S1acc=37500 S1g=22 S2acc=25638 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2217 S5g=171
+[Iter  760 | Time   19.4s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18043 Cweak=0 restarts=0 S2=25638 S4p1=551 | S1acc=38000 S1g=22 S2acc=25638 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2217 S5g=171
+[Iter  770 | Time   19.6s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18043 Cweak=0 restarts=0 S2=25638 S4p1=551 | S1acc=38500 S1g=22 S2acc=25638 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2218 S5g=171
+[Iter  780 | Time   19.9s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18039 Cweak=0 restarts=0 S2=25641 S4p1=551 | S1acc=39000 S1g=22 S2acc=25641 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2223 S5g=171
+[Iter  790 | Time   20.2s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18039 Cweak=0 restarts=0 S2=25641 S4p1=551 | S1acc=39500 S1g=22 S2acc=25641 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2223 S5g=171
+[Iter  800 | Time   20.4s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18038 Cweak=0 restarts=0 S2=25641 S4p1=551 | S1acc=40000 S1g=22 S2acc=25641 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2226 S5g=171
+[Iter  810 | Time   20.7s] Best Z =  3714.39 | PM=19379 [PM_WARN] Ccrit=18036 Cweak=0 restarts=0 S2=25642 S4p1=551 | S1acc=40500 S1g=22 S2acc=25642 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2228 S5g=171
+[Iter  820 | Time   21.0s] Best Z =  3714.39 | PM=19380 [PM_WARN] Ccrit=18036 Cweak=0 restarts=0 S2=25642 S4p1=551 | S1acc=41000 S1g=22 S2acc=25642 S2s=13701 S2g=1439 S4acc=551 S4g=99 S5acc=2229 S5g=171
+[Iter  830 | Time   21.3s] Best Z =  3714.39 | PM=19382 [PM_WARN] Ccrit=18035 Cweak=0 restarts=0 S2=25643 S4p1=551 | S1acc=41500 S1g=22 S2acc=25643 S2s=13702 S2g=1439 S4acc=551 S4g=99 S5acc=2230 S5g=171
+[Iter  840 | Time   21.5s] Best Z =  3714.39 | PM=19382 [PM_WARN] Ccrit=18035 Cweak=0 restarts=0 S2=25643 S4p1=551 | S1acc=42000 S1g=22 S2acc=25643 S2s=13702 S2g=1439 S4acc=551 S4g=99 S5acc=2231 S5g=171
+[Iter  850 | Time   21.8s] Best Z =  3714.39 | PM=19381 [PM_WARN] Ccrit=18034 Cweak=0 restarts=0 S2=25644 S4p1=551 | S1acc=42500 S1g=22 S2acc=25644 S2s=13702 S2g=1439 S4acc=551 S4g=99 S5acc=2232 S5g=171
+[Iter  860 | Time   22.0s] Best Z =  3714.39 | PM=19383 [PM_WARN] Ccrit=18034 Cweak=0 restarts=0 S2=25644 S4p1=551 | S1acc=43000 S1g=22 S2acc=25644 S2s=13702 S2g=1439 S4acc=551 S4g=99 S5acc=2233 S5g=171
+[Iter  870 | Time   22.3s] Best Z =  3714.39 | PM=19383 [PM_WARN] Ccrit=18033 Cweak=0 restarts=0 S2=25646 S4p1=551 | S1acc=43500 S1g=22 S2acc=25646 S2s=13702 S2g=1439 S4acc=551 S4g=99 S5acc=2235 S5g=171
+[Iter  880 | Time   22.6s] Best Z =  3714.39 | PM=19381 [PM_WARN] Ccrit=18033 Cweak=0 restarts=0 S2=25646 S4p1=551 | S1acc=44000 S1g=22 S2acc=25646 S2s=13702 S2g=1439 S4acc=551 S4g=99 S5acc=2235 S5g=171
+[Iter  890 | Time   22.9s] Best Z =  3714.39 | PM=19382 [PM_WARN] Ccrit=18031 Cweak=0 restarts=0 S2=25647 S4p1=551 | S1acc=44500 S1g=22 S2acc=25647 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2236 S5g=171
+[Iter  900 | Time   23.1s] Best Z =  3714.39 | PM=19381 [PM_WARN] Ccrit=18030 Cweak=0 restarts=0 S2=25647 S4p1=551 | S1acc=45000 S1g=22 S2acc=25647 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2238 S5g=171
+[Iter  910 | Time   23.4s] Best Z =  3714.39 | PM=19382 [PM_WARN] Ccrit=18030 Cweak=0 restarts=0 S2=25647 S4p1=551 | S1acc=45500 S1g=22 S2acc=25647 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2238 S5g=171
+[Iter  920 | Time   23.7s] Best Z =  3714.39 | PM=19384 [PM_WARN] Ccrit=18029 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=46000 S1g=22 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2239 S5g=171
+[Iter  930 | Time   23.9s] Best Z =  3714.39 | PM=19385 [PM_WARN] Ccrit=18029 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=46500 S1g=22 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2240 S5g=171
+[Iter  940 | Time   24.2s] Best Z =  3714.39 | PM=19384 [PM_WARN] Ccrit=18029 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=47000 S1g=22 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2240 S5g=171
+[Iter  950 | Time   24.5s] Best Z =  3732.09 | PM=19383 [PM_WARN] Ccrit=18029 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=47500 S1g=23 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2242 S5g=171
+[Iter  960 | Time   24.8s] Best Z =  3732.09 | PM=19383 [PM_WARN] Ccrit=18029 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=48000 S1g=23 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2242 S5g=171
+[Iter  970 | Time   25.0s] Best Z =  3732.09 | PM=19381 [PM_WARN] Ccrit=18029 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=48500 S1g=23 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2242 S5g=171
+[Iter  980 | Time   25.3s] Best Z =  3732.09 | PM=19380 [PM_WARN] Ccrit=18028 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=49000 S1g=23 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2242 S5g=171
+[Iter  990 | Time   25.6s] Best Z =  3732.09 | PM=19379 [PM_WARN] Ccrit=18026 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=49500 S1g=23 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2242 S5g=171
+[Iter 1000 | Time   25.8s] Best Z =  3732.09 | PM=19380 [PM_WARN] Ccrit=18025 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=50000 S1g=23 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2242 S5g=171
+[Iter 1010 | Time   26.1s] Best Z =  3732.09 | PM=6273 [PM_WARN] Ccrit=4919 Cweak=0 restarts=0 S2=25648 S4p1=551 | S1acc=50500 S1g=23 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2242 S5g=171
+[Iter 1020 | Time   26.4s] Best Z =  3732.09 | PM=1699 Ccrit=394 Cweak=388 restarts=0 S2=25648 S4p1=551 | S1acc=51000 S1g=23 S2acc=25648 S2s=13703 S2g=1439 S4acc=551 S4g=99 S5acc=2243 S5g=171
+[Iter 1030 | Time   26.6s] Best Z =  3732.09 | PM=1418 Ccrit=168 Cweak=693 restarts=0 S2=25660 S4p1=552 | S1acc=51500 S1g=23 S2acc=25660 S2s=13704 S2g=1439 S4acc=552 S4g=99 S5acc=2243 S5g=171
+[Iter 1040 | Time   26.9s] Best Z =  3732.09 | PM=1277 Ccrit=101 Cweak=668 restarts=0 S2=25746 S4p1=554 | S1acc=52000 S1g=23 S2acc=25746 S2s=13705 S2g=1439 S4acc=554 S4g=99 S5acc=2243 S5g=171
+[Iter 1050 | Time   27.1s] Best Z =  3732.09 | PM=1215 Ccrit=81 Cweak=639 restarts=0 S2=25862 S4p1=554 | S1acc=52500 S1g=23 S2acc=25862 S2s=13706 S2g=1439 S4acc=554 S4g=99 S5acc=2244 S5g=171
+[Iter 1060 | Time   27.4s] Best Z =  3732.09 | PM=1163 Ccrit=73 Cweak=605 restarts=0 S2=26034 S4p1=556 | S1acc=53000 S1g=23 S2acc=26034 S2s=13706 S2g=1439 S4acc=556 S4g=99 S5acc=2245 S5g=171
+[Iter 1070 | Time   27.6s] Best Z =  3732.09 | PM=1120 Ccrit=62 Cweak=584 restarts=0 S2=26264 S4p1=564 | S1acc=53500 S1g=23 S2acc=26264 S2s=13706 S2g=1439 S4acc=564 S4g=99 S5acc=2246 S5g=171
+[Iter 1080 | Time   27.9s] Best Z =  3732.09 | PM=1054 Ccrit=47 Cweak=541 restarts=0 S2=26496 S4p1=564 | S1acc=54000 S1g=23 S2acc=26496 S2s=13706 S2g=1439 S4acc=564 S4g=99 S5acc=2246 S5g=171
+[Iter 1090 | Time   28.1s] Best Z =  3732.09 | PM=1026 Ccrit=41 Cweak=519 restarts=0 S2=26779 S4p1=564 | S1acc=54500 S1g=23 S2acc=26779 S2s=13707 S2g=1439 S4acc=564 S4g=99 S5acc=2247 S5g=171
+[Iter 1100 | Time   28.4s] Best Z =  3732.09 | PM=1003 Ccrit=38 Cweak=501 restarts=0 S2=27070 S4p1=564 | S1acc=55000 S1g=23 S2acc=27070 S2s=13708 S2g=1439 S4acc=564 S4g=99 S5acc=2247 S5g=171
+[Iter 1110 | Time   28.6s] Best Z =  3732.09 | PM=962 Ccrit=35 Cweak=474 restarts=0 S2=27367 S4p1=564 | S1acc=55500 S1g=23 S2acc=27367 S2s=13708 S2g=1439 S4acc=564 S4g=99 S5acc=2247 S5g=171
+[Iter 1120 | Time   28.9s] Best Z =  3732.09 | PM=933 Ccrit=34 Cweak=452 restarts=0 S2=27731 S4p1=564 | S1acc=56000 S1g=23 S2acc=27731 S2s=13709 S2g=1439 S4acc=564 S4g=99 S5acc=2247 S5g=171
+[Iter 1130 | Time   29.1s] Best Z =  3732.09 | PM=912 Ccrit=29 Cweak=443 restarts=0 S2=28116 S4p1=565 | S1acc=56500 S1g=23 S2acc=28116 S2s=13710 S2g=1439 S4acc=565 S4g=99 S5acc=2247 S5g=171
+[Iter 1140 | Time   29.4s] Best Z =  3732.09 | PM=884 Ccrit=26 Cweak=421 restarts=0 S2=28575 S4p1=565 | S1acc=57000 S1g=23 S2acc=28575 S2s=13710 S2g=1439 S4acc=565 S4g=99 S5acc=2250 S5g=171
+[Iter 1150 | Time   29.6s] Best Z =  3732.09 | PM=850 Ccrit=21 Cweak=400 restarts=0 S2=29103 S4p1=565 | S1acc=57500 S1g=23 S2acc=29103 S2s=13710 S2g=1439 S4acc=565 S4g=99 S5acc=2251 S5g=171
+[Iter 1160 | Time   29.9s] Best Z =  3732.09 | PM=829 Ccrit=20 Cweak=384 restarts=0 S2=29658 S4p1=565 | S1acc=58000 S1g=23 S2acc=29658 S2s=13710 S2g=1439 S4acc=565 S4g=99 S5acc=2251 S5g=171
+[Iter 1170 | Time   30.1s] Best Z =  3732.09 | PM=810 Ccrit=18 Cweak=368 restarts=0 S2=30248 S4p1=565 | S1acc=58500 S1g=23 S2acc=30248 S2s=13710 S2g=1439 S4acc=565 S4g=99 S5acc=2252 S5g=171
+[Iter 1180 | Time   30.4s] Best Z =  3732.09 | PM=791 Ccrit=17 Cweak=355 restarts=0 S2=30870 S4p1=565 | S1acc=59000 S1g=23 S2acc=30870 S2s=13710 S2g=1439 S4acc=565 S4g=99 S5acc=2252 S5g=171
+[Iter 1190 | Time   30.6s] Best Z =  3732.09 | PM=783 Ccrit=16 Cweak=350 restarts=0 S2=31511 S4p1=565 | S1acc=59500 S1g=23 S2acc=31511 S2s=13710 S2g=1439 S4acc=565 S4g=99 S5acc=2252 S5g=171
+[Iter 1200 | Time   30.9s] Best Z =  3732.09 | PM=773 Ccrit=15 Cweak=349 restarts=0 S2=32161 S4p1=565 | S1acc=60000 S1g=23 S2acc=32161 S2s=13710 S2g=1439 S4acc=565 S4g=99 S5acc=2252 S5g=171
+[Iter 1210 | Time   31.1s] Best Z =  3732.09 | PM=768 Ccrit=14 Cweak=349 restarts=0 S2=32799 S4p1=565 | S1acc=60500 S1g=23 S2acc=32799 S2s=13710 S2g=1439 S4acc=565 S4g=99 S5acc=2252 S5g=171
+[Iter 1220 | Time   31.4s] Best Z =  3732.09 | PM=761 Ccrit=14 Cweak=342 restarts=0 S2=33448 S4p1=565 | S1acc=61000 S1g=23 S2acc=33448 S2s=13711 S2g=1439 S4acc=565 S4g=99 S5acc=2252 S5g=171
+[Iter 1230 | Time   31.6s] Best Z =  3732.09 | PM=749 Ccrit=14 Cweak=332 restarts=0 S2=34126 S4p1=565 | S1acc=61500 S1g=23 S2acc=34126 S2s=13711 S2g=1439 S4acc=565 S4g=99 S5acc=2252 S5g=171
+[Iter 1240 | Time   31.9s] Best Z =  3732.09 | PM=736 Ccrit=13 Cweak=323 restarts=0 S2=34871 S4p1=565 | S1acc=62000 S1g=23 S2acc=34871 S2s=13715 S2g=1439 S4acc=565 S4g=99 S5acc=2254 S5g=171
+[Iter 1250 | Time   32.1s] Best Z =  3733.53 | PM=730 Ccrit=10 Cweak=321 restarts=0 S2=35637 S4p1=565 | S1acc=62500 S1g=24 S2acc=35637 S2s=13717 S2g=1441 S4acc=565 S4g=99 S5acc=2254 S5g=171
+[Iter 1260 | Time   32.4s] Best Z =  3733.53 | PM=728 Ccrit=10 Cweak=322 restarts=0 S2=36530 S4p1=565 | S1acc=63000 S1g=24 S2acc=36530 S2s=13718 S2g=1441 S4acc=565 S4g=99 S5acc=2257 S5g=171
+[Iter 1270 | Time   32.6s] Best Z =  3733.53 | PM=721 Ccrit=9 Cweak=313 restarts=0 S2=37477 S4p1=565 | S1acc=63500 S1g=24 S2acc=37477 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2258 S5g=171
+[Iter 1280 | Time   32.8s] Best Z =  3733.53 | PM=715 Ccrit=7 Cweak=308 restarts=0 S2=38445 S4p1=565 | S1acc=64000 S1g=24 S2acc=38445 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2258 S5g=171
+[Iter 1290 | Time   33.1s] Best Z =  3733.53 | PM=708 Ccrit=6 Cweak=304 restarts=0 S2=39404 S4p1=565 | S1acc=64500 S1g=24 S2acc=39404 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2259 S5g=171
+[Iter 1300 | Time   33.3s] Best Z =  3733.53 | PM=700 Ccrit=6 Cweak=299 restarts=0 S2=40342 S4p1=565 | S1acc=65000 S1g=24 S2acc=40342 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2260 S5g=171
+[Iter 1310 | Time   33.6s] Best Z =  3733.53 | PM=691 Ccrit=6 Cweak=292 restarts=0 S2=41290 S4p1=565 | S1acc=65500 S1g=24 S2acc=41290 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2260 S5g=171
+[Iter 1320 | Time   33.8s] Best Z =  3733.53 | PM=689 Ccrit=6 Cweak=289 restarts=0 S2=42248 S4p1=565 | S1acc=66000 S1g=24 S2acc=42248 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2261 S5g=171
+[Iter 1330 | Time   34.1s] Best Z =  3733.53 | PM=682 Ccrit=6 Cweak=280 restarts=0 S2=43202 S4p1=565 | S1acc=66500 S1g=24 S2acc=43202 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2261 S5g=171
+[Iter 1340 | Time   34.3s] Best Z =  3733.53 | PM=676 Ccrit=5 Cweak=281 restarts=0 S2=44195 S4p1=565 | S1acc=67000 S1g=24 S2acc=44195 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2261 S5g=171
+[Iter 1350 | Time   34.6s] Best Z =  3733.53 | PM=662 Ccrit=5 Cweak=271 restarts=0 S2=45220 S4p1=565 | S1acc=67500 S1g=24 S2acc=45220 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2261 S5g=171
+[Iter 1360 | Time   34.8s] Best Z =  3733.53 | PM=659 Ccrit=5 Cweak=269 restarts=0 S2=46319 S4p1=565 | S1acc=68000 S1g=24 S2acc=46319 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2261 S5g=171
+[Iter 1370 | Time   35.1s] Best Z =  3733.53 | PM=654 Ccrit=4 Cweak=267 restarts=0 S2=47469 S4p1=565 | S1acc=68500 S1g=24 S2acc=47469 S2s=13719 S2g=1441 S4acc=565 S4g=99 S5acc=2261 S5g=171
+[Iter 1380 | Time   35.3s] Best Z =  3733.53 | PM=652 Ccrit=3 Cweak=264 restarts=0 S2=48679 S4p1=565 | S1acc=69000 S1g=24 S2acc=48679 S2s=13720 S2g=1441 S4acc=565 S4g=99 S5acc=2263 S5g=171
+[Iter 1390 | Time   35.6s] Best Z =  3733.53 | PM=640 Ccrit=3 Cweak=257 restarts=0 S2=49912 S4p1=565 | S1acc=69500 S1g=24 S2acc=49912 S2s=13721 S2g=1441 S4acc=565 S4g=99 S5acc=2264 S5g=171
+[Iter 1400 | Time   35.8s] Best Z =  3733.53 | PM=633 Ccrit=3 Cweak=252 restarts=0 S2=51125 S4p1=565 | S1acc=70000 S1g=24 S2acc=51125 S2s=13721 S2g=1441 S4acc=565 S4g=99 S5acc=2264 S5g=171
+[Iter 1410 | Time   36.1s] Best Z =  3733.53 | PM=623 Ccrit=3 Cweak=243 restarts=0 S2=52322 S4p1=565 | S1acc=70500 S1g=24 S2acc=52322 S2s=13722 S2g=1441 S4acc=565 S4g=99 S5acc=2264 S5g=171
+[Iter 1420 | Time   36.3s] Best Z =  3733.53 | PM=622 Ccrit=3 Cweak=242 restarts=0 S2=53553 S4p1=565 | S1acc=71000 S1g=24 S2acc=53553 S2s=13722 S2g=1441 S4acc=565 S4g=99 S5acc=2266 S5g=171
+[Iter 1430 | Time   36.6s] Best Z =  3733.53 | PM=615 Ccrit=3 Cweak=238 restarts=0 S2=54760 S4p1=565 | S1acc=71500 S1g=24 S2acc=54760 S2s=13722 S2g=1441 S4acc=565 S4g=99 S5acc=2266 S5g=171
+[Iter 1440 | Time   36.8s] Best Z =  3733.53 | PM=611 Ccrit=3 Cweak=234 restarts=0 S2=56013 S4p1=565 | S1acc=72000 S1g=24 S2acc=56013 S2s=13722 S2g=1441 S4acc=565 S4g=99 S5acc=2267 S5g=171
+[Iter 1450 | Time   37.1s] Best Z =  3733.53 | PM=608 Ccrit=2 Cweak=234 restarts=0 S2=57304 S4p1=565 | S1acc=72500 S1g=24 S2acc=57304 S2s=13722 S2g=1441 S4acc=565 S4g=99 S5acc=2268 S5g=171
+[Iter 1460 | Time   37.3s] Best Z =  3733.53 | PM=608 Ccrit=2 Cweak=233 restarts=0 S2=58582 S4p1=565 | S1acc=73000 S1g=24 S2acc=58582 S2s=13722 S2g=1441 S4acc=565 S4g=99 S5acc=2268 S5g=171
+[Iter 1470 | Time   37.5s] Best Z =  3733.53 | PM=608 Ccrit=2 Cweak=233 restarts=0 S2=59817 S4p1=565 | S1acc=73500 S1g=24 S2acc=59817 S2s=13722 S2g=1441 S4acc=565 S4g=99 S5acc=2268 S5g=171
+[Iter 1480 | Time   37.8s] Best Z =  3733.53 | PM=610 Ccrit=2 Cweak=237 restarts=0 S2=61039 S4p1=565 | S1acc=74000 S1g=24 S2acc=61039 S2s=13722 S2g=1441 S4acc=565 S4g=99 S5acc=2268 S5g=171
+[Iter 1490 | Time   38.1s] Best Z =  3733.53 | PM=608 Ccrit=1 Cweak=236 restarts=0 S2=62258 S4p1=565 | S1acc=74500 S1g=24 S2acc=62258 S2s=13722 S2g=1441 S4acc=565 S4g=99 S5acc=2268 S5g=171
+[Iter 1500 | Time   38.3s] Best Z =  3733.53 | PM=612 Ccrit=1 Cweak=238 restarts=0 S2=63487 S4p1=565 | S1acc=75000 S1g=24 S2acc=63487 S2s=13723 S2g=1441 S4acc=565 S4g=99 S5acc=2269 S5g=171
+[Iter 1510 | Time   38.6s] Best Z =  3733.53 | PM=612 Ccrit=1 Cweak=239 restarts=0 S2=64716 S4p1=565 | S1acc=75500 S1g=24 S2acc=64716 S2s=13723 S2g=1441 S4acc=565 S4g=99 S5acc=2269 S5g=171
+[Iter 1520 | Time   38.8s] Best Z =  3733.53 | PM=610 Ccrit=1 Cweak=237 restarts=0 S2=65914 S4p1=565 | S1acc=76000 S1g=24 S2acc=65914 S2s=13723 S2g=1441 S4acc=565 S4g=99 S5acc=2269 S5g=171
+[Iter 1530 | Time   39.0s] Best Z =  3733.53 | PM=609 Ccrit=1 Cweak=237 restarts=0 S2=67116 S4p1=565 | S1acc=76500 S1g=24 S2acc=67116 S2s=13723 S2g=1441 S4acc=565 S4g=99 S5acc=2270 S5g=171
+[Iter 1540 | Time   39.3s] Best Z =  3733.53 | PM=607 Ccrit=1 Cweak=236 restarts=0 S2=68305 S4p1=565 | S1acc=77000 S1g=24 S2acc=68305 S2s=13723 S2g=1441 S4acc=565 S4g=99 S5acc=2270 S5g=171
+[Iter 1550 | Time   39.5s] Best Z =  3733.53 | PM=609 Ccrit=1 Cweak=235 restarts=0 S2=69524 S4p1=565 | S1acc=77500 S1g=24 S2acc=69524 S2s=13724 S2g=1441 S4acc=565 S4g=99 S5acc=2270 S5g=171
+[Iter 1560 | Time   39.8s] Best Z =  3733.53 | PM=588 Ccrit=1 Cweak=226 restarts=0 S2=70825 S4p1=565 | S1acc=78000 S1g=24 S2acc=70825 S2s=13724 S2g=1441 S4acc=565 S4g=99 S5acc=2272 S5g=171
+[Iter 1570 | Time   40.0s] Best Z =  3733.53 | PM=584 Ccrit=1 Cweak=225 restarts=0 S2=72290 S4p1=565 | S1acc=78500 S1g=24 S2acc=72290 S2s=13727 S2g=1441 S4acc=565 S4g=99 S5acc=2273 S5g=171
+[Iter 1580 | Time   40.3s] Best Z =  3733.53 | PM=582 Ccrit=1 Cweak=221 restarts=0 S2=73769 S4p1=565 | S1acc=79000 S1g=24 S2acc=73769 S2s=13728 S2g=1441 S4acc=565 S4g=99 S5acc=2273 S5g=171
+[Iter 1590 | Time   40.5s] Best Z =  3733.53 | PM=588 Ccrit=1 Cweak=222 restarts=0 S2=75230 S4p1=565 | S1acc=79500 S1g=24 S2acc=75230 S2s=13731 S2g=1441 S4acc=565 S4g=99 S5acc=2274 S5g=171
+[Iter 1600 | Time   40.8s] Best Z =  3733.53 | PM=587 Ccrit=1 Cweak=223 restarts=0 S2=76680 S4p1=565 | S1acc=80000 S1g=24 S2acc=76680 S2s=13731 S2g=1441 S4acc=565 S4g=99 S5acc=2274 S5g=171
+[Iter 1610 | Time   41.0s] Best Z =  3733.53 | PM=585 Ccrit=1 Cweak=221 restarts=0 S2=78115 S4p1=565 | S1acc=80500 S1g=24 S2acc=78115 S2s=13731 S2g=1441 S4acc=565 S4g=99 S5acc=2274 S5g=171
+[Iter 1620 | Time   41.3s] Best Z =  3733.53 | PM=585 Ccrit=1 Cweak=222 restarts=0 S2=79544 S4p1=565 | S1acc=81000 S1g=24 S2acc=79544 S2s=13731 S2g=1441 S4acc=565 S4g=99 S5acc=2274 S5g=171
+[Iter 1630 | Time   41.5s] Best Z =  3733.53 | PM=586 Ccrit=1 Cweak=224 restarts=0 S2=81011 S4p1=565 | S1acc=81500 S1g=24 S2acc=81011 S2s=13731 S2g=1441 S4acc=565 S4g=99 S5acc=2275 S5g=171
+[Iter 1640 | Time   41.8s] Best Z =  3733.53 | PM=583 Ccrit=1 Cweak=222 restarts=0 S2=82432 S4p1=565 | S1acc=82000 S1g=24 S2acc=82432 S2s=13731 S2g=1441 S4acc=565 S4g=99 S5acc=2275 S5g=171
+[Iter 1650 | Time   42.0s] Best Z =  3733.53 | PM=588 Ccrit=1 Cweak=226 restarts=0 S2=83878 S4p1=565 | S1acc=82500 S1g=24 S2acc=83878 S2s=13732 S2g=1441 S4acc=565 S4g=99 S5acc=2277 S5g=171
+[Iter 1660 | Time   42.3s] Best Z =  3733.53 | PM=587 Ccrit=0 Cweak=225 restarts=0 S2=85306 S4p1=565 | S1acc=83000 S1g=24 S2acc=85306 S2s=13732 S2g=1441 S4acc=565 S4g=99 S5acc=2279 S5g=171
+[Iter 1670 | Time   42.5s] Best Z =  3733.53 | PM=592 Ccrit=0 Cweak=226 restarts=0 S2=86764 S4p1=565 | S1acc=83500 S1g=24 S2acc=86764 S2s=13733 S2g=1441 S4acc=565 S4g=99 S5acc=2281 S5g=171
+[Iter 1680 | Time   42.8s] Best Z =  3733.53 | PM=589 Ccrit=0 Cweak=223 restarts=0 S2=88217 S4p1=565 | S1acc=84000 S1g=24 S2acc=88217 S2s=13733 S2g=1441 S4acc=565 S4g=99 S5acc=2281 S5g=171
+[Iter 1690 | Time   43.0s] Best Z =  3739.21 | PM=592 Ccrit=0 Cweak=226 restarts=0 S2=89630 S4p1=565 | S1acc=84500 S1g=25 S2acc=89630 S2s=13734 S2g=1445 S4acc=565 S4g=99 S5acc=2288 S5g=171
+[Iter 1700 | Time   43.2s] Best Z =  3739.21 | PM=592 Ccrit=0 Cweak=227 restarts=0 S2=91080 S4p1=565 | S1acc=85000 S1g=25 S2acc=91080 S2s=13735 S2g=1445 S4acc=565 S4g=99 S5acc=2290 S5g=171
+[Iter 1710 | Time   43.5s] Best Z =  3739.21 | PM=594 Ccrit=0 Cweak=228 restarts=0 S2=92504 S4p1=565 | S1acc=85500 S1g=25 S2acc=92504 S2s=13736 S2g=1445 S4acc=565 S4g=99 S5acc=2291 S5g=171
+[Iter 1720 | Time   43.7s] Best Z =  3744.85 | PM=590 Ccrit=0 Cweak=226 restarts=0 S2=93982 S4p1=565 | S1acc=86000 S1g=25 S2acc=93982 S2s=13737 S2g=1448 S4acc=565 S4g=99 S5acc=2294 S5g=171
+[Iter 1730 | Time   44.0s] Best Z =  3744.85 | PM=591 Ccrit=0 Cweak=227 restarts=0 S2=95457 S4p1=565 | S1acc=86500 S1g=25 S2acc=95457 S2s=13737 S2g=1448 S4acc=565 S4g=99 S5acc=2295 S5g=171
+[Iter 1740 | Time   44.2s] Best Z =  3744.85 | PM=586 Ccrit=0 Cweak=223 restarts=0 S2=96890 S4p1=565 | S1acc=87000 S1g=25 S2acc=96890 S2s=13737 S2g=1448 S4acc=565 S4g=99 S5acc=2295 S5g=171
+[Iter 1750 | Time   44.5s] Best Z =  3744.85 | PM=586 Ccrit=0 Cweak=224 restarts=0 S2=98303 S4p1=565 | S1acc=87500 S1g=25 S2acc=98303 S2s=13737 S2g=1448 S4acc=565 S4g=99 S5acc=2295 S5g=171
+[Iter 1760 | Time   44.8s] Best Z =  3744.85 | PM=586 Ccrit=0 Cweak=225 restarts=0 S2=99729 S4p1=565 | S1acc=88000 S1g=25 S2acc=99729 S2s=13737 S2g=1448 S4acc=565 S4g=99 S5acc=2295 S5g=171
+[Iter 1770 | Time   45.0s] Best Z =  3744.85 | PM=583 Ccrit=0 Cweak=222 restarts=0 S2=101155 S4p1=565 | S1acc=88500 S1g=25 S2acc=101155 S2s=13737 S2g=1448 S4acc=565 S4g=99 S5acc=2295 S5g=171
+[Iter 1780 | Time   45.3s] Best Z =  3744.85 | PM=586 Ccrit=1 Cweak=224 restarts=0 S2=102616 S4p1=565 | S1acc=89000 S1g=25 S2acc=102616 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2296 S5g=171
+[Iter 1790 | Time   45.5s] Best Z =  3744.85 | PM=586 Ccrit=1 Cweak=222 restarts=0 S2=103973 S4p1=565 | S1acc=89500 S1g=25 S2acc=103973 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2296 S5g=171
+[Iter 1800 | Time   45.8s] Best Z =  3744.85 | PM=582 Ccrit=1 Cweak=221 restarts=0 S2=105332 S4p1=565 | S1acc=90000 S1g=25 S2acc=105332 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2296 S5g=171
+[Iter 1810 | Time   46.0s] Best Z =  3744.85 | PM=581 Ccrit=1 Cweak=220 restarts=0 S2=106667 S4p1=565 | S1acc=90500 S1g=25 S2acc=106667 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2296 S5g=171
+[Iter 1820 | Time   46.3s] Best Z =  3744.85 | PM=581 Ccrit=1 Cweak=219 restarts=0 S2=108018 S4p1=565 | S1acc=91000 S1g=25 S2acc=108018 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2296 S5g=171
+[Iter 1830 | Time   46.5s] Best Z =  3744.85 | PM=579 Ccrit=1 Cweak=220 restarts=0 S2=109327 S4p1=565 | S1acc=91500 S1g=25 S2acc=109327 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2296 S5g=171
+[Iter 1840 | Time   46.8s] Best Z =  3744.85 | PM=576 Ccrit=1 Cweak=219 restarts=0 S2=110619 S4p1=565 | S1acc=92000 S1g=25 S2acc=110619 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2296 S5g=171
+[Iter 1850 | Time   47.0s] Best Z =  3744.85 | PM=573 Ccrit=1 Cweak=218 restarts=0 S2=111982 S4p1=565 | S1acc=92500 S1g=25 S2acc=111982 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2296 S5g=171
+[Iter 1860 | Time   47.2s] Best Z =  3744.85 | PM=571 Ccrit=1 Cweak=217 restarts=0 S2=113367 S4p1=565 | S1acc=93000 S1g=25 S2acc=113367 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2296 S5g=171
+[Iter 1870 | Time   47.5s] Best Z =  3744.85 | PM=572 Ccrit=1 Cweak=220 restarts=0 S2=114750 S4p1=565 | S1acc=93500 S1g=25 S2acc=114750 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2297 S5g=171
+[Iter 1880 | Time   47.7s] Best Z =  3744.85 | PM=573 Ccrit=1 Cweak=221 restarts=0 S2=116068 S4p1=565 | S1acc=94000 S1g=25 S2acc=116068 S2s=13739 S2g=1448 S4acc=565 S4g=99 S5acc=2298 S5g=171
+[Iter 1890 | Time   48.0s] Best Z =  3763.58 | PM=572 Ccrit=1 Cweak=219 restarts=0 S2=117397 S4p1=565 | S1acc=94500 S1g=26 S2acc=117397 S2s=13741 S2g=1450 S4acc=565 S4g=99 S5acc=2300 S5g=172
+[Iter 1900 | Time   48.3s] Best Z =  3764.46 | PM=570 Ccrit=1 Cweak=220 restarts=0 S2=118770 S4p1=565 | S1acc=95000 S1g=26 S2acc=118770 S2s=13742 S2g=1451 S4acc=565 S4g=99 S5acc=2300 S5g=172
+[Iter 1910 | Time   48.5s] Best Z =  3764.46 | PM=569 Ccrit=1 Cweak=222 restarts=0 S2=120187 S4p1=565 | S1acc=95500 S1g=26 S2acc=120187 S2s=13742 S2g=1451 S4acc=565 S4g=99 S5acc=2300 S5g=172
+[Iter 1920 | Time   48.8s] Best Z =  3764.46 | PM=566 Ccrit=1 Cweak=219 restarts=0 S2=121577 S4p1=565 | S1acc=96000 S1g=26 S2acc=121577 S2s=13742 S2g=1451 S4acc=565 S4g=99 S5acc=2300 S5g=172
+[Iter 1930 | Time   49.0s] Best Z =  3764.46 | PM=563 Ccrit=1 Cweak=219 restarts=0 S2=123001 S4p1=565 | S1acc=96500 S1g=26 S2acc=123001 S2s=13742 S2g=1451 S4acc=565 S4g=99 S5acc=2300 S5g=172
+[Iter 1940 | Time   49.3s] Best Z =  3764.46 | PM=563 Ccrit=1 Cweak=222 restarts=0 S2=124440 S4p1=565 | S1acc=97000 S1g=26 S2acc=124440 S2s=13743 S2g=1451 S4acc=565 S4g=99 S5acc=2300 S5g=172
+[Iter 1950 | Time   49.6s] Best Z =  3764.46 | PM=559 Ccrit=1 Cweak=218 restarts=0 S2=125825 S4p1=565 | S1acc=97500 S1g=26 S2acc=125825 S2s=13743 S2g=1451 S4acc=565 S4g=99 S5acc=2300 S5g=172
+[Iter 1960 | Time   49.8s] Best Z =  3764.46 | PM=559 Ccrit=1 Cweak=218 restarts=0 S2=127240 S4p1=565 | S1acc=98000 S1g=26 S2acc=127240 S2s=13743 S2g=1451 S4acc=565 S4g=99 S5acc=2300 S5g=172
+[Iter 1970 | Time   50.0s] Best Z =  3764.46 | PM=559 Ccrit=1 Cweak=217 restarts=0 S2=128663 S4p1=565 | S1acc=98500 S1g=26 S2acc=128663 S2s=13743 S2g=1451 S4acc=565 S4g=99 S5acc=2300 S5g=172
+[Iter 1980 | Time   50.3s] Best Z =  3764.46 | PM=560 Ccrit=1 Cweak=217 restarts=0 S2=130070 S4p1=565 | S1acc=99000 S1g=26 S2acc=130070 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2301 S5g=172
+[Iter 1990 | Time   50.6s] Best Z =  3764.46 | PM=559 Ccrit=1 Cweak=215 restarts=0 S2=131446 S4p1=565 | S1acc=99500 S1g=26 S2acc=131446 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2302 S5g=172
+[Iter 2000 | Time   50.8s] Best Z =  3764.46 | PM=557 Ccrit=1 Cweak=215 restarts=0 S2=132814 S4p1=565 | S1acc=100000 S1g=26 S2acc=132814 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2302 S5g=172
+[Iter 2010 | Time   51.1s] Best Z =  3764.46 | PM=554 Ccrit=1 Cweak=212 restarts=0 S2=134237 S4p1=565 | S1acc=100500 S1g=26 S2acc=134237 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2302 S5g=172
+[Iter 2020 | Time   51.3s] Best Z =  3764.46 | PM=551 Ccrit=1 Cweak=209 restarts=0 S2=135675 S4p1=565 | S1acc=101000 S1g=26 S2acc=135675 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2302 S5g=172
+[Iter 2030 | Time   51.6s] Best Z =  3764.46 | PM=550 Ccrit=1 Cweak=211 restarts=0 S2=137117 S4p1=565 | S1acc=101500 S1g=26 S2acc=137117 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2302 S5g=172
+[Iter 2040 | Time   51.8s] Best Z =  3764.46 | PM=545 Ccrit=1 Cweak=206 restarts=0 S2=138549 S4p1=565 | S1acc=102000 S1g=26 S2acc=138549 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2302 S5g=172
+[Iter 2050 | Time   52.1s] Best Z =  3764.46 | PM=542 Ccrit=1 Cweak=204 restarts=0 S2=139938 S4p1=565 | S1acc=102500 S1g=26 S2acc=139938 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2302 S5g=172
+[Iter 2060 | Time   52.3s] Best Z =  3764.46 | PM=543 Ccrit=1 Cweak=203 restarts=0 S2=141392 S4p1=565 | S1acc=103000 S1g=26 S2acc=141392 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2070 | Time   52.6s] Best Z =  3764.46 | PM=541 Ccrit=1 Cweak=202 restarts=0 S2=142855 S4p1=565 | S1acc=103500 S1g=26 S2acc=142855 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2080 | Time   52.8s] Best Z =  3764.46 | PM=542 Ccrit=1 Cweak=201 restarts=0 S2=144306 S4p1=565 | S1acc=104000 S1g=26 S2acc=144306 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2090 | Time   53.1s] Best Z =  3764.46 | PM=540 Ccrit=1 Cweak=200 restarts=0 S2=145725 S4p1=565 | S1acc=104500 S1g=26 S2acc=145725 S2s=13744 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2100 | Time   53.3s] Best Z =  3764.46 | PM=542 Ccrit=1 Cweak=200 restarts=0 S2=147161 S4p1=565 | S1acc=105000 S1g=26 S2acc=147161 S2s=13745 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2110 | Time   53.6s] Best Z =  3764.46 | PM=542 Ccrit=1 Cweak=200 restarts=0 S2=148561 S4p1=565 | S1acc=105500 S1g=26 S2acc=148561 S2s=13745 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2120 | Time   53.8s] Best Z =  3764.46 | PM=542 Ccrit=1 Cweak=200 restarts=0 S2=149991 S4p1=565 | S1acc=106000 S1g=26 S2acc=149991 S2s=13746 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2130 | Time   54.1s] Best Z =  3764.46 | PM=542 Ccrit=1 Cweak=201 restarts=0 S2=151417 S4p1=565 | S1acc=106500 S1g=26 S2acc=151417 S2s=13746 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2140 | Time   54.3s] Best Z =  3764.46 | PM=541 Ccrit=1 Cweak=201 restarts=0 S2=152887 S4p1=565 | S1acc=107000 S1g=26 S2acc=152887 S2s=13746 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2150 | Time   54.6s] Best Z =  3764.46 | PM=540 Ccrit=1 Cweak=201 restarts=0 S2=154321 S4p1=565 | S1acc=107500 S1g=26 S2acc=154321 S2s=13746 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2160 | Time   54.8s] Best Z =  3764.46 | PM=538 Ccrit=1 Cweak=200 restarts=0 S2=155774 S4p1=565 | S1acc=108000 S1g=26 S2acc=155774 S2s=13746 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2170 | Time   55.1s] Best Z =  3764.46 | PM=536 Ccrit=1 Cweak=198 restarts=0 S2=157242 S4p1=565 | S1acc=108500 S1g=26 S2acc=157242 S2s=13746 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2180 | Time   55.3s] Best Z =  3764.46 | PM=536 Ccrit=1 Cweak=198 restarts=0 S2=158661 S4p1=565 | S1acc=109000 S1g=26 S2acc=158661 S2s=13746 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2190 | Time   55.6s] Best Z =  3764.46 | PM=536 Ccrit=1 Cweak=198 restarts=0 S2=160102 S4p1=565 | S1acc=109500 S1g=26 S2acc=160102 S2s=13746 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2200 | Time   55.8s] Best Z =  3764.46 | PM=536 Ccrit=1 Cweak=196 restarts=0 S2=161528 S4p1=565 | S1acc=110000 S1g=26 S2acc=161528 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2210 | Time   56.1s] Best Z =  3764.46 | PM=536 Ccrit=1 Cweak=196 restarts=0 S2=162901 S4p1=565 | S1acc=110500 S1g=26 S2acc=162901 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2303 S5g=172
+[Iter 2220 | Time   56.3s] Best Z =  3764.46 | PM=537 Ccrit=1 Cweak=196 restarts=0 S2=164330 S4p1=565 | S1acc=111000 S1g=26 S2acc=164330 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2304 S5g=172
+[Iter 2230 | Time   56.6s] Best Z =  3764.46 | PM=535 Ccrit=1 Cweak=194 restarts=0 S2=165734 S4p1=565 | S1acc=111500 S1g=26 S2acc=165734 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2304 S5g=172
+[Iter 2240 | Time   56.8s] Best Z =  3764.46 | PM=532 Ccrit=1 Cweak=194 restarts=0 S2=167118 S4p1=565 | S1acc=112000 S1g=26 S2acc=167118 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2304 S5g=172
+[Iter 2250 | Time   57.1s] Best Z =  3764.46 | PM=534 Ccrit=1 Cweak=193 restarts=0 S2=168583 S4p1=565 | S1acc=112500 S1g=26 S2acc=168583 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2304 S5g=172
+[Iter 2260 | Time   57.3s] Best Z =  3764.46 | PM=532 Ccrit=1 Cweak=192 restarts=0 S2=170064 S4p1=565 | S1acc=113000 S1g=26 S2acc=170064 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2304 S5g=172
+[Iter 2270 | Time   57.6s] Best Z =  3764.46 | PM=530 Ccrit=1 Cweak=192 restarts=0 S2=171513 S4p1=565 | S1acc=113500 S1g=26 S2acc=171513 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2280 | Time   57.8s] Best Z =  3764.46 | PM=530 Ccrit=1 Cweak=191 restarts=0 S2=173027 S4p1=565 | S1acc=114000 S1g=26 S2acc=173027 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2290 | Time   58.1s] Best Z =  3764.46 | PM=530 Ccrit=1 Cweak=191 restarts=0 S2=174489 S4p1=565 | S1acc=114500 S1g=26 S2acc=174489 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2300 | Time   58.3s] Best Z =  3764.46 | PM=527 Ccrit=1 Cweak=189 restarts=0 S2=175946 S4p1=565 | S1acc=115000 S1g=26 S2acc=175946 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2310 | Time   58.6s] Best Z =  3764.46 | PM=528 Ccrit=1 Cweak=189 restarts=0 S2=177431 S4p1=565 | S1acc=115500 S1g=26 S2acc=177431 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2320 | Time   58.8s] Best Z =  3764.46 | PM=527 Ccrit=1 Cweak=189 restarts=0 S2=178900 S4p1=565 | S1acc=116000 S1g=26 S2acc=178900 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2330 | Time   59.1s] Best Z =  3764.46 | PM=528 Ccrit=1 Cweak=189 restarts=0 S2=180422 S4p1=565 | S1acc=116500 S1g=26 S2acc=180422 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2340 | Time   59.3s] Best Z =  3764.46 | PM=529 Ccrit=1 Cweak=190 restarts=0 S2=181905 S4p1=565 | S1acc=117000 S1g=26 S2acc=181905 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2350 | Time   59.6s] Best Z =  3764.46 | PM=527 Ccrit=1 Cweak=191 restarts=0 S2=183357 S4p1=565 | S1acc=117500 S1g=26 S2acc=183357 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2360 | Time   59.8s] Best Z =  3764.46 | PM=527 Ccrit=1 Cweak=190 restarts=0 S2=184854 S4p1=565 | S1acc=118000 S1g=26 S2acc=184854 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2305 S5g=172
+[Iter 2370 | Time   60.1s] Best Z =  3764.46 | PM=529 Ccrit=1 Cweak=191 restarts=0 S2=186315 S4p1=565 | S1acc=118500 S1g=26 S2acc=186315 S2s=13747 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2380 | Time   60.3s] Best Z =  3764.46 | PM=524 Ccrit=1 Cweak=187 restarts=0 S2=187835 S4p1=565 | S1acc=119000 S1g=26 S2acc=187835 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2390 | Time   60.5s] Best Z =  3764.46 | PM=522 Ccrit=1 Cweak=186 restarts=0 S2=189358 S4p1=565 | S1acc=119500 S1g=26 S2acc=189358 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2400 | Time   60.8s] Best Z =  3764.46 | PM=522 Ccrit=1 Cweak=188 restarts=0 S2=190899 S4p1=565 | S1acc=120000 S1g=26 S2acc=190899 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2410 | Time   61.1s] Best Z =  3764.46 | PM=520 Ccrit=1 Cweak=186 restarts=0 S2=192395 S4p1=565 | S1acc=120500 S1g=26 S2acc=192395 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2420 | Time   61.3s] Best Z =  3764.46 | PM=520 Ccrit=1 Cweak=185 restarts=0 S2=193886 S4p1=565 | S1acc=121000 S1g=26 S2acc=193886 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2430 | Time   61.5s] Best Z =  3764.46 | PM=519 Ccrit=1 Cweak=187 restarts=0 S2=195385 S4p1=565 | S1acc=121500 S1g=26 S2acc=195385 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2440 | Time   61.8s] Best Z =  3764.46 | PM=516 Ccrit=1 Cweak=184 restarts=0 S2=196893 S4p1=565 | S1acc=122000 S1g=26 S2acc=196893 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2450 | Time   62.0s] Best Z =  3764.46 | PM=516 Ccrit=1 Cweak=185 restarts=0 S2=198451 S4p1=565 | S1acc=122500 S1g=26 S2acc=198451 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2460 | Time   62.3s] Best Z =  3764.46 | PM=515 Ccrit=1 Cweak=184 restarts=0 S2=199997 S4p1=565 | S1acc=123000 S1g=26 S2acc=199997 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2470 | Time   62.5s] Best Z =  3764.46 | PM=513 Ccrit=1 Cweak=183 restarts=0 S2=201574 S4p1=565 | S1acc=123500 S1g=26 S2acc=201574 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2480 | Time   62.8s] Best Z =  3764.46 | PM=512 Ccrit=1 Cweak=183 restarts=0 S2=203083 S4p1=565 | S1acc=124000 S1g=26 S2acc=203083 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2490 | Time   63.1s] Best Z =  3764.46 | PM=512 Ccrit=1 Cweak=183 restarts=0 S2=204697 S4p1=565 | S1acc=124500 S1g=26 S2acc=204697 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2500 | Time   63.3s] Best Z =  3764.46 | PM=510 Ccrit=1 Cweak=182 restarts=0 S2=206208 S4p1=565 | S1acc=125000 S1g=26 S2acc=206208 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2510 | Time   63.5s] Best Z =  3764.46 | PM=509 Ccrit=1 Cweak=182 restarts=0 S2=207751 S4p1=565 | S1acc=125500 S1g=26 S2acc=207751 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2520 | Time   63.8s] Best Z =  3764.46 | PM=509 Ccrit=1 Cweak=181 restarts=0 S2=209272 S4p1=565 | S1acc=126000 S1g=26 S2acc=209272 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2306 S5g=172
+[Iter 2530 | Time   64.0s] Best Z =  3764.46 | PM=507 Ccrit=1 Cweak=183 restarts=0 S2=210798 S4p1=565 | S1acc=126500 S1g=26 S2acc=210798 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2307 S5g=172
+[Iter 2540 | Time   64.3s] Best Z =  3764.46 | PM=507 Ccrit=1 Cweak=183 restarts=0 S2=212339 S4p1=565 | S1acc=127000 S1g=26 S2acc=212339 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2550 | Time   64.6s] Best Z =  3764.46 | PM=504 Ccrit=1 Cweak=181 restarts=0 S2=213905 S4p1=565 | S1acc=127500 S1g=26 S2acc=213905 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2560 | Time   64.8s] Best Z =  3764.46 | PM=500 Ccrit=1 Cweak=178 restarts=0 S2=215435 S4p1=565 | S1acc=128000 S1g=26 S2acc=215435 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2570 | Time   65.1s] Best Z =  3764.46 | PM=494 Ccrit=1 Cweak=174 restarts=0 S2=217001 S4p1=565 | S1acc=128500 S1g=26 S2acc=217001 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2580 | Time   65.3s] Best Z =  3764.46 | PM=493 Ccrit=1 Cweak=173 restarts=0 S2=218567 S4p1=565 | S1acc=129000 S1g=26 S2acc=218567 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2590 | Time   65.5s] Best Z =  3764.46 | PM=487 Ccrit=1 Cweak=171 restarts=0 S2=220158 S4p1=565 | S1acc=129500 S1g=26 S2acc=220158 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2600 | Time   65.8s] Best Z =  3764.46 | PM=487 Ccrit=1 Cweak=171 restarts=0 S2=221767 S4p1=565 | S1acc=130000 S1g=26 S2acc=221767 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2610 | Time   66.0s] Best Z =  3764.46 | PM=487 Ccrit=1 Cweak=171 restarts=0 S2=223379 S4p1=565 | S1acc=130500 S1g=26 S2acc=223379 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2620 | Time   66.3s] Best Z =  3764.46 | PM=487 Ccrit=1 Cweak=171 restarts=0 S2=224972 S4p1=565 | S1acc=131000 S1g=26 S2acc=224972 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2630 | Time   66.5s] Best Z =  3764.46 | PM=484 Ccrit=1 Cweak=169 restarts=0 S2=226650 S4p1=565 | S1acc=131500 S1g=26 S2acc=226650 S2s=13748 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2640 | Time   66.8s] Best Z =  3764.46 | PM=484 Ccrit=1 Cweak=169 restarts=0 S2=228341 S4p1=565 | S1acc=132000 S1g=26 S2acc=228341 S2s=13749 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2650 | Time   67.0s] Best Z =  3764.46 | PM=481 Ccrit=1 Cweak=169 restarts=0 S2=230055 S4p1=565 | S1acc=132500 S1g=26 S2acc=230055 S2s=13749 S2g=1451 S4acc=565 S4g=99 S5acc=2308 S5g=172
+[Iter 2660 | Time   67.3s] Best Z =  3764.46 | PM=481 Ccrit=1 Cweak=169 restarts=0 S2=231810 S4p1=565 | S1acc=133000 S1g=26 S2acc=231810 S2s=13749 S2g=1451 S4acc=565 S4g=99 S5acc=2309 S5g=172
+[Iter 2670 | Time   67.5s] Best Z =  3764.46 | PM=478 Ccrit=1 Cweak=169 restarts=0 S2=233514 S4p1=565 | S1acc=133500 S1g=26 S2acc=233514 S2s=13750 S2g=1451 S4acc=565 S4g=99 S5acc=2309 S5g=172
+[Iter 2680 | Time   67.8s] Best Z =  3764.46 | PM=479 Ccrit=1 Cweak=169 restarts=0 S2=235358 S4p1=565 | S1acc=134000 S1g=26 S2acc=235358 S2s=13751 S2g=1451 S4acc=565 S4g=99 S5acc=2310 S5g=172
+[Iter 2690 | Time   68.0s] Best Z =  3764.46 | PM=473 Ccrit=1 Cweak=168 restarts=0 S2=237186 S4p1=565 | S1acc=134500 S1g=26 S2acc=237186 S2s=13751 S2g=1451 S4acc=565 S4g=99 S5acc=2310 S5g=172
+[Iter 2700 | Time   68.3s] Best Z =  3764.46 | PM=471 Ccrit=1 Cweak=168 restarts=0 S2=239034 S4p1=565 | S1acc=135000 S1g=26 S2acc=239034 S2s=13751 S2g=1451 S4acc=565 S4g=99 S5acc=2311 S5g=172
+[Iter 2710 | Time   68.5s] Best Z =  3764.46 | PM=467 Ccrit=1 Cweak=167 restarts=0 S2=240896 S4p1=565 | S1acc=135500 S1g=26 S2acc=240896 S2s=13751 S2g=1451 S4acc=565 S4g=99 S5acc=2311 S5g=172
+[Iter 2720 | Time   68.8s] Best Z =  3764.46 | PM=464 Ccrit=1 Cweak=165 restarts=0 S2=242817 S4p1=565 | S1acc=136000 S1g=26 S2acc=242817 S2s=13751 S2g=1451 S4acc=565 S4g=99 S5acc=2312 S5g=172
+[Iter 2730 | Time   69.0s] Best Z =  3764.46 | PM=460 Ccrit=1 Cweak=161 restarts=0 S2=244742 S4p1=565 | S1acc=136500 S1g=26 S2acc=244742 S2s=13751 S2g=1451 S4acc=565 S4g=99 S5acc=2312 S5g=172
+[Iter 2740 | Time   69.3s] Best Z =  3764.46 | PM=460 Ccrit=1 Cweak=161 restarts=0 S2=246639 S4p1=565 | S1acc=137000 S1g=26 S2acc=246639 S2s=13751 S2g=1451 S4acc=565 S4g=99 S5acc=2312 S5g=172
+[Iter 2750 | Time   69.5s] Best Z =  3764.46 | PM=461 Ccrit=1 Cweak=161 restarts=0 S2=248581 S4p1=565 | S1acc=137500 S1g=26 S2acc=248581 S2s=13751 S2g=1451 S4acc=565 S4g=99 S5acc=2313 S5g=172
+[Iter 2760 | Time   69.8s] Best Z =  3764.46 | PM=459 Ccrit=1 Cweak=160 restarts=0 S2=250478 S4p1=565 | S1acc=138000 S1g=26 S2acc=250478 S2s=13751 S2g=1451 S4acc=565 S4g=99 S5acc=2313 S5g=172
+[Iter 2770 | Time   70.0s] Best Z =  3764.46 | PM=461 Ccrit=1 Cweak=160 restarts=0 S2=252453 S4p1=565 | S1acc=138500 S1g=26 S2acc=252453 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2314 S5g=172
+[Iter 2780 | Time   70.3s] Best Z =  3764.46 | PM=459 Ccrit=0 Cweak=161 restarts=0 S2=254396 S4p1=565 | S1acc=139000 S1g=26 S2acc=254396 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2315 S5g=172
+[Iter 2790 | Time   70.5s] Best Z =  3764.46 | PM=459 Ccrit=0 Cweak=161 restarts=0 S2=256348 S4p1=565 | S1acc=139500 S1g=26 S2acc=256348 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2315 S5g=172
+[Iter 2800 | Time   70.7s] Best Z =  3764.46 | PM=459 Ccrit=0 Cweak=160 restarts=0 S2=258242 S4p1=565 | S1acc=140000 S1g=26 S2acc=258242 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2315 S5g=172
+[Iter 2810 | Time   71.0s] Best Z =  3764.46 | PM=459 Ccrit=0 Cweak=161 restarts=0 S2=260125 S4p1=565 | S1acc=140500 S1g=26 S2acc=260125 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2315 S5g=172
+[Iter 2820 | Time   71.2s] Best Z =  3764.46 | PM=459 Ccrit=0 Cweak=160 restarts=0 S2=262055 S4p1=565 | S1acc=141000 S1g=26 S2acc=262055 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2830 | Time   71.5s] Best Z =  3764.46 | PM=461 Ccrit=0 Cweak=160 restarts=0 S2=263946 S4p1=565 | S1acc=141500 S1g=26 S2acc=263946 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2840 | Time   71.8s] Best Z =  3764.46 | PM=461 Ccrit=0 Cweak=160 restarts=0 S2=265832 S4p1=565 | S1acc=142000 S1g=26 S2acc=265832 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2850 | Time   72.0s] Best Z =  3764.46 | PM=460 Ccrit=0 Cweak=159 restarts=0 S2=267796 S4p1=565 | S1acc=142500 S1g=26 S2acc=267796 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2860 | Time   72.2s] Best Z =  3764.46 | PM=460 Ccrit=0 Cweak=159 restarts=0 S2=269749 S4p1=565 | S1acc=143000 S1g=26 S2acc=269749 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2870 | Time   72.5s] Best Z =  3764.46 | PM=459 Ccrit=0 Cweak=160 restarts=0 S2=271672 S4p1=565 | S1acc=143500 S1g=26 S2acc=271672 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2880 | Time   72.7s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=157 restarts=0 S2=273574 S4p1=565 | S1acc=144000 S1g=26 S2acc=273574 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2890 | Time   73.0s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=155 restarts=0 S2=275530 S4p1=565 | S1acc=144500 S1g=26 S2acc=275530 S2s=13752 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2900 | Time   73.2s] Best Z =  3764.46 | PM=455 Ccrit=0 Cweak=153 restarts=0 S2=277439 S4p1=565 | S1acc=145000 S1g=26 S2acc=277439 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2910 | Time   73.5s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=154 restarts=0 S2=279397 S4p1=565 | S1acc=145500 S1g=26 S2acc=279397 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2920 | Time   73.7s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=154 restarts=0 S2=281347 S4p1=565 | S1acc=146000 S1g=26 S2acc=281347 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2930 | Time   74.0s] Best Z =  3764.46 | PM=454 Ccrit=0 Cweak=152 restarts=0 S2=283266 S4p1=565 | S1acc=146500 S1g=26 S2acc=283266 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2316 S5g=172
+[Iter 2940 | Time   74.2s] Best Z =  3764.46 | PM=455 Ccrit=0 Cweak=153 restarts=0 S2=285246 S4p1=565 | S1acc=147000 S1g=26 S2acc=285246 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2317 S5g=172
+[Iter 2950 | Time   74.5s] Best Z =  3764.46 | PM=455 Ccrit=0 Cweak=153 restarts=0 S2=287137 S4p1=565 | S1acc=147500 S1g=26 S2acc=287137 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2317 S5g=172
+[Iter 2960 | Time   74.7s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=155 restarts=0 S2=289104 S4p1=565 | S1acc=148000 S1g=26 S2acc=289104 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2317 S5g=172
+[Iter 2970 | Time   75.0s] Best Z =  3764.46 | PM=457 Ccrit=0 Cweak=154 restarts=0 S2=291034 S4p1=565 | S1acc=148500 S1g=26 S2acc=291034 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2317 S5g=172
+[Iter 2980 | Time   75.2s] Best Z =  3764.46 | PM=454 Ccrit=0 Cweak=152 restarts=0 S2=292971 S4p1=565 | S1acc=149000 S1g=26 S2acc=292971 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2317 S5g=172
+[Iter 2990 | Time   75.5s] Best Z =  3764.46 | PM=455 Ccrit=0 Cweak=153 restarts=0 S2=294912 S4p1=565 | S1acc=149500 S1g=26 S2acc=294912 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2317 S5g=172
+[Iter 3000 | Time   75.7s] Best Z =  3764.46 | PM=457 Ccrit=0 Cweak=153 restarts=0 S2=296806 S4p1=565 | S1acc=150000 S1g=26 S2acc=296806 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2317 S5g=172
+[Iter 3010 | Time   76.0s] Best Z =  3764.46 | PM=458 Ccrit=0 Cweak=153 restarts=0 S2=298754 S4p1=565 | S1acc=150500 S1g=26 S2acc=298754 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2317 S5g=172
+[Iter 3020 | Time   76.2s] Best Z =  3764.46 | PM=458 Ccrit=0 Cweak=153 restarts=0 S2=300706 S4p1=565 | S1acc=151000 S1g=26 S2acc=300706 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2317 S5g=172
+[Iter 3030 | Time   76.5s] Best Z =  3764.46 | PM=458 Ccrit=0 Cweak=154 restarts=0 S2=302666 S4p1=565 | S1acc=151500 S1g=26 S2acc=302666 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3040 | Time   76.7s] Best Z =  3764.46 | PM=458 Ccrit=0 Cweak=155 restarts=0 S2=304552 S4p1=565 | S1acc=152000 S1g=26 S2acc=304552 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3050 | Time   77.0s] Best Z =  3764.46 | PM=458 Ccrit=0 Cweak=154 restarts=0 S2=306461 S4p1=565 | S1acc=152500 S1g=26 S2acc=306461 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3060 | Time   77.2s] Best Z =  3764.46 | PM=457 Ccrit=0 Cweak=155 restarts=0 S2=308395 S4p1=565 | S1acc=153000 S1g=26 S2acc=308395 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3070 | Time   77.5s] Best Z =  3764.46 | PM=457 Ccrit=0 Cweak=154 restarts=0 S2=310318 S4p1=565 | S1acc=153500 S1g=26 S2acc=310318 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3080 | Time   77.7s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=155 restarts=0 S2=312214 S4p1=565 | S1acc=154000 S1g=26 S2acc=312214 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3090 | Time   78.0s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=155 restarts=0 S2=314162 S4p1=565 | S1acc=154500 S1g=26 S2acc=314162 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3100 | Time   78.2s] Best Z =  3764.46 | PM=454 Ccrit=0 Cweak=155 restarts=0 S2=316113 S4p1=565 | S1acc=155000 S1g=26 S2acc=316113 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3110 | Time   78.5s] Best Z =  3764.46 | PM=454 Ccrit=0 Cweak=154 restarts=0 S2=318034 S4p1=565 | S1acc=155500 S1g=26 S2acc=318034 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3120 | Time   78.7s] Best Z =  3764.46 | PM=454 Ccrit=0 Cweak=154 restarts=0 S2=320011 S4p1=565 | S1acc=156000 S1g=26 S2acc=320011 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3130 | Time   79.0s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=155 restarts=0 S2=321984 S4p1=565 | S1acc=156500 S1g=26 S2acc=321984 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3140 | Time   79.2s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=156 restarts=0 S2=323931 S4p1=565 | S1acc=157000 S1g=26 S2acc=323931 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3150 | Time   79.5s] Best Z =  3764.46 | PM=457 Ccrit=0 Cweak=157 restarts=0 S2=325853 S4p1=565 | S1acc=157500 S1g=26 S2acc=325853 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3160 | Time   79.7s] Best Z =  3764.46 | PM=457 Ccrit=0 Cweak=157 restarts=0 S2=327798 S4p1=565 | S1acc=158000 S1g=26 S2acc=327798 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3170 | Time   80.0s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=156 restarts=0 S2=329696 S4p1=565 | S1acc=158500 S1g=26 S2acc=329696 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3180 | Time   80.2s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=156 restarts=0 S2=331642 S4p1=565 | S1acc=159000 S1g=26 S2acc=331642 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3190 | Time   80.5s] Best Z =  3764.46 | PM=456 Ccrit=0 Cweak=156 restarts=0 S2=333551 S4p1=565 | S1acc=159500 S1g=26 S2acc=333551 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3200 | Time   80.7s] Best Z =  3764.46 | PM=455 Ccrit=0 Cweak=155 restarts=0 S2=335477 S4p1=565 | S1acc=160000 S1g=26 S2acc=335477 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3210 | Time   81.0s] Best Z =  3764.46 | PM=455 Ccrit=0 Cweak=155 restarts=0 S2=337441 S4p1=565 | S1acc=160500 S1g=26 S2acc=337441 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3220 | Time   81.2s] Best Z =  3764.46 | PM=454 Ccrit=0 Cweak=154 restarts=0 S2=339387 S4p1=565 | S1acc=161000 S1g=26 S2acc=339387 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3230 | Time   81.5s] Best Z =  3764.46 | PM=455 Ccrit=0 Cweak=155 restarts=0 S2=341310 S4p1=565 | S1acc=161500 S1g=26 S2acc=341310 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3240 | Time   81.7s] Best Z =  3764.46 | PM=455 Ccrit=0 Cweak=156 restarts=0 S2=343274 S4p1=565 | S1acc=162000 S1g=26 S2acc=343274 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3250 | Time   82.0s] Best Z =  3764.46 | PM=452 Ccrit=0 Cweak=155 restarts=0 S2=345209 S4p1=565 | S1acc=162500 S1g=26 S2acc=345209 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3260 | Time   82.2s] Best Z =  3764.46 | PM=451 Ccrit=0 Cweak=155 restarts=0 S2=347089 S4p1=565 | S1acc=163000 S1g=26 S2acc=347089 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3270 | Time   82.5s] Best Z =  3764.46 | PM=450 Ccrit=0 Cweak=156 restarts=0 S2=349014 S4p1=565 | S1acc=163500 S1g=26 S2acc=349014 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3280 | Time   82.7s] Best Z =  3764.46 | PM=451 Ccrit=0 Cweak=155 restarts=0 S2=350930 S4p1=565 | S1acc=164000 S1g=26 S2acc=350930 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3290 | Time   83.0s] Best Z =  3764.46 | PM=451 Ccrit=0 Cweak=155 restarts=0 S2=352906 S4p1=565 | S1acc=164500 S1g=26 S2acc=352906 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3300 | Time   83.2s] Best Z =  3764.46 | PM=451 Ccrit=0 Cweak=155 restarts=0 S2=354837 S4p1=565 | S1acc=165000 S1g=26 S2acc=354837 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3310 | Time   83.5s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=155 restarts=0 S2=356809 S4p1=565 | S1acc=165500 S1g=26 S2acc=356809 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3320 | Time   83.7s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=155 restarts=0 S2=358729 S4p1=565 | S1acc=166000 S1g=26 S2acc=358729 S2s=13754 S2g=1451 S4acc=565 S4g=99 S5acc=2318 S5g=172
+[Iter 3330 | Time   84.0s] Best Z =  3764.46 | PM=451 Ccrit=0 Cweak=155 restarts=0 S2=360678 S4p1=565 | S1acc=166500 S1g=26 S2acc=360678 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2319 S5g=172
+[Iter 3340 | Time   84.2s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=153 restarts=0 S2=362652 S4p1=565 | S1acc=167000 S1g=26 S2acc=362652 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3350 | Time   84.5s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=153 restarts=0 S2=364608 S4p1=565 | S1acc=167500 S1g=26 S2acc=364608 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3360 | Time   84.8s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=366589 S4p1=565 | S1acc=168000 S1g=26 S2acc=366589 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3370 | Time   85.0s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=155 restarts=0 S2=368514 S4p1=565 | S1acc=168500 S1g=26 S2acc=368514 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3380 | Time   85.2s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=155 restarts=0 S2=370457 S4p1=565 | S1acc=169000 S1g=26 S2acc=370457 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3390 | Time   85.5s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=155 restarts=0 S2=372390 S4p1=565 | S1acc=169500 S1g=26 S2acc=372390 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3400 | Time   85.7s] Best Z =  3764.46 | PM=448 Ccrit=0 Cweak=155 restarts=0 S2=374289 S4p1=565 | S1acc=170000 S1g=26 S2acc=374289 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3410 | Time   86.0s] Best Z =  3764.46 | PM=448 Ccrit=0 Cweak=154 restarts=0 S2=376243 S4p1=565 | S1acc=170500 S1g=26 S2acc=376243 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3420 | Time   86.2s] Best Z =  3764.46 | PM=448 Ccrit=0 Cweak=154 restarts=0 S2=378166 S4p1=565 | S1acc=171000 S1g=26 S2acc=378166 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3430 | Time   86.5s] Best Z =  3764.46 | PM=448 Ccrit=0 Cweak=154 restarts=0 S2=380174 S4p1=565 | S1acc=171500 S1g=26 S2acc=380174 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3440 | Time   86.7s] Best Z =  3764.46 | PM=448 Ccrit=0 Cweak=154 restarts=0 S2=382163 S4p1=565 | S1acc=172000 S1g=26 S2acc=382163 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3450 | Time   87.0s] Best Z =  3764.46 | PM=448 Ccrit=0 Cweak=154 restarts=0 S2=384153 S4p1=565 | S1acc=172500 S1g=26 S2acc=384153 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3460 | Time   87.3s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=386201 S4p1=565 | S1acc=173000 S1g=26 S2acc=386201 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3470 | Time   87.5s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=388201 S4p1=565 | S1acc=173500 S1g=26 S2acc=388201 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3480 | Time   87.8s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=390178 S4p1=565 | S1acc=174000 S1g=26 S2acc=390178 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3490 | Time   88.0s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=392158 S4p1=565 | S1acc=174500 S1g=26 S2acc=392158 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3500 | Time   88.3s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=394146 S4p1=565 | S1acc=175000 S1g=26 S2acc=394146 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3510 | Time   88.5s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=396103 S4p1=565 | S1acc=175500 S1g=26 S2acc=396103 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3520 | Time   88.8s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=153 restarts=0 S2=398049 S4p1=565 | S1acc=176000 S1g=26 S2acc=398049 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3530 | Time   89.0s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=152 restarts=0 S2=399995 S4p1=565 | S1acc=176500 S1g=26 S2acc=399995 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3540 | Time   89.3s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=152 restarts=0 S2=401948 S4p1=565 | S1acc=177000 S1g=26 S2acc=401948 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3550 | Time   89.5s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=152 restarts=0 S2=403938 S4p1=565 | S1acc=177500 S1g=26 S2acc=403938 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3560 | Time   89.8s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=151 restarts=0 S2=405895 S4p1=565 | S1acc=178000 S1g=26 S2acc=405895 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3570 | Time   90.0s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=150 restarts=0 S2=407832 S4p1=565 | S1acc=178500 S1g=26 S2acc=407832 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3580 | Time   90.3s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=150 restarts=0 S2=409770 S4p1=565 | S1acc=179000 S1g=26 S2acc=409770 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3590 | Time   90.5s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=150 restarts=0 S2=411723 S4p1=565 | S1acc=179500 S1g=26 S2acc=411723 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3600 | Time   90.8s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=150 restarts=0 S2=413683 S4p1=565 | S1acc=180000 S1g=26 S2acc=413683 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3610 | Time   91.0s] Best Z =  3764.46 | PM=450 Ccrit=0 Cweak=151 restarts=0 S2=415619 S4p1=565 | S1acc=180500 S1g=26 S2acc=415619 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2320 S5g=172
+[Iter 3620 | Time   91.3s] Best Z =  3764.46 | PM=452 Ccrit=0 Cweak=153 restarts=0 S2=417555 S4p1=565 | S1acc=181000 S1g=26 S2acc=417555 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2321 S5g=172
+[Iter 3630 | Time   91.5s] Best Z =  3764.46 | PM=452 Ccrit=0 Cweak=153 restarts=0 S2=419523 S4p1=565 | S1acc=181500 S1g=26 S2acc=419523 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2321 S5g=172
+[Iter 3640 | Time   91.8s] Best Z =  3764.46 | PM=452 Ccrit=0 Cweak=154 restarts=0 S2=421454 S4p1=565 | S1acc=182000 S1g=26 S2acc=421454 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2321 S5g=172
+[Iter 3650 | Time   92.0s] Best Z =  3764.46 | PM=451 Ccrit=0 Cweak=153 restarts=0 S2=423390 S4p1=565 | S1acc=182500 S1g=26 S2acc=423390 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2321 S5g=172
+[Iter 3660 | Time   92.3s] Best Z =  3764.46 | PM=451 Ccrit=0 Cweak=153 restarts=0 S2=425279 S4p1=565 | S1acc=183000 S1g=26 S2acc=425279 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2321 S5g=172
+[Iter 3670 | Time   92.6s] Best Z =  3764.46 | PM=450 Ccrit=0 Cweak=152 restarts=0 S2=427225 S4p1=565 | S1acc=183500 S1g=26 S2acc=427225 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2321 S5g=172
+[Iter 3680 | Time   92.8s] Best Z =  3764.46 | PM=449 Ccrit=0 Cweak=152 restarts=0 S2=429134 S4p1=565 | S1acc=184000 S1g=26 S2acc=429134 S2s=13755 S2g=1451 S4acc=565 S4g=99 S5acc=2321 S5g=172
+[Iter 3690 | Time   93.1s] Best Z =  3769.00 | PM=447 Ccrit=0 Cweak=153 restarts=0 S2=431123 S4p1=565 | S1acc=184500 S1g=27 S2acc=431123 S2s=13755 S2g=1456 S4acc=565 S4g=99 S5acc=2321 S5g=172
+[Iter 3700 | Time   93.3s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=153 restarts=0 S2=433019 S4p1=565 | S1acc=185000 S1g=27 S2acc=433019 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3710 | Time   93.6s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=153 restarts=0 S2=434997 S4p1=565 | S1acc=185500 S1g=27 S2acc=434997 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3720 | Time   93.8s] Best Z =  3769.00 | PM=448 Ccrit=0 Cweak=153 restarts=0 S2=436893 S4p1=565 | S1acc=186000 S1g=27 S2acc=436893 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3730 | Time   94.1s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=153 restarts=0 S2=438834 S4p1=565 | S1acc=186500 S1g=27 S2acc=438834 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3740 | Time   94.3s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=153 restarts=0 S2=440774 S4p1=565 | S1acc=187000 S1g=27 S2acc=440774 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3750 | Time   94.6s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=154 restarts=0 S2=442685 S4p1=565 | S1acc=187500 S1g=27 S2acc=442685 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3760 | Time   94.8s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=153 restarts=0 S2=444631 S4p1=565 | S1acc=188000 S1g=27 S2acc=444631 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3770 | Time   95.1s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=155 restarts=0 S2=446594 S4p1=565 | S1acc=188500 S1g=27 S2acc=446594 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3780 | Time   95.3s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=448603 S4p1=565 | S1acc=189000 S1g=27 S2acc=448603 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3790 | Time   95.6s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=156 restarts=0 S2=450614 S4p1=565 | S1acc=189500 S1g=27 S2acc=450614 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3800 | Time   95.8s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=156 restarts=0 S2=452603 S4p1=565 | S1acc=190000 S1g=27 S2acc=452603 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3810 | Time   96.1s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=155 restarts=0 S2=454593 S4p1=565 | S1acc=190500 S1g=27 S2acc=454593 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3820 | Time   96.3s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=156 restarts=0 S2=456531 S4p1=565 | S1acc=191000 S1g=27 S2acc=456531 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3830 | Time   96.6s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=156 restarts=0 S2=458505 S4p1=565 | S1acc=191500 S1g=27 S2acc=458505 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3840 | Time   96.9s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=155 restarts=0 S2=460494 S4p1=565 | S1acc=192000 S1g=27 S2acc=460494 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3850 | Time   97.1s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=155 restarts=0 S2=462442 S4p1=565 | S1acc=192500 S1g=27 S2acc=462442 S2s=13757 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3860 | Time   97.3s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=155 restarts=0 S2=464452 S4p1=565 | S1acc=193000 S1g=27 S2acc=464452 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3870 | Time   97.6s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=157 restarts=0 S2=466489 S4p1=565 | S1acc=193500 S1g=27 S2acc=466489 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3880 | Time   97.9s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=156 restarts=0 S2=468505 S4p1=565 | S1acc=194000 S1g=27 S2acc=468505 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3890 | Time   98.1s] Best Z =  3769.00 | PM=447 Ccrit=0 Cweak=156 restarts=0 S2=470506 S4p1=565 | S1acc=194500 S1g=27 S2acc=470506 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3900 | Time   98.4s] Best Z =  3769.00 | PM=447 Ccrit=0 Cweak=156 restarts=0 S2=472405 S4p1=565 | S1acc=195000 S1g=27 S2acc=472405 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3910 | Time   98.6s] Best Z =  3769.00 | PM=445 Ccrit=0 Cweak=155 restarts=0 S2=474347 S4p1=565 | S1acc=195500 S1g=27 S2acc=474347 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3920 | Time   98.9s] Best Z =  3769.00 | PM=447 Ccrit=0 Cweak=156 restarts=0 S2=476305 S4p1=565 | S1acc=196000 S1g=27 S2acc=476305 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3930 | Time   99.1s] Best Z =  3769.00 | PM=447 Ccrit=0 Cweak=155 restarts=0 S2=478292 S4p1=565 | S1acc=196500 S1g=27 S2acc=478292 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3940 | Time   99.4s] Best Z =  3769.00 | PM=447 Ccrit=0 Cweak=154 restarts=0 S2=480265 S4p1=565 | S1acc=197000 S1g=27 S2acc=480265 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3950 | Time   99.6s] Best Z =  3769.00 | PM=447 Ccrit=0 Cweak=154 restarts=0 S2=482247 S4p1=565 | S1acc=197500 S1g=27 S2acc=482247 S2s=13758 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3960 | Time   99.9s] Best Z =  3769.00 | PM=448 Ccrit=0 Cweak=154 restarts=0 S2=484247 S4p1=565 | S1acc=198000 S1g=27 S2acc=484247 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3970 | Time  100.1s] Best Z =  3769.00 | PM=446 Ccrit=0 Cweak=153 restarts=0 S2=486192 S4p1=565 | S1acc=198500 S1g=27 S2acc=486192 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3980 | Time  100.4s] Best Z =  3769.00 | PM=446 Ccrit=0 Cweak=153 restarts=0 S2=488232 S4p1=565 | S1acc=199000 S1g=27 S2acc=488232 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 3990 | Time  100.6s] Best Z =  3769.00 | PM=447 Ccrit=0 Cweak=153 restarts=0 S2=490237 S4p1=565 | S1acc=199500 S1g=27 S2acc=490237 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4000 | Time  100.9s] Best Z =  3769.00 | PM=446 Ccrit=0 Cweak=153 restarts=0 S2=492260 S4p1=565 | S1acc=200000 S1g=27 S2acc=492260 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4010 | Time  101.1s] Best Z =  3769.00 | PM=447 Ccrit=0 Cweak=152 restarts=0 S2=494294 S4p1=565 | S1acc=200500 S1g=27 S2acc=494294 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4020 | Time  101.4s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=152 restarts=0 S2=496273 S4p1=565 | S1acc=201000 S1g=27 S2acc=496273 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4030 | Time  101.6s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=152 restarts=0 S2=498341 S4p1=565 | S1acc=201500 S1g=27 S2acc=498341 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4040 | Time  101.9s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=152 restarts=0 S2=500404 S4p1=565 | S1acc=202000 S1g=27 S2acc=500404 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4050 | Time  102.1s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=152 restarts=0 S2=502427 S4p1=565 | S1acc=202500 S1g=27 S2acc=502427 S2s=13759 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4060 | Time  102.4s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=504415 S4p1=565 | S1acc=203000 S1g=27 S2acc=504415 S2s=13760 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4070 | Time  102.6s] Best Z =  3769.00 | PM=449 Ccrit=0 Cweak=154 restarts=0 S2=506446 S4p1=565 | S1acc=203500 S1g=27 S2acc=506446 S2s=13760 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4080 | Time  102.9s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=154 restarts=0 S2=508477 S4p1=565 | S1acc=204000 S1g=27 S2acc=508477 S2s=13760 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4090 | Time  103.1s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=154 restarts=0 S2=510514 S4p1=565 | S1acc=204500 S1g=27 S2acc=510514 S2s=13760 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4100 | Time  103.4s] Best Z =  3769.00 | PM=451 Ccrit=0 Cweak=155 restarts=0 S2=512501 S4p1=565 | S1acc=205000 S1g=27 S2acc=512501 S2s=13760 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4110 | Time  103.6s] Best Z =  3769.00 | PM=451 Ccrit=0 Cweak=156 restarts=0 S2=514521 S4p1=565 | S1acc=205500 S1g=27 S2acc=514521 S2s=13760 S2g=1456 S4acc=565 S4g=99 S5acc=2325 S5g=172
+[Iter 4120 | Time  103.9s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=156 restarts=0 S2=516507 S4p1=565 | S1acc=206000 S1g=27 S2acc=516507 S2s=13761 S2g=1456 S4acc=565 S4g=99 S5acc=2326 S5g=172
+[Iter 4130 | Time  104.2s] Best Z =  3769.00 | PM=453 Ccrit=0 Cweak=155 restarts=0 S2=518553 S4p1=565 | S1acc=206500 S1g=27 S2acc=518553 S2s=13761 S2g=1456 S4acc=565 S4g=99 S5acc=2326 S5g=172
+[Iter 4140 | Time  104.5s] Best Z =  3769.00 | PM=453 Ccrit=0 Cweak=156 restarts=0 S2=520580 S4p1=565 | S1acc=207000 S1g=27 S2acc=520580 S2s=13761 S2g=1456 S4acc=565 S4g=99 S5acc=2326 S5g=172
+[Iter 4150 | Time  104.7s] Best Z =  3769.00 | PM=452 Ccrit=0 Cweak=155 restarts=0 S2=522591 S4p1=565 | S1acc=207500 S1g=27 S2acc=522591 S2s=13761 S2g=1456 S4acc=565 S4g=99 S5acc=2326 S5g=172
+[Iter 4160 | Time  105.0s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=157 restarts=0 S2=524575 S4p1=565 | S1acc=208000 S1g=27 S2acc=524575 S2s=13763 S2g=1456 S4acc=565 S4g=99 S5acc=2327 S5g=172
+[Iter 4170 | Time  105.2s] Best Z =  3769.00 | PM=453 Ccrit=0 Cweak=156 restarts=0 S2=526610 S4p1=565 | S1acc=208500 S1g=27 S2acc=526610 S2s=13764 S2g=1456 S4acc=565 S4g=99 S5acc=2327 S5g=172
+[Iter 4180 | Time  105.5s] Best Z =  3769.00 | PM=455 Ccrit=0 Cweak=157 restarts=0 S2=528648 S4p1=565 | S1acc=209000 S1g=27 S2acc=528648 S2s=13765 S2g=1456 S4acc=565 S4g=99 S5acc=2327 S5g=172
+[Iter 4190 | Time  105.8s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=157 restarts=0 S2=530631 S4p1=565 | S1acc=209500 S1g=27 S2acc=530631 S2s=13765 S2g=1456 S4acc=565 S4g=99 S5acc=2327 S5g=172
+[Iter 4200 | Time  106.0s] Best Z =  3769.00 | PM=456 Ccrit=0 Cweak=157 restarts=0 S2=532581 S4p1=565 | S1acc=210000 S1g=27 S2acc=532581 S2s=13765 S2g=1456 S4acc=565 S4g=99 S5acc=2327 S5g=172
+[Iter 4210 | Time  106.3s] Best Z =  3769.00 | PM=457 Ccrit=0 Cweak=158 restarts=0 S2=534570 S4p1=565 | S1acc=210500 S1g=27 S2acc=534570 S2s=13765 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4220 | Time  106.5s] Best Z =  3769.00 | PM=457 Ccrit=0 Cweak=157 restarts=0 S2=536579 S4p1=565 | S1acc=211000 S1g=27 S2acc=536579 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4230 | Time  106.8s] Best Z =  3769.00 | PM=456 Ccrit=0 Cweak=158 restarts=0 S2=538561 S4p1=565 | S1acc=211500 S1g=27 S2acc=538561 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4240 | Time  107.0s] Best Z =  3769.00 | PM=455 Ccrit=0 Cweak=158 restarts=0 S2=540558 S4p1=565 | S1acc=212000 S1g=27 S2acc=540558 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4250 | Time  107.3s] Best Z =  3769.00 | PM=455 Ccrit=0 Cweak=158 restarts=0 S2=542536 S4p1=565 | S1acc=212500 S1g=27 S2acc=542536 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4260 | Time  107.5s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=157 restarts=0 S2=544479 S4p1=565 | S1acc=213000 S1g=27 S2acc=544479 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4270 | Time  107.8s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=157 restarts=0 S2=546521 S4p1=565 | S1acc=213500 S1g=27 S2acc=546521 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4280 | Time  108.1s] Best Z =  3769.00 | PM=453 Ccrit=0 Cweak=156 restarts=0 S2=548533 S4p1=565 | S1acc=214000 S1g=27 S2acc=548533 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4290 | Time  108.3s] Best Z =  3769.00 | PM=452 Ccrit=0 Cweak=155 restarts=0 S2=550566 S4p1=565 | S1acc=214500 S1g=27 S2acc=550566 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4300 | Time  108.6s] Best Z =  3769.00 | PM=452 Ccrit=0 Cweak=155 restarts=0 S2=552599 S4p1=565 | S1acc=215000 S1g=27 S2acc=552599 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4310 | Time  108.8s] Best Z =  3769.00 | PM=452 Ccrit=0 Cweak=155 restarts=0 S2=554627 S4p1=565 | S1acc=215500 S1g=27 S2acc=554627 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4320 | Time  109.1s] Best Z =  3769.00 | PM=452 Ccrit=0 Cweak=155 restarts=0 S2=556659 S4p1=565 | S1acc=216000 S1g=27 S2acc=556659 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4330 | Time  109.3s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=152 restarts=0 S2=558672 S4p1=565 | S1acc=216500 S1g=27 S2acc=558672 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4340 | Time  109.6s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=152 restarts=0 S2=560728 S4p1=565 | S1acc=217000 S1g=27 S2acc=560728 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4350 | Time  109.8s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=152 restarts=0 S2=562783 S4p1=565 | S1acc=217500 S1g=27 S2acc=562783 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4360 | Time  110.1s] Best Z =  3769.00 | PM=450 Ccrit=0 Cweak=152 restarts=0 S2=564846 S4p1=565 | S1acc=218000 S1g=27 S2acc=564846 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4370 | Time  110.3s] Best Z =  3769.00 | PM=451 Ccrit=0 Cweak=154 restarts=0 S2=566852 S4p1=565 | S1acc=218500 S1g=27 S2acc=566852 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4380 | Time  110.6s] Best Z =  3769.00 | PM=451 Ccrit=0 Cweak=154 restarts=0 S2=568834 S4p1=565 | S1acc=219000 S1g=27 S2acc=568834 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4390 | Time  110.8s] Best Z =  3769.00 | PM=451 Ccrit=0 Cweak=154 restarts=0 S2=570864 S4p1=565 | S1acc=219500 S1g=27 S2acc=570864 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4400 | Time  111.1s] Best Z =  3769.00 | PM=452 Ccrit=0 Cweak=155 restarts=0 S2=572833 S4p1=565 | S1acc=220000 S1g=27 S2acc=572833 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4410 | Time  111.3s] Best Z =  3769.00 | PM=452 Ccrit=0 Cweak=156 restarts=0 S2=574802 S4p1=565 | S1acc=220500 S1g=27 S2acc=574802 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4420 | Time  111.6s] Best Z =  3769.00 | PM=453 Ccrit=0 Cweak=156 restarts=0 S2=576773 S4p1=565 | S1acc=221000 S1g=27 S2acc=576773 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4430 | Time  111.8s] Best Z =  3769.00 | PM=452 Ccrit=0 Cweak=155 restarts=0 S2=578739 S4p1=565 | S1acc=221500 S1g=27 S2acc=578739 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4440 | Time  112.1s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=157 restarts=0 S2=580716 S4p1=565 | S1acc=222000 S1g=27 S2acc=580716 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4450 | Time  112.4s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=156 restarts=0 S2=582712 S4p1=565 | S1acc=222500 S1g=27 S2acc=582712 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4460 | Time  112.6s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=157 restarts=0 S2=584705 S4p1=565 | S1acc=223000 S1g=27 S2acc=584705 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4470 | Time  112.9s] Best Z =  3769.00 | PM=455 Ccrit=0 Cweak=156 restarts=0 S2=586655 S4p1=565 | S1acc=223500 S1g=27 S2acc=586655 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4480 | Time  113.1s] Best Z =  3769.00 | PM=455 Ccrit=0 Cweak=157 restarts=0 S2=588583 S4p1=565 | S1acc=224000 S1g=27 S2acc=588583 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4490 | Time  113.3s] Best Z =  3769.00 | PM=455 Ccrit=0 Cweak=157 restarts=0 S2=590537 S4p1=565 | S1acc=224500 S1g=27 S2acc=590537 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4500 | Time  113.6s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=156 restarts=0 S2=592518 S4p1=565 | S1acc=225000 S1g=27 S2acc=592518 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4510 | Time  113.8s] Best Z =  3769.00 | PM=454 Ccrit=0 Cweak=156 restarts=0 S2=594492 S4p1=565 | S1acc=225500 S1g=27 S2acc=594492 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4520 | Time  114.1s] Best Z =  3769.00 | PM=455 Ccrit=0 Cweak=156 restarts=0 S2=596474 S4p1=565 | S1acc=226000 S1g=27 S2acc=596474 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2328 S5g=172
+[Iter 4530 | Time  114.3s] Best Z =  3769.00 | PM=456 Ccrit=0 Cweak=157 restarts=0 S2=598431 S4p1=565 | S1acc=226500 S1g=27 S2acc=598431 S2s=13767 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4540 | Time  114.6s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=157 restarts=0 S2=600348 S4p1=565 | S1acc=227000 S1g=27 S2acc=600348 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4550 | Time  114.9s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=157 restarts=0 S2=602311 S4p1=565 | S1acc=227500 S1g=27 S2acc=602311 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4560 | Time  115.1s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=157 restarts=0 S2=604293 S4p1=565 | S1acc=228000 S1g=27 S2acc=604293 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4570 | Time  115.4s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=156 restarts=0 S2=606269 S4p1=565 | S1acc=228500 S1g=27 S2acc=606269 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4580 | Time  115.6s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=157 restarts=0 S2=608291 S4p1=565 | S1acc=229000 S1g=27 S2acc=608291 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4590 | Time  115.9s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=157 restarts=0 S2=610289 S4p1=565 | S1acc=229500 S1g=27 S2acc=610289 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4600 | Time  116.1s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=159 restarts=0 S2=612227 S4p1=565 | S1acc=230000 S1g=27 S2acc=612227 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4610 | Time  116.4s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=159 restarts=0 S2=614225 S4p1=565 | S1acc=230500 S1g=27 S2acc=614225 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4620 | Time  116.6s] Best Z =  3769.00 | PM=457 Ccrit=0 Cweak=158 restarts=0 S2=616213 S4p1=565 | S1acc=231000 S1g=27 S2acc=616213 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4630 | Time  116.8s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=158 restarts=0 S2=618176 S4p1=565 | S1acc=231500 S1g=27 S2acc=618176 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4640 | Time  117.1s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=158 restarts=0 S2=620195 S4p1=565 | S1acc=232000 S1g=27 S2acc=620195 S2s=13768 S2g=1456 S4acc=565 S4g=99 S5acc=2329 S5g=172
+[Iter 4650 | Time  117.4s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=158 restarts=0 S2=622176 S4p1=566 | S1acc=232500 S1g=27 S2acc=622176 S2s=13768 S2g=1456 S4acc=566 S4g=99 S5acc=2330 S5g=172
+[Iter 4660 | Time  117.6s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=158 restarts=0 S2=624152 S4p1=566 | S1acc=233000 S1g=27 S2acc=624152 S2s=13768 S2g=1456 S4acc=566 S4g=99 S5acc=2330 S5g=172
+[Iter 4670 | Time  117.9s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=158 restarts=0 S2=626113 S4p1=566 | S1acc=233500 S1g=27 S2acc=626113 S2s=13768 S2g=1456 S4acc=566 S4g=99 S5acc=2330 S5g=172
+[Iter 4680 | Time  118.1s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=158 restarts=0 S2=628054 S4p1=566 | S1acc=234000 S1g=27 S2acc=628054 S2s=13769 S2g=1456 S4acc=566 S4g=99 S5acc=2331 S5g=172
+[Iter 4690 | Time  118.4s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=157 restarts=0 S2=630020 S4p1=566 | S1acc=234500 S1g=27 S2acc=630020 S2s=13769 S2g=1456 S4acc=566 S4g=99 S5acc=2331 S5g=172
+[Iter 4700 | Time  118.6s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=160 restarts=0 S2=631986 S4p1=566 | S1acc=235000 S1g=27 S2acc=631986 S2s=13769 S2g=1456 S4acc=566 S4g=99 S5acc=2331 S5g=172
+[Iter 4710 | Time  118.9s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=160 restarts=0 S2=634001 S4p1=566 | S1acc=235500 S1g=27 S2acc=634001 S2s=13769 S2g=1456 S4acc=566 S4g=99 S5acc=2331 S5g=172
+[Iter 4720 | Time  119.1s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=159 restarts=0 S2=636024 S4p1=566 | S1acc=236000 S1g=27 S2acc=636024 S2s=13769 S2g=1456 S4acc=566 S4g=99 S5acc=2331 S5g=172
+[Iter 4730 | Time  119.4s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=161 restarts=0 S2=637958 S4p1=566 | S1acc=236500 S1g=27 S2acc=637958 S2s=13769 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4740 | Time  119.6s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=160 restarts=0 S2=639907 S4p1=566 | S1acc=237000 S1g=27 S2acc=639907 S2s=13769 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4750 | Time  119.9s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=160 restarts=0 S2=641896 S4p1=566 | S1acc=237500 S1g=27 S2acc=641896 S2s=13769 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4760 | Time  120.1s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=161 restarts=0 S2=643905 S4p1=566 | S1acc=238000 S1g=27 S2acc=643905 S2s=13769 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4770 | Time  120.4s] Best Z =  3769.00 | PM=458 Ccrit=0 Cweak=160 restarts=0 S2=645951 S4p1=566 | S1acc=238500 S1g=27 S2acc=645951 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4780 | Time  120.6s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=161 restarts=0 S2=647991 S4p1=566 | S1acc=239000 S1g=27 S2acc=647991 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4790 | Time  120.9s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=161 restarts=0 S2=649985 S4p1=566 | S1acc=239500 S1g=27 S2acc=649985 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4800 | Time  121.1s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=161 restarts=0 S2=651952 S4p1=566 | S1acc=240000 S1g=27 S2acc=651952 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4810 | Time  121.4s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=161 restarts=0 S2=653967 S4p1=566 | S1acc=240500 S1g=27 S2acc=653967 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4820 | Time  121.7s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=160 restarts=0 S2=655915 S4p1=566 | S1acc=241000 S1g=27 S2acc=655915 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4830 | Time  121.9s] Best Z =  3769.00 | PM=459 Ccrit=0 Cweak=159 restarts=0 S2=657918 S4p1=566 | S1acc=241500 S1g=27 S2acc=657918 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4840 | Time  122.2s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=160 restarts=0 S2=659883 S4p1=566 | S1acc=242000 S1g=27 S2acc=659883 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4850 | Time  122.4s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=159 restarts=0 S2=661842 S4p1=566 | S1acc=242500 S1g=27 S2acc=661842 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4860 | Time  122.7s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=159 restarts=0 S2=663860 S4p1=566 | S1acc=243000 S1g=27 S2acc=663860 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4870 | Time  122.9s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=159 restarts=0 S2=665796 S4p1=566 | S1acc=243500 S1g=27 S2acc=665796 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4880 | Time  123.2s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=159 restarts=0 S2=667773 S4p1=566 | S1acc=244000 S1g=27 S2acc=667773 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4890 | Time  123.4s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=160 restarts=0 S2=669761 S4p1=566 | S1acc=244500 S1g=27 S2acc=669761 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4900 | Time  123.7s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=159 restarts=0 S2=671727 S4p1=566 | S1acc=245000 S1g=27 S2acc=671727 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4910 | Time  123.9s] Best Z =  3769.00 | PM=460 Ccrit=0 Cweak=159 restarts=0 S2=673710 S4p1=566 | S1acc=245500 S1g=27 S2acc=673710 S2s=13770 S2g=1456 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4920 | Time  124.2s] Best Z =  3774.58 | PM=459 Ccrit=0 Cweak=159 restarts=0 S2=675671 S4p1=566 | S1acc=246000 S1g=28 S2acc=675671 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4930 | Time  124.4s] Best Z =  3774.58 | PM=459 Ccrit=0 Cweak=159 restarts=0 S2=677692 S4p1=566 | S1acc=246500 S1g=28 S2acc=677692 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4940 | Time  124.7s] Best Z =  3774.58 | PM=459 Ccrit=0 Cweak=158 restarts=0 S2=679645 S4p1=566 | S1acc=247000 S1g=28 S2acc=679645 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2332 S5g=172
+[Iter 4950 | Time  124.9s] Best Z =  3774.58 | PM=462 Ccrit=0 Cweak=159 restarts=0 S2=681593 S4p1=566 | S1acc=247500 S1g=28 S2acc=681593 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 4960 | Time  125.2s] Best Z =  3774.58 | PM=461 Ccrit=0 Cweak=158 restarts=0 S2=683577 S4p1=566 | S1acc=248000 S1g=28 S2acc=683577 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 4970 | Time  125.4s] Best Z =  3774.58 | PM=461 Ccrit=0 Cweak=158 restarts=0 S2=685547 S4p1=566 | S1acc=248500 S1g=28 S2acc=685547 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 4980 | Time  125.7s] Best Z =  3774.58 | PM=461 Ccrit=0 Cweak=158 restarts=0 S2=687544 S4p1=566 | S1acc=249000 S1g=28 S2acc=687544 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 4990 | Time  125.9s] Best Z =  3774.58 | PM=460 Ccrit=0 Cweak=157 restarts=0 S2=689525 S4p1=566 | S1acc=249500 S1g=28 S2acc=689525 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5000 | Time  126.2s] Best Z =  3774.58 | PM=460 Ccrit=0 Cweak=157 restarts=0 S2=691550 S4p1=566 | S1acc=250000 S1g=28 S2acc=691550 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5010 | Time  126.4s] Best Z =  3774.58 | PM=459 Ccrit=0 Cweak=157 restarts=0 S2=693541 S4p1=566 | S1acc=250500 S1g=28 S2acc=693541 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5020 | Time  126.7s] Best Z =  3774.58 | PM=457 Ccrit=0 Cweak=155 restarts=0 S2=695563 S4p1=566 | S1acc=251000 S1g=28 S2acc=695563 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5030 | Time  126.9s] Best Z =  3774.58 | PM=457 Ccrit=0 Cweak=155 restarts=0 S2=697587 S4p1=566 | S1acc=251500 S1g=28 S2acc=697587 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5040 | Time  127.2s] Best Z =  3774.58 | PM=456 Ccrit=0 Cweak=154 restarts=0 S2=699624 S4p1=566 | S1acc=252000 S1g=28 S2acc=699624 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5050 | Time  127.4s] Best Z =  3774.58 | PM=456 Ccrit=0 Cweak=154 restarts=0 S2=701615 S4p1=566 | S1acc=252500 S1g=28 S2acc=701615 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5060 | Time  127.7s] Best Z =  3774.58 | PM=457 Ccrit=0 Cweak=154 restarts=0 S2=703603 S4p1=566 | S1acc=253000 S1g=28 S2acc=703603 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5070 | Time  127.9s] Best Z =  3774.58 | PM=457 Ccrit=0 Cweak=155 restarts=0 S2=705578 S4p1=566 | S1acc=253500 S1g=28 S2acc=705578 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5080 | Time  128.2s] Best Z =  3774.58 | PM=457 Ccrit=0 Cweak=156 restarts=0 S2=707523 S4p1=566 | S1acc=254000 S1g=28 S2acc=707523 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5090 | Time  128.4s] Best Z =  3774.58 | PM=457 Ccrit=0 Cweak=156 restarts=0 S2=709521 S4p1=566 | S1acc=254500 S1g=28 S2acc=709521 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5100 | Time  128.7s] Best Z =  3774.58 | PM=455 Ccrit=0 Cweak=154 restarts=0 S2=711494 S4p1=566 | S1acc=255000 S1g=28 S2acc=711494 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5110 | Time  128.9s] Best Z =  3774.58 | PM=455 Ccrit=0 Cweak=154 restarts=0 S2=713548 S4p1=566 | S1acc=255500 S1g=28 S2acc=713548 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5120 | Time  129.2s] Best Z =  3774.58 | PM=454 Ccrit=0 Cweak=153 restarts=0 S2=715550 S4p1=566 | S1acc=256000 S1g=28 S2acc=715550 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5130 | Time  129.4s] Best Z =  3774.58 | PM=454 Ccrit=0 Cweak=153 restarts=0 S2=717560 S4p1=566 | S1acc=256500 S1g=28 S2acc=717560 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5140 | Time  129.7s] Best Z =  3774.58 | PM=453 Ccrit=0 Cweak=153 restarts=0 S2=719526 S4p1=566 | S1acc=257000 S1g=28 S2acc=719526 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5150 | Time  129.9s] Best Z =  3774.58 | PM=451 Ccrit=0 Cweak=153 restarts=0 S2=721571 S4p1=566 | S1acc=257500 S1g=28 S2acc=721571 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5160 | Time  130.2s] Best Z =  3774.58 | PM=451 Ccrit=0 Cweak=155 restarts=0 S2=723617 S4p1=566 | S1acc=258000 S1g=28 S2acc=723617 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5170 | Time  130.4s] Best Z =  3774.58 | PM=451 Ccrit=0 Cweak=155 restarts=0 S2=725646 S4p1=566 | S1acc=258500 S1g=28 S2acc=725646 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5180 | Time  130.7s] Best Z =  3774.58 | PM=451 Ccrit=0 Cweak=154 restarts=0 S2=727651 S4p1=566 | S1acc=259000 S1g=28 S2acc=727651 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5190 | Time  130.9s] Best Z =  3774.58 | PM=451 Ccrit=0 Cweak=155 restarts=0 S2=729725 S4p1=566 | S1acc=259500 S1g=28 S2acc=729725 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5200 | Time  131.2s] Best Z =  3774.58 | PM=451 Ccrit=0 Cweak=154 restarts=0 S2=731771 S4p1=566 | S1acc=260000 S1g=28 S2acc=731771 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5210 | Time  131.4s] Best Z =  3774.58 | PM=451 Ccrit=0 Cweak=154 restarts=0 S2=733826 S4p1=566 | S1acc=260500 S1g=28 S2acc=733826 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5220 | Time  131.7s] Best Z =  3774.58 | PM=450 Ccrit=0 Cweak=155 restarts=0 S2=735893 S4p1=566 | S1acc=261000 S1g=28 S2acc=735893 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5230 | Time  131.9s] Best Z =  3774.58 | PM=450 Ccrit=0 Cweak=154 restarts=0 S2=737950 S4p1=566 | S1acc=261500 S1g=28 S2acc=737950 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5240 | Time  132.2s] Best Z =  3774.58 | PM=450 Ccrit=0 Cweak=154 restarts=0 S2=739983 S4p1=566 | S1acc=262000 S1g=28 S2acc=739983 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5250 | Time  132.4s] Best Z =  3774.58 | PM=450 Ccrit=0 Cweak=154 restarts=0 S2=742010 S4p1=566 | S1acc=262500 S1g=28 S2acc=742010 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5260 | Time  132.7s] Best Z =  3774.58 | PM=450 Ccrit=0 Cweak=154 restarts=0 S2=744095 S4p1=566 | S1acc=263000 S1g=28 S2acc=744095 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5270 | Time  132.9s] Best Z =  3774.58 | PM=450 Ccrit=0 Cweak=154 restarts=0 S2=746140 S4p1=566 | S1acc=263500 S1g=28 S2acc=746140 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5280 | Time  133.2s] Best Z =  3774.58 | PM=448 Ccrit=0 Cweak=155 restarts=0 S2=748216 S4p1=566 | S1acc=264000 S1g=28 S2acc=748216 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5290 | Time  133.4s] Best Z =  3774.58 | PM=448 Ccrit=0 Cweak=155 restarts=0 S2=750259 S4p1=566 | S1acc=264500 S1g=28 S2acc=750259 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5300 | Time  133.7s] Best Z =  3774.58 | PM=448 Ccrit=0 Cweak=154 restarts=0 S2=752348 S4p1=566 | S1acc=265000 S1g=28 S2acc=752348 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5310 | Time  134.0s] Best Z =  3774.58 | PM=448 Ccrit=0 Cweak=154 restarts=0 S2=754365 S4p1=566 | S1acc=265500 S1g=28 S2acc=754365 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5320 | Time  134.2s] Best Z =  3774.58 | PM=448 Ccrit=0 Cweak=153 restarts=0 S2=756361 S4p1=566 | S1acc=266000 S1g=28 S2acc=756361 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5330 | Time  134.5s] Best Z =  3774.58 | PM=447 Ccrit=0 Cweak=154 restarts=0 S2=758462 S4p1=566 | S1acc=266500 S1g=28 S2acc=758462 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5340 | Time  134.7s] Best Z =  3774.58 | PM=447 Ccrit=0 Cweak=154 restarts=0 S2=760516 S4p1=566 | S1acc=267000 S1g=28 S2acc=760516 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5350 | Time  135.0s] Best Z =  3774.58 | PM=447 Ccrit=0 Cweak=154 restarts=0 S2=762553 S4p1=566 | S1acc=267500 S1g=28 S2acc=762553 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5360 | Time  135.2s] Best Z =  3774.58 | PM=446 Ccrit=0 Cweak=155 restarts=0 S2=764615 S4p1=566 | S1acc=268000 S1g=28 S2acc=764615 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5370 | Time  135.5s] Best Z =  3774.58 | PM=446 Ccrit=0 Cweak=153 restarts=0 S2=766671 S4p1=566 | S1acc=268500 S1g=28 S2acc=766671 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5380 | Time  135.7s] Best Z =  3774.58 | PM=445 Ccrit=0 Cweak=154 restarts=0 S2=768763 S4p1=566 | S1acc=269000 S1g=28 S2acc=768763 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5390 | Time  136.0s] Best Z =  3774.58 | PM=446 Ccrit=0 Cweak=154 restarts=0 S2=770799 S4p1=566 | S1acc=269500 S1g=28 S2acc=770799 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5400 | Time  136.2s] Best Z =  3774.58 | PM=445 Ccrit=0 Cweak=155 restarts=0 S2=772861 S4p1=566 | S1acc=270000 S1g=28 S2acc=772861 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5410 | Time  136.5s] Best Z =  3774.58 | PM=445 Ccrit=0 Cweak=155 restarts=0 S2=774918 S4p1=566 | S1acc=270500 S1g=28 S2acc=774918 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5420 | Time  136.7s] Best Z =  3774.58 | PM=444 Ccrit=0 Cweak=155 restarts=0 S2=776998 S4p1=566 | S1acc=271000 S1g=28 S2acc=776998 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5430 | Time  137.0s] Best Z =  3774.58 | PM=444 Ccrit=0 Cweak=154 restarts=0 S2=779066 S4p1=566 | S1acc=271500 S1g=28 S2acc=779066 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5440 | Time  137.2s] Best Z =  3774.58 | PM=443 Ccrit=0 Cweak=154 restarts=0 S2=781037 S4p1=566 | S1acc=272000 S1g=28 S2acc=781037 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5450 | Time  137.5s] Best Z =  3774.58 | PM=443 Ccrit=0 Cweak=154 restarts=0 S2=783114 S4p1=566 | S1acc=272500 S1g=28 S2acc=783114 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5460 | Time  137.7s] Best Z =  3774.58 | PM=443 Ccrit=0 Cweak=154 restarts=0 S2=785203 S4p1=566 | S1acc=273000 S1g=28 S2acc=785203 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5470 | Time  138.0s] Best Z =  3774.58 | PM=442 Ccrit=0 Cweak=154 restarts=0 S2=787275 S4p1=566 | S1acc=273500 S1g=28 S2acc=787275 S2s=13770 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5480 | Time  138.2s] Best Z =  3774.58 | PM=442 Ccrit=0 Cweak=154 restarts=0 S2=789381 S4p1=566 | S1acc=274000 S1g=28 S2acc=789381 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5490 | Time  138.5s] Best Z =  3774.58 | PM=442 Ccrit=0 Cweak=154 restarts=0 S2=791482 S4p1=566 | S1acc=274500 S1g=28 S2acc=791482 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5500 | Time  138.7s] Best Z =  3774.58 | PM=442 Ccrit=0 Cweak=153 restarts=0 S2=793587 S4p1=566 | S1acc=275000 S1g=28 S2acc=793587 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5510 | Time  139.0s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=153 restarts=0 S2=795661 S4p1=566 | S1acc=275500 S1g=28 S2acc=795661 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5520 | Time  139.3s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=154 restarts=0 S2=797787 S4p1=566 | S1acc=276000 S1g=28 S2acc=797787 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5530 | Time  139.5s] Best Z =  3774.58 | PM=443 Ccrit=0 Cweak=154 restarts=0 S2=799929 S4p1=566 | S1acc=276500 S1g=28 S2acc=799929 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5540 | Time  139.8s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=802106 S4p1=566 | S1acc=277000 S1g=28 S2acc=802106 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5550 | Time  140.0s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=804168 S4p1=566 | S1acc=277500 S1g=28 S2acc=804168 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5560 | Time  140.2s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=806223 S4p1=566 | S1acc=278000 S1g=28 S2acc=806223 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5570 | Time  140.5s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=808295 S4p1=566 | S1acc=278500 S1g=28 S2acc=808295 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5580 | Time  140.8s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=152 restarts=0 S2=810338 S4p1=566 | S1acc=279000 S1g=28 S2acc=810338 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5590 | Time  141.0s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=152 restarts=0 S2=812433 S4p1=566 | S1acc=279500 S1g=28 S2acc=812433 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5600 | Time  141.3s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=152 restarts=0 S2=814531 S4p1=566 | S1acc=280000 S1g=28 S2acc=814531 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5610 | Time  141.5s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=152 restarts=0 S2=816628 S4p1=566 | S1acc=280500 S1g=28 S2acc=816628 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2333 S5g=172
+[Iter 5620 | Time  141.8s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=152 restarts=0 S2=818754 S4p1=566 | S1acc=281000 S1g=28 S2acc=818754 S2s=13771 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5630 | Time  142.0s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=151 restarts=0 S2=820870 S4p1=566 | S1acc=281500 S1g=28 S2acc=820870 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5640 | Time  142.3s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=151 restarts=0 S2=822952 S4p1=566 | S1acc=282000 S1g=28 S2acc=822952 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5650 | Time  142.5s] Best Z =  3774.58 | PM=438 Ccrit=0 Cweak=152 restarts=0 S2=825035 S4p1=566 | S1acc=282500 S1g=28 S2acc=825035 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5660 | Time  142.8s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=152 restarts=0 S2=827137 S4p1=566 | S1acc=283000 S1g=28 S2acc=827137 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5670 | Time  143.0s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=152 restarts=0 S2=829194 S4p1=566 | S1acc=283500 S1g=28 S2acc=829194 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5680 | Time  143.3s] Best Z =  3774.58 | PM=438 Ccrit=0 Cweak=151 restarts=0 S2=831286 S4p1=566 | S1acc=284000 S1g=28 S2acc=831286 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5690 | Time  143.5s] Best Z =  3774.58 | PM=438 Ccrit=0 Cweak=151 restarts=0 S2=833352 S4p1=566 | S1acc=284500 S1g=28 S2acc=833352 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5700 | Time  143.8s] Best Z =  3774.58 | PM=438 Ccrit=0 Cweak=151 restarts=0 S2=835443 S4p1=566 | S1acc=285000 S1g=28 S2acc=835443 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5710 | Time  144.0s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=151 restarts=0 S2=837530 S4p1=566 | S1acc=285500 S1g=28 S2acc=837530 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5720 | Time  144.3s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=151 restarts=0 S2=839570 S4p1=566 | S1acc=286000 S1g=28 S2acc=839570 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5730 | Time  144.6s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=152 restarts=0 S2=841654 S4p1=566 | S1acc=286500 S1g=28 S2acc=841654 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5740 | Time  144.8s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=152 restarts=0 S2=843689 S4p1=566 | S1acc=287000 S1g=28 S2acc=843689 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5750 | Time  145.1s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=152 restarts=0 S2=845726 S4p1=566 | S1acc=287500 S1g=28 S2acc=845726 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5760 | Time  145.3s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=152 restarts=0 S2=847824 S4p1=566 | S1acc=288000 S1g=28 S2acc=847824 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5770 | Time  145.6s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=152 restarts=0 S2=849970 S4p1=566 | S1acc=288500 S1g=28 S2acc=849970 S2s=13772 S2g=1463 S4acc=566 S4g=99 S5acc=2334 S5g=172
+[Iter 5780 | Time  145.8s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=852082 S4p1=566 | S1acc=289000 S1g=28 S2acc=852082 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2335 S5g=172
+[Iter 5790 | Time  146.1s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=854155 S4p1=566 | S1acc=289500 S1g=28 S2acc=854155 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2335 S5g=172
+[Iter 5800 | Time  146.3s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=856216 S4p1=566 | S1acc=290000 S1g=28 S2acc=856216 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2335 S5g=172
+[Iter 5810 | Time  146.6s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=151 restarts=0 S2=858280 S4p1=566 | S1acc=290500 S1g=28 S2acc=858280 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5820 | Time  146.8s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=151 restarts=0 S2=860359 S4p1=566 | S1acc=291000 S1g=28 S2acc=860359 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5830 | Time  147.1s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=151 restarts=0 S2=862440 S4p1=566 | S1acc=291500 S1g=28 S2acc=862440 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5840 | Time  147.3s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=864535 S4p1=566 | S1acc=292000 S1g=28 S2acc=864535 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5850 | Time  147.6s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=150 restarts=0 S2=866599 S4p1=566 | S1acc=292500 S1g=28 S2acc=866599 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5860 | Time  147.8s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=868707 S4p1=566 | S1acc=293000 S1g=28 S2acc=868707 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5870 | Time  148.1s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=151 restarts=0 S2=870778 S4p1=566 | S1acc=293500 S1g=28 S2acc=870778 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5880 | Time  148.3s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=152 restarts=0 S2=872875 S4p1=566 | S1acc=294000 S1g=28 S2acc=872875 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5890 | Time  148.6s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=152 restarts=0 S2=874939 S4p1=566 | S1acc=294500 S1g=28 S2acc=874939 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5900 | Time  148.8s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=154 restarts=0 S2=877009 S4p1=566 | S1acc=295000 S1g=28 S2acc=877009 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5910 | Time  149.1s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=154 restarts=0 S2=879163 S4p1=566 | S1acc=295500 S1g=28 S2acc=879163 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5920 | Time  149.3s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=153 restarts=0 S2=881269 S4p1=566 | S1acc=296000 S1g=28 S2acc=881269 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5930 | Time  149.6s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=153 restarts=0 S2=883360 S4p1=566 | S1acc=296500 S1g=28 S2acc=883360 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5940 | Time  149.8s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=153 restarts=0 S2=885500 S4p1=566 | S1acc=297000 S1g=28 S2acc=885500 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5950 | Time  150.1s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=154 restarts=0 S2=887577 S4p1=566 | S1acc=297500 S1g=28 S2acc=887577 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5960 | Time  150.3s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=154 restarts=0 S2=889693 S4p1=566 | S1acc=298000 S1g=28 S2acc=889693 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5970 | Time  150.6s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=155 restarts=0 S2=891736 S4p1=566 | S1acc=298500 S1g=28 S2acc=891736 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5980 | Time  150.8s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=155 restarts=0 S2=893834 S4p1=566 | S1acc=299000 S1g=28 S2acc=893834 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 5990 | Time  151.1s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=156 restarts=0 S2=895950 S4p1=566 | S1acc=299500 S1g=28 S2acc=895950 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2336 S5g=172
+[Iter 6000 | Time  151.3s] Best Z =  3774.58 | PM=441 Ccrit=0 Cweak=156 restarts=0 S2=898063 S4p1=566 | S1acc=300000 S1g=28 S2acc=898063 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6010 | Time  151.6s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=156 restarts=0 S2=900181 S4p1=566 | S1acc=300500 S1g=28 S2acc=900181 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6020 | Time  151.8s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=156 restarts=0 S2=902304 S4p1=566 | S1acc=301000 S1g=28 S2acc=902304 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6030 | Time  152.1s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=156 restarts=0 S2=904432 S4p1=566 | S1acc=301500 S1g=28 S2acc=904432 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6040 | Time  152.4s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=156 restarts=0 S2=906522 S4p1=566 | S1acc=302000 S1g=28 S2acc=906522 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6050 | Time  152.6s] Best Z =  3774.58 | PM=440 Ccrit=0 Cweak=156 restarts=0 S2=908576 S4p1=566 | S1acc=302500 S1g=28 S2acc=908576 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6060 | Time  152.8s] Best Z =  3774.58 | PM=437 Ccrit=0 Cweak=154 restarts=0 S2=910651 S4p1=566 | S1acc=303000 S1g=28 S2acc=910651 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6070 | Time  153.1s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=154 restarts=0 S2=912736 S4p1=566 | S1acc=303500 S1g=28 S2acc=912736 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6080 | Time  153.4s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=154 restarts=0 S2=914850 S4p1=566 | S1acc=304000 S1g=28 S2acc=914850 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6090 | Time  153.6s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=153 restarts=0 S2=916970 S4p1=566 | S1acc=304500 S1g=28 S2acc=916970 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6100 | Time  153.9s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=153 restarts=0 S2=919088 S4p1=566 | S1acc=305000 S1g=28 S2acc=919088 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6110 | Time  154.1s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=153 restarts=0 S2=921116 S4p1=566 | S1acc=305500 S1g=28 S2acc=921116 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6120 | Time  154.4s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=153 restarts=0 S2=923217 S4p1=566 | S1acc=306000 S1g=28 S2acc=923217 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6130 | Time  154.6s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=155 restarts=0 S2=925266 S4p1=566 | S1acc=306500 S1g=28 S2acc=925266 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6140 | Time  154.9s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=156 restarts=0 S2=927401 S4p1=566 | S1acc=307000 S1g=28 S2acc=927401 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6150 | Time  155.1s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=156 restarts=0 S2=929496 S4p1=566 | S1acc=307500 S1g=28 S2acc=929496 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6160 | Time  155.4s] Best Z =  3774.58 | PM=439 Ccrit=0 Cweak=155 restarts=0 S2=931591 S4p1=566 | S1acc=308000 S1g=28 S2acc=931591 S2s=13773 S2g=1463 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6170 | Time  155.6s] Best Z =  3784.10 | PM=440 Ccrit=0 Cweak=156 restarts=0 S2=933702 S4p1=566 | S1acc=308500 S1g=29 S2acc=933702 S2s=13773 S2g=1465 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6180 | Time  155.9s] Best Z =  3784.10 | PM=440 Ccrit=0 Cweak=155 restarts=0 S2=935841 S4p1=566 | S1acc=309000 S1g=29 S2acc=935841 S2s=13773 S2g=1465 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6190 | Time  156.1s] Best Z =  3784.10 | PM=440 Ccrit=0 Cweak=155 restarts=0 S2=937924 S4p1=566 | S1acc=309500 S1g=29 S2acc=937924 S2s=13773 S2g=1465 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6200 | Time  156.4s] Best Z =  3784.10 | PM=440 Ccrit=0 Cweak=154 restarts=0 S2=940039 S4p1=566 | S1acc=310000 S1g=29 S2acc=940039 S2s=13773 S2g=1465 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6210 | Time  156.6s] Best Z =  3784.10 | PM=440 Ccrit=0 Cweak=154 restarts=0 S2=942147 S4p1=566 | S1acc=310500 S1g=29 S2acc=942147 S2s=13773 S2g=1465 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6220 | Time  156.9s] Best Z =  3784.10 | PM=439 Ccrit=0 Cweak=154 restarts=0 S2=944216 S4p1=566 | S1acc=311000 S1g=29 S2acc=944216 S2s=13773 S2g=1465 S4acc=566 S4g=99 S5acc=2337 S5g=172
+[Iter 6230 | Time  157.1s] Best Z =  3784.10 | PM=443 Ccrit=0 Cweak=154 restarts=0 S2=946340 S4p1=566 | S1acc=311500 S1g=29 S2acc=946340 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6240 | Time  157.4s] Best Z =  3784.10 | PM=443 Ccrit=0 Cweak=153 restarts=0 S2=948436 S4p1=566 | S1acc=312000 S1g=29 S2acc=948436 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6250 | Time  157.7s] Best Z =  3784.10 | PM=443 Ccrit=0 Cweak=153 restarts=0 S2=950487 S4p1=566 | S1acc=312500 S1g=29 S2acc=950487 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6260 | Time  157.9s] Best Z =  3784.10 | PM=443 Ccrit=0 Cweak=153 restarts=0 S2=952542 S4p1=566 | S1acc=313000 S1g=29 S2acc=952542 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6270 | Time  158.2s] Best Z =  3784.10 | PM=443 Ccrit=0 Cweak=153 restarts=0 S2=954591 S4p1=566 | S1acc=313500 S1g=29 S2acc=954591 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6280 | Time  158.4s] Best Z =  3784.10 | PM=443 Ccrit=0 Cweak=150 restarts=0 S2=956621 S4p1=566 | S1acc=314000 S1g=29 S2acc=956621 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6290 | Time  158.7s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=152 restarts=0 S2=958670 S4p1=566 | S1acc=314500 S1g=29 S2acc=958670 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6300 | Time  158.9s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=151 restarts=0 S2=960772 S4p1=566 | S1acc=315000 S1g=29 S2acc=960772 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6310 | Time  159.2s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=152 restarts=0 S2=962836 S4p1=566 | S1acc=315500 S1g=29 S2acc=962836 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6320 | Time  159.4s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=152 restarts=0 S2=964904 S4p1=566 | S1acc=316000 S1g=29 S2acc=964904 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6330 | Time  159.7s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=151 restarts=0 S2=966940 S4p1=566 | S1acc=316500 S1g=29 S2acc=966940 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6340 | Time  159.9s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=149 restarts=0 S2=968942 S4p1=566 | S1acc=317000 S1g=29 S2acc=968942 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6350 | Time  160.2s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=150 restarts=0 S2=970944 S4p1=566 | S1acc=317500 S1g=29 S2acc=970944 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6360 | Time  160.4s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=151 restarts=0 S2=972926 S4p1=566 | S1acc=318000 S1g=29 S2acc=972926 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6370 | Time  160.7s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=151 restarts=0 S2=974910 S4p1=566 | S1acc=318500 S1g=29 S2acc=974910 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6380 | Time  161.0s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=151 restarts=0 S2=976929 S4p1=566 | S1acc=319000 S1g=29 S2acc=976929 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6390 | Time  161.2s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=150 restarts=0 S2=978909 S4p1=566 | S1acc=319500 S1g=29 S2acc=978909 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6400 | Time  161.5s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=151 restarts=0 S2=980929 S4p1=566 | S1acc=320000 S1g=29 S2acc=980929 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6410 | Time  161.7s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=151 restarts=0 S2=982973 S4p1=566 | S1acc=320500 S1g=29 S2acc=982973 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6420 | Time  162.0s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=152 restarts=0 S2=984969 S4p1=566 | S1acc=321000 S1g=29 S2acc=984969 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6430 | Time  162.2s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=152 restarts=0 S2=986955 S4p1=566 | S1acc=321500 S1g=29 S2acc=986955 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6440 | Time  162.5s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=152 restarts=0 S2=988943 S4p1=566 | S1acc=322000 S1g=29 S2acc=988943 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6450 | Time  162.7s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=152 restarts=0 S2=990923 S4p1=566 | S1acc=322500 S1g=29 S2acc=990923 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6460 | Time  163.0s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=152 restarts=0 S2=992878 S4p1=566 | S1acc=323000 S1g=29 S2acc=992878 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6470 | Time  163.2s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=153 restarts=0 S2=994875 S4p1=566 | S1acc=323500 S1g=29 S2acc=994875 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6480 | Time  163.5s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=152 restarts=0 S2=996848 S4p1=566 | S1acc=324000 S1g=29 S2acc=996848 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6490 | Time  163.7s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=152 restarts=0 S2=998810 S4p1=566 | S1acc=324500 S1g=29 S2acc=998810 S2s=13775 S2g=1465 S4acc=566 S4g=99 S5acc=2339 S5g=172
+[Iter 6500 | Time  164.0s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=152 restarts=0 S2=1000784 S4p1=566 | S1acc=325000 S1g=29 S2acc=1000784 S2s=13777 S2g=1465 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6510 | Time  164.2s] Best Z =  3784.10 | PM=442 Ccrit=0 Cweak=152 restarts=0 S2=1002786 S4p1=566 | S1acc=325500 S1g=29 S2acc=1002786 S2s=13777 S2g=1465 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6520 | Time  164.5s] Best Z =  3784.10 | PM=441 Ccrit=0 Cweak=151 restarts=0 S2=1004762 S4p1=566 | S1acc=326000 S1g=29 S2acc=1004762 S2s=13777 S2g=1465 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6530 | Time  164.7s] Best Z =  3784.10 | PM=439 Ccrit=0 Cweak=152 restarts=0 S2=1006704 S4p1=566 | S1acc=326500 S1g=29 S2acc=1006704 S2s=13777 S2g=1465 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6540 | Time  165.0s] Best Z =  3784.10 | PM=439 Ccrit=0 Cweak=152 restarts=0 S2=1008827 S4p1=566 | S1acc=327000 S1g=29 S2acc=1008827 S2s=13777 S2g=1465 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6550 | Time  165.3s] Best Z =  3784.10 | PM=438 Ccrit=0 Cweak=151 restarts=0 S2=1010921 S4p1=566 | S1acc=327500 S1g=29 S2acc=1010921 S2s=13777 S2g=1465 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6560 | Time  165.5s] Best Z =  3784.10 | PM=438 Ccrit=0 Cweak=151 restarts=0 S2=1012992 S4p1=566 | S1acc=328000 S1g=29 S2acc=1012992 S2s=13777 S2g=1465 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6570 | Time  165.8s] Best Z =  3784.10 | PM=438 Ccrit=0 Cweak=151 restarts=0 S2=1015064 S4p1=566 | S1acc=328500 S1g=29 S2acc=1015064 S2s=13777 S2g=1465 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6580 | Time  166.0s] Best Z =  3784.10 | PM=438 Ccrit=0 Cweak=151 restarts=0 S2=1017140 S4p1=566 | S1acc=329000 S1g=29 S2acc=1017140 S2s=13777 S2g=1465 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6590 | Time  166.3s] Best Z =  3794.46 | PM=439 Ccrit=0 Cweak=151 restarts=0 S2=1019196 S4p1=566 | S1acc=329500 S1g=30 S2acc=1019196 S2s=13777 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6600 | Time  166.5s] Best Z =  3794.46 | PM=440 Ccrit=0 Cweak=152 restarts=0 S2=1021245 S4p1=566 | S1acc=330000 S1g=30 S2acc=1021245 S2s=13777 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6610 | Time  166.8s] Best Z =  3794.46 | PM=440 Ccrit=0 Cweak=152 restarts=0 S2=1023312 S4p1=566 | S1acc=330500 S1g=30 S2acc=1023312 S2s=13777 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6620 | Time  167.0s] Best Z =  3794.46 | PM=439 Ccrit=0 Cweak=152 restarts=0 S2=1025354 S4p1=566 | S1acc=331000 S1g=30 S2acc=1025354 S2s=13777 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6630 | Time  167.3s] Best Z =  3794.46 | PM=439 Ccrit=0 Cweak=152 restarts=0 S2=1027489 S4p1=566 | S1acc=331500 S1g=30 S2acc=1027489 S2s=13777 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6640 | Time  167.5s] Best Z =  3794.46 | PM=441 Ccrit=0 Cweak=154 restarts=0 S2=1029556 S4p1=566 | S1acc=332000 S1g=30 S2acc=1029556 S2s=13777 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6650 | Time  167.8s] Best Z =  3794.46 | PM=442 Ccrit=0 Cweak=151 restarts=0 S2=1031555 S4p1=566 | S1acc=332500 S1g=30 S2acc=1031555 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6660 | Time  168.1s] Best Z =  3794.46 | PM=441 Ccrit=0 Cweak=150 restarts=0 S2=1033527 S4p1=566 | S1acc=333000 S1g=30 S2acc=1033527 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6670 | Time  168.3s] Best Z =  3794.46 | PM=441 Ccrit=0 Cweak=150 restarts=0 S2=1035521 S4p1=566 | S1acc=333500 S1g=30 S2acc=1035521 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6680 | Time  168.6s] Best Z =  3794.46 | PM=441 Ccrit=0 Cweak=150 restarts=0 S2=1037478 S4p1=566 | S1acc=334000 S1g=30 S2acc=1037478 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6690 | Time  168.8s] Best Z =  3794.46 | PM=441 Ccrit=0 Cweak=150 restarts=0 S2=1039440 S4p1=566 | S1acc=334500 S1g=30 S2acc=1039440 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6700 | Time  169.1s] Best Z =  3794.46 | PM=441 Ccrit=0 Cweak=150 restarts=0 S2=1041513 S4p1=566 | S1acc=335000 S1g=30 S2acc=1041513 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6710 | Time  169.3s] Best Z =  3794.46 | PM=438 Ccrit=0 Cweak=149 restarts=0 S2=1043518 S4p1=566 | S1acc=335500 S1g=30 S2acc=1043518 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6720 | Time  169.6s] Best Z =  3794.46 | PM=437 Ccrit=0 Cweak=150 restarts=0 S2=1045549 S4p1=566 | S1acc=336000 S1g=30 S2acc=1045549 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6730 | Time  169.8s] Best Z =  3794.46 | PM=437 Ccrit=0 Cweak=149 restarts=0 S2=1047625 S4p1=566 | S1acc=336500 S1g=30 S2acc=1047625 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6740 | Time  170.1s] Best Z =  3794.46 | PM=437 Ccrit=0 Cweak=148 restarts=0 S2=1049671 S4p1=566 | S1acc=337000 S1g=30 S2acc=1049671 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6750 | Time  170.3s] Best Z =  3794.46 | PM=435 Ccrit=0 Cweak=148 restarts=0 S2=1051696 S4p1=566 | S1acc=337500 S1g=30 S2acc=1051696 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6760 | Time  170.6s] Best Z =  3794.46 | PM=435 Ccrit=0 Cweak=149 restarts=0 S2=1053721 S4p1=566 | S1acc=338000 S1g=30 S2acc=1053721 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6770 | Time  170.8s] Best Z =  3794.46 | PM=436 Ccrit=0 Cweak=149 restarts=0 S2=1055808 S4p1=566 | S1acc=338500 S1g=30 S2acc=1055808 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6780 | Time  171.1s] Best Z =  3794.46 | PM=433 Ccrit=0 Cweak=150 restarts=0 S2=1057869 S4p1=566 | S1acc=339000 S1g=30 S2acc=1057869 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6790 | Time  171.3s] Best Z =  3794.46 | PM=432 Ccrit=0 Cweak=151 restarts=0 S2=1059989 S4p1=566 | S1acc=339500 S1g=30 S2acc=1059989 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6800 | Time  171.6s] Best Z =  3794.46 | PM=432 Ccrit=0 Cweak=152 restarts=0 S2=1062076 S4p1=566 | S1acc=340000 S1g=30 S2acc=1062076 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6810 | Time  171.8s] Best Z =  3794.46 | PM=432 Ccrit=0 Cweak=151 restarts=0 S2=1064148 S4p1=566 | S1acc=340500 S1g=30 S2acc=1064148 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6820 | Time  172.1s] Best Z =  3794.46 | PM=432 Ccrit=0 Cweak=150 restarts=0 S2=1066281 S4p1=566 | S1acc=341000 S1g=30 S2acc=1066281 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6830 | Time  172.4s] Best Z =  3794.46 | PM=432 Ccrit=0 Cweak=149 restarts=0 S2=1068373 S4p1=566 | S1acc=341500 S1g=30 S2acc=1068373 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6840 | Time  172.6s] Best Z =  3794.46 | PM=432 Ccrit=0 Cweak=150 restarts=0 S2=1070435 S4p1=566 | S1acc=342000 S1g=30 S2acc=1070435 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6850 | Time  172.9s] Best Z =  3794.46 | PM=431 Ccrit=0 Cweak=150 restarts=0 S2=1072489 S4p1=566 | S1acc=342500 S1g=30 S2acc=1072489 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2340 S5g=172
+[Iter 6860 | Time  173.1s] Best Z =  3794.46 | PM=432 Ccrit=0 Cweak=152 restarts=0 S2=1074553 S4p1=566 | S1acc=343000 S1g=30 S2acc=1074553 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6870 | Time  173.4s] Best Z =  3794.46 | PM=432 Ccrit=0 Cweak=151 restarts=0 S2=1076599 S4p1=566 | S1acc=343500 S1g=30 S2acc=1076599 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6880 | Time  173.6s] Best Z =  3794.46 | PM=432 Ccrit=0 Cweak=150 restarts=0 S2=1078750 S4p1=566 | S1acc=344000 S1g=30 S2acc=1078750 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6890 | Time  173.9s] Best Z =  3794.46 | PM=430 Ccrit=0 Cweak=151 restarts=0 S2=1080764 S4p1=566 | S1acc=344500 S1g=30 S2acc=1080764 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6900 | Time  174.1s] Best Z =  3794.46 | PM=429 Ccrit=0 Cweak=150 restarts=0 S2=1082871 S4p1=566 | S1acc=345000 S1g=30 S2acc=1082871 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6910 | Time  174.4s] Best Z =  3794.46 | PM=429 Ccrit=0 Cweak=150 restarts=0 S2=1084974 S4p1=566 | S1acc=345500 S1g=30 S2acc=1084974 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6920 | Time  174.6s] Best Z =  3794.46 | PM=429 Ccrit=0 Cweak=150 restarts=0 S2=1087055 S4p1=566 | S1acc=346000 S1g=30 S2acc=1087055 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6930 | Time  174.9s] Best Z =  3794.46 | PM=430 Ccrit=0 Cweak=150 restarts=0 S2=1089186 S4p1=566 | S1acc=346500 S1g=30 S2acc=1089186 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6940 | Time  175.2s] Best Z =  3794.46 | PM=429 Ccrit=0 Cweak=149 restarts=0 S2=1091308 S4p1=566 | S1acc=347000 S1g=30 S2acc=1091308 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6950 | Time  175.4s] Best Z =  3794.46 | PM=429 Ccrit=0 Cweak=149 restarts=0 S2=1093358 S4p1=566 | S1acc=347500 S1g=30 S2acc=1093358 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6960 | Time  175.7s] Best Z =  3794.46 | PM=430 Ccrit=0 Cweak=150 restarts=0 S2=1095452 S4p1=566 | S1acc=348000 S1g=30 S2acc=1095452 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6970 | Time  175.9s] Best Z =  3794.46 | PM=430 Ccrit=0 Cweak=150 restarts=0 S2=1097547 S4p1=566 | S1acc=348500 S1g=30 S2acc=1097547 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6980 | Time  176.2s] Best Z =  3794.46 | PM=428 Ccrit=0 Cweak=149 restarts=0 S2=1099643 S4p1=566 | S1acc=349000 S1g=30 S2acc=1099643 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 6990 | Time  176.4s] Best Z =  3794.46 | PM=428 Ccrit=0 Cweak=149 restarts=0 S2=1101770 S4p1=566 | S1acc=349500 S1g=30 S2acc=1101770 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 7000 | Time  176.7s] Best Z =  3794.46 | PM=426 Ccrit=0 Cweak=147 restarts=0 S2=1103864 S4p1=566 | S1acc=350000 S1g=30 S2acc=1103864 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2341 S5g=172
+[Iter 7010 | Time  176.9s] Best Z =  3794.46 | PM=427 Ccrit=0 Cweak=148 restarts=0 S2=1105982 S4p1=566 | S1acc=350500 S1g=30 S2acc=1105982 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7020 | Time  177.2s] Best Z =  3794.46 | PM=427 Ccrit=0 Cweak=148 restarts=0 S2=1108149 S4p1=566 | S1acc=351000 S1g=30 S2acc=1108149 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7030 | Time  177.4s] Best Z =  3794.46 | PM=427 Ccrit=0 Cweak=150 restarts=0 S2=1110288 S4p1=566 | S1acc=351500 S1g=30 S2acc=1110288 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7040 | Time  177.7s] Best Z =  3794.46 | PM=427 Ccrit=0 Cweak=150 restarts=0 S2=1112341 S4p1=566 | S1acc=352000 S1g=30 S2acc=1112341 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7050 | Time  177.9s] Best Z =  3794.46 | PM=427 Ccrit=0 Cweak=150 restarts=0 S2=1114445 S4p1=566 | S1acc=352500 S1g=30 S2acc=1114445 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7060 | Time  178.2s] Best Z =  3794.46 | PM=427 Ccrit=0 Cweak=150 restarts=0 S2=1116566 S4p1=566 | S1acc=353000 S1g=30 S2acc=1116566 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7070 | Time  178.4s] Best Z =  3794.46 | PM=426 Ccrit=0 Cweak=150 restarts=0 S2=1118643 S4p1=566 | S1acc=353500 S1g=30 S2acc=1118643 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7080 | Time  178.7s] Best Z =  3794.46 | PM=426 Ccrit=0 Cweak=150 restarts=0 S2=1120728 S4p1=566 | S1acc=354000 S1g=30 S2acc=1120728 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7090 | Time  179.0s] Best Z =  3794.46 | PM=426 Ccrit=0 Cweak=150 restarts=0 S2=1122816 S4p1=566 | S1acc=354500 S1g=30 S2acc=1122816 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7100 | Time  179.2s] Best Z =  3794.46 | PM=425 Ccrit=0 Cweak=151 restarts=0 S2=1124868 S4p1=566 | S1acc=355000 S1g=30 S2acc=1124868 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7110 | Time  179.5s] Best Z =  3794.46 | PM=425 Ccrit=0 Cweak=150 restarts=0 S2=1126951 S4p1=566 | S1acc=355500 S1g=30 S2acc=1126951 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7120 | Time  179.7s] Best Z =  3794.46 | PM=425 Ccrit=0 Cweak=150 restarts=0 S2=1129048 S4p1=566 | S1acc=356000 S1g=30 S2acc=1129048 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Iter 7130 | Time  180.0s] Best Z =  3794.46 | PM=425 Ccrit=0 Cweak=150 restarts=0 S2=1131099 S4p1=566 | S1acc=356500 S1g=30 S2acc=1131099 S2s=13779 S2g=1468 S4acc=566 S4g=99 S5acc=2342 S5g=172
+[Stop] Time limit reached (180.0s)
+
+==================================================
+  FINAL RESULT
+==================================================
+  Best Z = 3794.4641
+  Total iterations = 7131
+  Time = 180.01 seconds
+==================================================
+
+Best Schedule:
+  Machine 1: J131(C=8.0) J68(C=18.9) J87(C=30.3) J175(C=38.2) J84(C=46.8) J100(C=54.7) J8(C=66.4) J53(C=84.9) J118(C=100.9) 
+  Machine 2: J28(C=8.8) J114(C=16.1) J153(C=23.7) J199(C=31.7) J9(C=41.0) J74(C=52.6) J23(C=62.0) J139(C=74.4) J157(C=88.0) J106(C=103.1) 
+  Machine 3: J184(C=12.2) J73(C=20.9) J180(C=30.2) J162(C=39.5) J33(C=51.5) J172(C=63.4) J119(C=72.2) J167(C=83.2) J138(C=103.6) 
+  Rejected: J144 J125 J93 J7 J195 J148 J27 J90 J109 J178 J124 J52 J194 J151 J189 J89 J43 J19 J2 J47 J69 J41 J188 J165 J37 J130 J79 J102 J15 J126 J152 J163 J76 J12 J146 J154 J129 J169 J22 J13 J21 J18 J132 J147 J94 J196 J158 J67 J181 J159 J98 J170 J3 J143 J83 J108 J164 J111 J78 J30 J39 J97 J173 J63 J16 J183 J116 J44 J51 J75 J134 J121 J85 J185 J136 J145 J166 J179 J40 J77 J127 J92 J60 J55 J57 J72 J59 J107 J113 J198 J137 J155 J95 J193 J187 J36 J50 J110 J96 J54 J156 J176 J190 J49 J142 J29 J64 J65 J46 J48 J86 J6 J133 J58 J4 J10 J191 J182 J192 J24 J122 J91 J161 J186 J128 J26 J81 J115 J20 J160 J34 J31 J149 J80 J38 J99 J174 J5 J197 J105 J66 J32 J42 J70 J1 J14 J140 J177 J88 J17 J104 J45 J171 J71 J112 J82 J101 J168 J123 J141 J56 J103 J117 J150 J62 J35 J25 J61 J200 J120 J135 J11 
+
+==================================================
+            STMO DIAGNOSTIC REPORT
+==================================================
+ Best Z value          : 3794.46
+ Total iterations      : 7131 / 50000
+ Time used             : 180.0s / 180.0s
+ Best improved at iter : 6581
+--------------------------------------------------
+ Stage 2 total repairs : 1131306
+ Stage 4 Phase1 hits   : 566
+ Convergence restarts  : 0
+--------------------------------------------------
+ PairMemory entries    : 425
+ TripletMemory entries : 0
+ Elite archive size    : 5 / 5
+--------------------------------------------------
+ DIAGNOSIS:
+   [ok] Convergence pattern looks healthy
+   [ok] Stage 2 active
+   [ok] Stage 4 Phase 1 active
+--------------------------------------------------
+ [STAGE PRODUCTIVITY]
+ S1: accepted=356550    globalBest=30
+ S2: accepted=1131306   strict=13779     globalBest=1468
+ S4: accepted=566       globalBest=99
+ S5: accepted=2342      globalBest=172
+ Restarts: 0
+==================================================
+
